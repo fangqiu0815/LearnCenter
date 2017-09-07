@@ -2,10 +2,15 @@
 
 1、设置UILabel行间距
 
-NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];
+
+    NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];
+    
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    
     [style setLineSpacing:20];
+    
     [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];
+    
     label.attributedText = attrString;
 // 或者使用xib，看下gif图
 
@@ -24,23 +29,38 @@ NSArray * array =
 // 方法二、
 // 使用NSInvocation
 SEL aSelector = NSSelectorFromString(@"doSoming:argument2:");
+
     NSInteger argument1 = 10;
+    
     NSString *argument2 = @"argument2";
+    
     if([self respondsToSelector:aSelector]) {
+    
         NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];
+        
         [inv setSelector:aSelector];
+        
         [inv setTarget:self];
+        
         [inv setArgument:&(argument1) atIndex:2];
+        
         [inv setArgument:&(argument2) atIndex:3];
+        
         [inv performSelector:@selector(invoke) withObject:nil afterDelay:15.0];
+        
     }
 3、UILabel显示不同颜色字体
 
 NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:label.text];
+
 [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,5)];
+
 [string addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(5,6)];
+
 [string addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(11,5)];
+
 label.attributedText = string;
+
 4、比较两个CGRect/CGSize/CGPoint是否相等
 
 if (CGRectEqualToRect(rect1, rect2)) { // 两个区域相等
