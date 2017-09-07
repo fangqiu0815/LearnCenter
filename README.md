@@ -2,7 +2,6 @@
 
 1、设置UILabel行间距
 
-
     NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];
     
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
@@ -12,154 +11,221 @@
     [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];
     
     label.attributedText = attrString;
-// 或者使用xib，看下gif图
 
-1432270-736756a6216a6753.gif
-
-Untitled.gif
 
 2、当使用-performSelector:withObject:withObject:afterDelay:方法时，需要传入多参数问题
 
 // 方法一、
 // 把参数放进一个数组／字典，直接把数组／字典当成一个参数传过去，具体方法实现的地方再解析这个数组／字典
-NSArray * array = 
-    [NSArray arrayWithObjects: @"first", @"second", nil];
-[self performSelector:@selector(fooFirstInput:) withObject: array afterDelay:15.0];
+        NSArray * array = 
+            [NSArray arrayWithObjects: @"first", @"second", nil];
+    
+        [self performSelector:@selector(fooFirstInput:) withObject: array afterDelay:15.0];
 
 // 方法二、
-// 使用NSInvocation
-SEL aSelector = NSSelectorFromString(@"doSoming:argument2:");
+        // 使用NSInvocation
+        SEL aSelector = NSSelectorFromString(@"doSoming:argument2:");
 
-    NSInteger argument1 = 10;
+        NSInteger argument1 = 10;
     
-    NSString *argument2 = @"argument2";
+        NSString *argument2 = @"argument2";
     
-    if([self respondsToSelector:aSelector]) {
+        if([self respondsToSelector:aSelector]) {
     
-        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];
+            NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:aSelector]];
         
-        [inv setSelector:aSelector];
+            [inv setSelector:aSelector];
         
-        [inv setTarget:self];
+            [inv setTarget:self];
         
-        [inv setArgument:&(argument1) atIndex:2];
+            [inv setArgument:&(argument1) atIndex:2];
         
-        [inv setArgument:&(argument2) atIndex:3];
+            [inv setArgument:&(argument2) atIndex:3];
         
-        [inv performSelector:@selector(invoke) withObject:nil afterDelay:15.0];
+            [inv performSelector:@selector(invoke) withObject:nil afterDelay:15.0];
         
-    }
+        }
+    
 3、UILabel显示不同颜色字体
 
-NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:label.text];
+    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:label.text];
 
-[string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,5)];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,5)];
 
-[string addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(5,6)];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(5,6)];
 
-[string addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(11,5)];
+    [string addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(11,5)];
 
-label.attributedText = string;
+    label.attributedText = string;
 
 4、比较两个CGRect/CGSize/CGPoint是否相等
 
-if (CGRectEqualToRect(rect1, rect2)) { // 两个区域相等
+    if (CGRectEqualToRect(rect1, rect2)) { // 两个区域相等
+
         // do some
+        
     }
+    
     if (CGPointEqualToPoint(point1, point2)) { // 两个点相等
+    
         // do some
+        
     }
+    
     if (CGSizeEqualToSize(size1, size2)) { // 两个size相等
+    
         // do some
+        
     }
+    
 5、比较两个NSDate相差多少小时
 
- NSDate* date1 = someDate;
- NSDate* date2 = someOtherDate;
- NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
- double secondsInAnHour = 3600;
-// 除以3600是把秒化成小时，除以60得到结果为相差的分钟数
- NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    NSDate* date1 = someDate;
+ 
+    NSDate* date2 = someOtherDate;
+ 
+    NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
+ 
+    double secondsInAnHour = 3600;
+ 
+    // 除以3600是把秒化成小时，除以60得到结果为相差的分钟数
+
+     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+ 
 6、每个cell之间增加间距
 
-// 方法一，每个分区只显示一行cell，分区头当作你想要的间距(注意，从数据源数组中取值的时候需要用indexPath.section而不是indexPath.row)
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return yourArry.count;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return cellSpacingHeight;
-}
+    // 方法一，每个分区只显示一行cell，分区头当作你想要的间距(注意，从数据源数组中取值的时候需要用indexPath.section而不是indexPath.row)
+
+    - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+    {
+
+        return yourArry.count;
+    
+    }
+
+    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+    {
+
+        return 1;
+    
+    }
+
+    -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+
+    {
+
+        return cellSpacingHeight;
+    
+    }
 
 // 方法二，在cell的contentView上加个稍微低一点的view，cell上原本的内容放在你的view上，而不是contentView上，这样能伪造出一个间距来。
 
 // 方法三，自定义cell，重写setFrame：方法
-- (void)setFrame:(CGRect)frame
-{
-    frame.size.height -= 20;
-    [super setFrame:frame];
-}
+
+    - (void)setFrame:(CGRect)frame
+
+    {
+
+        frame.size.height -= 20;
+    
+        [super setFrame:frame];
+    
+    }
+
 7、播放一张张连续的图片
 
-// 加入现在有三张图片分别为animate_1、animate_2、animate_3
-// 方法一
+    // 加入现在有三张图片分别为animate_1、animate_2、animate_3
+
+    // 方法一
+
     imageView.animationImages = @[[UIImage imageNamed:@"animate_1"], [UIImage imageNamed:@"animate_2"], [UIImage imageNamed:@"animate_3"]];
-imageView.animationDuration = 1.0;
-// 方法二
+    
+    imageView.animationDuration = 1.0;
+
+    // 方法二
+
     imageView.image = [UIImage animatedImageNamed:@"animate_" duration:1.0];
-// 方法二解释下，这个方法会加载animate_为前缀的，后边0-1024，也就是animate_0、animate_1一直到animate_1024
+    
+    // 方法二解释下，这个方法会加载animate_为前缀的，后边0-1024，也就是animate_0、animate_1一直到animate_1024
+
 8、加载gif图片
 
-推荐使用这个框架 FLAnimatedImage
+    推荐使用这个框架 FLAnimatedImage
 
 9、防止离屏渲染为image添加圆角
 
-// image分类
-- (UIImage *)circleImage
-{
-// NO代表透明
-UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);
-// 获得上下文
-CGContextRef ctx = UIGraphicsGetCurrentContext();
-// 添加一个圆
-CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-// 方形变圆形
-CGContextAddEllipseInRect(ctx, rect);
-// 裁剪
-CGContextClip(ctx);
-// 将图片画上去
-[self drawInRect:rect];
-UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-UIGraphicsEndImageContext();
-return image;
-}
+    // image分类
+
+    - (UIImage *)circleImage
+
+    {
+
+        // NO代表透明
+
+        UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);
+
+        // 获得上下文
+
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+
+        // 添加一个圆
+
+        CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+
+        // 方形变圆形
+
+        CGContextAddEllipseInRect(ctx, rect);
+
+        // 裁剪
+
+        CGContextClip(ctx);
+
+        // 将图片画上去
+
+        [self drawInRect:rect];
+
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+        UIGraphicsEndImageContext();
+
+        return image;
+
+    }
+
 10、查看系统所有字体
 
-// 打印字体
-for (id familyName in [UIFont familyNames]) {
-    NSLog(@"%@", familyName);
-    for (id fontName in [UIFont fontNamesForFamilyName:familyName]) NSLog(@"  %@", fontName);
-}
-// 也可以进入这个网址查看 http://iosfonts.com/
+    // 打印字体
+
+    for (id familyName in [UIFont familyNames]) {
+
+        NSLog(@"%@", familyName);
+    
+        for (id fontName in [UIFont fontNamesForFamilyName:familyName]) NSLog(@"  %@", fontName);
+    
+    }
+
+    // 也可以进入这个网址查看 http://iosfonts.com/
+
 11、获取随机数
 
-NSInteger i = arc4random();
+    NSInteger i = arc4random();
+
 12、获取随机数小数(0-1之间)
 
-#define ARC4RANDOM_MAX      0x100000000
-double val = ((double)arc4random() / ARC4RANDOM_MAX);
+    #define ARC4RANDOM_MAX      0x100000000
+
+    double val = ((double)arc4random() / ARC4RANDOM_MAX);
+
 13、AVPlayer视频播放完成的通知监听
 
-[[NSNotificationCenter defaultCenter] 
+    [[NSNotificationCenter defaultCenter] 
       addObserver:self
       selector:@selector(videoPlayEnd)
       name:AVPlayerItemDidPlayToEndTimeNotification 
       object:nil];
+      
 14、判断两个rect是否有交叉
 
  if (CGRectIntersectsRect(rect1, rect2)) {
