@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  demo
+//
+//  Created by apple on 2017/8/7.
+//  Copyright © 2017年 apple-fangqiu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+#import "XWConfig.h"
+
+#endif /* PrefixHeader_pch */

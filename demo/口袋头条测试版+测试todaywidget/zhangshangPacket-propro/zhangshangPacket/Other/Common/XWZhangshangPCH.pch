@@ -1,0 +1,65 @@
+//
+//  XWZhangshangPCH.pch
+//  zhangshangnews
+//
+//  Created by apple on 2017/5/10.
+//  Copyright © 2017年 apple-fangqiu. All rights reserved.
+//
+
+#ifndef XWZhangshangPCH_pch
+#define XWZhangshangPCH_pch
+
+#import "XWConfig.h"
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+
+#pragma mark ================== 系统版本(主要是根据app来确定版本，并不是取version) 口袋头条专业版添加设置的版本  ===================
+#define SYS_NEWS_VERSION  @"0.0.3"
+//#pragma mark ================== 最大广告id ===================
+//#define SYS_AD_MAXID  10000
+
+#pragma mark ================== 最小广告id ===================
+#define SYS_AD_MINID 10000
+
+#pragma mark ================== 最大广告id ===================
+#define SYS_AD_MAXID 200000
+
+#pragma mark ================== 邀请码规则 ===================
+#define SYS_INVITECODE_ID 20170626
+
+#define kYLNoImageModeIsAvaliable  YES
+
+#pragma mark-----最新微信登录数据--------
+/**
+ AppID：wxb54923cd169dd6e0
+ 45729bb1e73892390754c0f4cbe1bd5b
+ **/
+// *** 微信KEY
+#define WXDevelopmentAppKey @"wxb54923cd169dd6e0"
+//@"wx07255f9fb344a9da"
+#define WXDevelopmentAppSecret @"45729bb1e73892390754c0f4cbe1bd5b"
+
+
+#ifdef TESTING
+
+/*    关闭 deprecated-declarations 警告. 
+ 基本流程:
+ 1. push 当前警告入栈
+ 2. 忽略我们要消除的警告
+ 3. 执行会产生警告的代码
+ 4. pop 警告出栈——恢复之前的状态
+ */
+
+#pragma clang diagnostic push
+
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+//#pragma clang diagnostic ignored "-Wobjc-property-implementation"
+
+
+#pragma clang diagnostic pop
+
+
+
+#endif
+
+#endif /* XWZhangshangPCH_pch */

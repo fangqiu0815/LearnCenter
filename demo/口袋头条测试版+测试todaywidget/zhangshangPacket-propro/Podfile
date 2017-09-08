@@ -1,0 +1,19 @@
+
+platform:ios,'8.0'
+target 'zhangshangPacket' do
+ pod 'SDWebImage', '~> 3.8.2'
+ pod 'AFNetworking', '~> 3.1.0'
+ pod 'MJRefresh', '~> 3.1.12'
+ pod 'MJExtension', '~> 3.0.13'
+ pod 'SVProgressHUD', '~> 2.0.3'
+ pod 'Masonry', '~> 1.0.2'
+ pod 'FMDB', '~> 2.6.2'
+ pod 'DZNEmptyDataSet'
+ pod 'IQKeyboardManager'
+ pod 'BlocksKit'
+ pod 'TYAttributedLabel'
+ pod 'DKNightVersion'
+ pod 'AsyncDisplayKit'
+end
+
+
