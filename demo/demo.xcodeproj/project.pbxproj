@@ -67,6 +67,17 @@
 		6DD371891F60E47000D3F4AD /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD371771F60E47000D3F4AD /* UIView+WebCache.m */; };
 		6DD3718A1F60E47000D3F4AD /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD371791F60E47000D3F4AD /* UIView+WebCacheOperation.m */; };
 		6DD372451F61428000D3F4AD /* OtherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD372441F61428000D3F4AD /* OtherVC.m */; };
+		6DD833CB1F6CF6B6009BDA2A /* FQTestViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833CA1F6CF6B6009BDA2A /* FQTestViewC.m */; };
+		6DD833CE1F6CFA14009BDA2A /* UIButton+CustomButtom.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833CD1F6CFA14009BDA2A /* UIButton+CustomButtom.m */; };
+		6DD833D11F6CFA57009BDA2A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833D01F6CFA57009BDA2A /* UIView+Frame.m */; };
+		6DD833DB1F6D0892009BDA2A /* XWHobbyChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833D41F6D0892009BDA2A /* XWHobbyChannelView.m */; };
+		6DD833DC1F6D0892009BDA2A /* XWHobbyItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833D61F6D0892009BDA2A /* XWHobbyItemManager.m */; };
+		6DD833DD1F6D0892009BDA2A /* XWHobbyItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833D81F6D0892009BDA2A /* XWHobbyItemModel.m */; };
+		6DD833DE1F6D0892009BDA2A /* XWHobbyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833DA1F6D0892009BDA2A /* XWHobbyView.m */; };
+		6DD833E11F6D08B9009BDA2A /* XWHomeChooseItemVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833E01F6D08B9009BDA2A /* XWHomeChooseItemVC.m */; };
+		6DD833E41F6D08EE009BDA2A /* XWBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833E31F6D08EE009BDA2A /* XWBaseVC.m */; };
+		6DD833E91F6D0BAE009BDA2A /* XWUserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833E61F6D0BAE009BDA2A /* XWUserDefault.m */; };
+		6DD833EA1F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD833E81F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +220,28 @@
 		6DD371791F60E47000D3F4AD /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		6DD372431F61428000D3F4AD /* OtherVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherVC.h; path = Classes/OtherVC.h; sourceTree = "<group>"; };
 		6DD372441F61428000D3F4AD /* OtherVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherVC.m; path = Classes/OtherVC.m; sourceTree = "<group>"; };
+		6DD833C91F6CF6B6009BDA2A /* FQTestViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FQTestViewC.h; sourceTree = "<group>"; };
+		6DD833CA1F6CF6B6009BDA2A /* FQTestViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FQTestViewC.m; sourceTree = "<group>"; };
+		6DD833CC1F6CFA14009BDA2A /* UIButton+CustomButtom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CustomButtom.h"; sourceTree = "<group>"; };
+		6DD833CD1F6CFA14009BDA2A /* UIButton+CustomButtom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CustomButtom.m"; sourceTree = "<group>"; };
+		6DD833CF1F6CFA57009BDA2A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		6DD833D01F6CFA57009BDA2A /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		6DD833D31F6D0892009BDA2A /* XWHobbyChannelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHobbyChannelView.h; sourceTree = "<group>"; };
+		6DD833D41F6D0892009BDA2A /* XWHobbyChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHobbyChannelView.m; sourceTree = "<group>"; };
+		6DD833D51F6D0892009BDA2A /* XWHobbyItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHobbyItemManager.h; sourceTree = "<group>"; };
+		6DD833D61F6D0892009BDA2A /* XWHobbyItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHobbyItemManager.m; sourceTree = "<group>"; };
+		6DD833D71F6D0892009BDA2A /* XWHobbyItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHobbyItemModel.h; sourceTree = "<group>"; };
+		6DD833D81F6D0892009BDA2A /* XWHobbyItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHobbyItemModel.m; sourceTree = "<group>"; };
+		6DD833D91F6D0892009BDA2A /* XWHobbyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHobbyView.h; sourceTree = "<group>"; };
+		6DD833DA1F6D0892009BDA2A /* XWHobbyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHobbyView.m; sourceTree = "<group>"; };
+		6DD833DF1F6D08B9009BDA2A /* XWHomeChooseItemVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWHomeChooseItemVC.h; sourceTree = "<group>"; };
+		6DD833E01F6D08B9009BDA2A /* XWHomeChooseItemVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWHomeChooseItemVC.m; sourceTree = "<group>"; };
+		6DD833E21F6D08EE009BDA2A /* XWBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWBaseVC.h; sourceTree = "<group>"; };
+		6DD833E31F6D08EE009BDA2A /* XWBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWBaseVC.m; sourceTree = "<group>"; };
+		6DD833E51F6D0BAE009BDA2A /* XWUserDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWUserDefault.h; sourceTree = "<group>"; };
+		6DD833E61F6D0BAE009BDA2A /* XWUserDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWUserDefault.m; sourceTree = "<group>"; };
+		6DD833E71F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWUserDefault+XWPropertity.h"; sourceTree = "<group>"; };
+		6DD833E81F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWUserDefault+XWPropertity.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +320,8 @@
 			children = (
 				184379CE1F381323005AC824 /* SearchVC.h */,
 				184379CF1F381323005AC824 /* SearchVC.m */,
+				6DD833C91F6CF6B6009BDA2A /* FQTestViewC.h */,
+				6DD833CA1F6CF6B6009BDA2A /* FQTestViewC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -381,6 +416,7 @@
 				18F2BDCD1F1E0CF10042EEE9 /* AppDelegate.m */,
 				18F2BDCF1F1E0CF10042EEE9 /* ViewController.h */,
 				18F2BDD01F1E0CF10042EEE9 /* ViewController.m */,
+				6DD833D21F6D0892009BDA2A /* ChooseItem */,
 				6DD372431F61428000D3F4AD /* OtherVC.h */,
 				6DD372441F61428000D3F4AD /* OtherVC.m */,
 				18F2BDD21F1E0CF10042EEE9 /* Main.storyboard */,
@@ -407,6 +443,10 @@
 		18F2BDC91F1E0CF10042EEE9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6DD833E51F6D0BAE009BDA2A /* XWUserDefault.h */,
+				6DD833E61F6D0BAE009BDA2A /* XWUserDefault.m */,
+				6DD833E71F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.h */,
+				6DD833E81F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.m */,
 				18F2BDCA1F1E0CF10042EEE9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -433,6 +473,10 @@
 		6DD371521F60E44200D3F4AD /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				6DD833CF1F6CFA57009BDA2A /* UIView+Frame.h */,
+				6DD833D01F6CFA57009BDA2A /* UIView+Frame.m */,
+				6DD833CC1F6CFA14009BDA2A /* UIButton+CustomButtom.h */,
+				6DD833CD1F6CFA14009BDA2A /* UIButton+CustomButtom.m */,
 				6D607EDA1F626FC500B29B94 /* UIImage+CH.h */,
 				6D607EDB1F626FC600B29B94 /* UIImage+CH.m */,
 				6DD371561F60E47000D3F4AD /* SDWebImage */,
@@ -491,6 +535,25 @@
 				6D24A5D31F623FD300349402 /* CMPopTipView.m */,
 			);
 			path = "弹窗";
+			sourceTree = "<group>";
+		};
+		6DD833D21F6D0892009BDA2A /* ChooseItem */ = {
+			isa = PBXGroup;
+			children = (
+				6DD833DF1F6D08B9009BDA2A /* XWHomeChooseItemVC.h */,
+				6DD833E01F6D08B9009BDA2A /* XWHomeChooseItemVC.m */,
+				6DD833D31F6D0892009BDA2A /* XWHobbyChannelView.h */,
+				6DD833D41F6D0892009BDA2A /* XWHobbyChannelView.m */,
+				6DD833D51F6D0892009BDA2A /* XWHobbyItemManager.h */,
+				6DD833D61F6D0892009BDA2A /* XWHobbyItemManager.m */,
+				6DD833D71F6D0892009BDA2A /* XWHobbyItemModel.h */,
+				6DD833D81F6D0892009BDA2A /* XWHobbyItemModel.m */,
+				6DD833D91F6D0892009BDA2A /* XWHobbyView.h */,
+				6DD833DA1F6D0892009BDA2A /* XWHobbyView.m */,
+				6DD833E21F6D08EE009BDA2A /* XWBaseVC.h */,
+				6DD833E31F6D08EE009BDA2A /* XWBaseVC.m */,
+			);
+			path = ChooseItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,6 +695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184379C11F380D73005AC824 /* MASConstraint.m in Sources */,
+				6DD833E91F6D0BAE009BDA2A /* XWUserDefault.m in Sources */,
 				6DD371831F60E47000D3F4AD /* SDWebImagePrefetcher.m in Sources */,
 				6DD3718A1F60E47000D3F4AD /* UIView+WebCacheOperation.m in Sources */,
 				184379C41F380D73005AC824 /* MASViewAttribute.m in Sources */,
@@ -642,23 +706,32 @@
 				6DD3717D1F60E47000D3F4AD /* SDImageCacheConfig.m in Sources */,
 				6DD371861F60E47000D3F4AD /* UIImage+MultiFormat.m in Sources */,
 				1832EC011F258B2800375147 /* TYDrawStorage.m in Sources */,
+				6DD833EA1F6D0BAE009BDA2A /* XWUserDefault+XWPropertity.m in Sources */,
 				6DD371891F60E47000D3F4AD /* UIView+WebCache.m in Sources */,
 				1832EC0B1F258B3700375147 /* RegexKitLite.m in Sources */,
+				6DD833CE1F6CFA14009BDA2A /* UIButton+CustomButtom.m in Sources */,
 				6DD3717C1F60E47000D3F4AD /* SDImageCache.m in Sources */,
 				184379C51F380D73005AC824 /* MASViewConstraint.m in Sources */,
 				184379C81F380D73005AC824 /* View+MASAdditions.m in Sources */,
+				6DD833DC1F6D0892009BDA2A /* XWHobbyItemManager.m in Sources */,
 				6DD371851F60E47000D3F4AD /* UIImage+GIF.m in Sources */,
 				184379C01F380D73005AC824 /* MASCompositeConstraint.m in Sources */,
 				6DD371801F60E47000D3F4AD /* SDWebImageDownloader.m in Sources */,
 				6DD3717E1F60E47000D3F4AD /* SDWebImageCompat.m in Sources */,
 				184379CA1F380D73005AC824 /* README.md in Sources */,
+				6DD833E41F6D08EE009BDA2A /* XWBaseVC.m in Sources */,
+				6DD833DE1F6D0892009BDA2A /* XWHobbyView.m in Sources */,
+				6DD833E11F6D08B9009BDA2A /* XWHomeChooseItemVC.m in Sources */,
 				1832EC081F258B2800375147 /* TYViewStorage.m in Sources */,
 				18F2BDCE1F1E0CF10042EEE9 /* AppDelegate.m in Sources */,
+				6DD833DB1F6D0892009BDA2A /* XWHobbyChannelView.m in Sources */,
 				6DD3717F1F60E47000D3F4AD /* SDWebImageDecoder.m in Sources */,
 				6DD371821F60E47000D3F4AD /* SDWebImageManager.m in Sources */,
 				18F2BDCB1F1E0CF10042EEE9 /* main.m in Sources */,
+				6DD833D11F6CFA57009BDA2A /* UIView+Frame.m in Sources */,
 				6DD3717B1F60E47000D3F4AD /* NSImage+WebCache.m in Sources */,
 				184379C31F380D73005AC824 /* MASLayoutConstraint.m in Sources */,
+				6DD833DD1F6D0892009BDA2A /* XWHobbyItemModel.m in Sources */,
 				184379D01F381323005AC824 /* SearchVC.m in Sources */,
 				6DD371811F60E47000D3F4AD /* SDWebImageDownloaderOperation.m in Sources */,
 				1832EC041F258B2800375147 /* TYLinkTextStorage.m in Sources */,
@@ -677,6 +750,7 @@
 				1832EC001F258B2800375147 /* TYAttributedLabel.m in Sources */,
 				6D607EDC1F626FC600B29B94 /* UIImage+CH.m in Sources */,
 				6DD3717A1F60E47000D3F4AD /* NSData+ImageContentType.m in Sources */,
+				6DD833CB1F6CF6B6009BDA2A /* FQTestViewC.m in Sources */,
 				1832EC031F258B2800375147 /* TYImageStorage.m in Sources */,
 				184379A11F380AD5005AC824 /* XWSearchHistoryCell.m in Sources */,
 				6DD372451F61428000D3F4AD /* OtherVC.m in Sources */,

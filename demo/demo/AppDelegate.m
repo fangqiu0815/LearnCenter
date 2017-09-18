@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    STUserDefaults.mainfuncs = [NSMutableArray arrayWithArray:@[@"头条",@"趣味",@"影视",@"游戏",@"科技",@"动漫",@"福利"]];
+    
+    
     return YES;
 }
 

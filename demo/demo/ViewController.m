@@ -14,12 +14,21 @@
 #import "OtherVC.h"
 #import "CMPopTipView.h"
 #import "UIImage+CH.h"
+#import "FQTestViewC.h"
+#import "XWHomeChooseItemVC.h"
 
 
+/* 标题栏的高度 */
+NSInteger const TopTitleViewH = 36;
+
+/* 导航条最大y值 */
+NSInteger const NavBarH = 64;
+/* tabBar的高度 */
+NSInteger const TabBarH = 49;
 #define RGB(r,g,b,a)	[UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 @interface ViewController ()
-<TYAttributedLabelDelegate,UITableViewDelegate,UITableViewDataSource,CMPopTipViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+<TYAttributedLabelDelegate,UITableViewDelegate,UITableViewDataSource,CMPopTipViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 {
     int _tempW;
     int _tempCZW;
@@ -38,17 +47,255 @@
 @property (nonatomic,strong) id				      currentPopTipViewTarget;  //!< 当前的按钮
 
 
+
+
+@property (nonatomic, strong) UIScrollView *topScrollView;
+@property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIButton *lastBtn;
+@property (nonatomic, strong) NSMutableArray *btnArr;
+@property (nonatomic, strong) NSArray *newsTitle;
+
+@property (nonatomic, strong) UIButton *rightPlusBtn;
+
+
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets=NO;
+
+    self.title = @"测试";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveArrayFromChoose:) name:@"postTopArray" object:nil];
     
     
+
     
     
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self addTopView];
+    [self addContentScrollView];
+    [self addChildVc];
+    [self selectBtn:self.btnArr[0]];
+    
+}
+
+- (void)receiveArrayFromChoose:(NSNotification *)noti
+{
+    NSDictionary *dic = [noti userInfo];
+    STUserDefaults.mainfuncs = [NSMutableArray arrayWithArray:[dic valueForKey:@"managerArr"]];
+    NSLog(@"%@",STUserDefaults.mainfuncs);
+    
+}
+
+- (void)addTopView
+{
+    UIScrollView *topScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NavBarH, self.view.bounds.size.width-50, TopTitleViewH)];
+    
+    topScrollView.backgroundColor = [UIColor whiteColor];
+    self.topScrollView = topScrollView;
+    [self.view addSubview:topScrollView];
+    topScrollView.showsHorizontalScrollIndicator = NO;
+    topScrollView.bounces = YES;
+    topScrollView.pagingEnabled = YES;
+    CGFloat btnW = (ScreenW-50)/5;
+    if (STUserDefaults.mainfuncs.count >= 6) {
+        topScrollView.contentSize = CGSizeMake(btnW*STUserDefaults.mainfuncs.count, 0);
+
+    } else {
+        topScrollView.contentSize = CGSizeMake(ScreenW-50, 0);
+
+    }
+    NSLog(@"2---%@",STUserDefaults.mainfuncs);
+    
+    self.btnArr = [NSMutableArray array];
+    _newsTitle = STUserDefaults.mainfuncs;
+    for (int i=0 ;i<STUserDefaults.mainfuncs.count; i++) {
+        UIButton *titleBtn = [[UIButton alloc]init];
+        titleBtn.frame = CGRectMake(i*btnW, 0, btnW, 36);
+        titleBtn.tag = i;
+        [titleBtn setTitle:STUserDefaults.mainfuncs[i] forState:0];
+        [titleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [titleBtn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        WeakType(self);
+        titleBtn.clickBtn=^(UIButton *btn){
+            [weakself selectBtn:btn];
+        };
+        [self.btnArr addObject:titleBtn];
+        [self.topScrollView addSubview:titleBtn];
+    }
+    
+    
+    [self addBtnLine];
+
+    [self addRightPlusBtn];
+
+}
+
+- (void)addRightPlusBtn
+{
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(ScreenW-45, NavBarH, 45, 36)];
+    [button setTitle:@"➕" forState:0];
+    [button addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+}
+
+- (void)plusClick
+{
+    XWHomeChooseItemVC *chooseVC = [[XWHomeChooseItemVC alloc]init];
+    [self presentViewController:chooseVC animated:YES completion:nil];
+}
+
+
+-(void)addBtnLine
+{
+    UIView *lineView = [[UIView alloc]init];
+    self.lineView = lineView;
+    lineView.backgroundColor = [UIColor redColor];
+    UIButton *fristBtn = self.btnArr[0];
+    [fristBtn.titleLabel sizeToFit];
+    lineView.frame = CGRectMake(0, self.topScrollView.yj_height-2, fristBtn.titleLabel.yj_width*1.2, 2);
+    lineView.yj_centerX = fristBtn.yj_centerX;
+    [self.topScrollView addSubview:lineView];
+}
+
+-(void)selectBtn :(UIButton *)btn{
+    NSInteger index = btn.tag;
+    self.lastBtn.selected = NO;
+    btn.selected = YES;
+    [self.lastBtn setTitleColor:[UIColor blackColor] forState:0];
+    
+    self.lastBtn.transform = CGAffineTransformMakeScale(1, 1);
+    btn.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    self.lineView.yj_width = btn.titleLabel.yj_width*1.1;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.lineView.yj_centerX = btn.yj_centerX;
+    }];
+    
+    CGFloat offsetX = btn.center.x-ScreenW*0.5;
+    if(offsetX < 0){
+        offsetX = 0;
+    }
+    CGFloat maxOffsetX = self.topScrollView.contentSize.width-ScreenW;
+    if(offsetX > maxOffsetX){
+        offsetX = maxOffsetX;
+    }
+    [self.topScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    self.contentScrollView.contentOffset = CGPointMake(index*self.contentScrollView.yj_width, 0);
+    self.lastBtn = btn;
+    
+    UIViewController *tc = self.childViewControllers[btn.tag];
+    
+    if(tc.view.superview){
+        return;
+    }
+    
+    tc.view.frame = CGRectMake(btn.tag*ScreenW, 0, self.contentScrollView.yj_width, self.contentScrollView.yj_height);
+    
+    
+    [self.contentScrollView addSubview:tc.view];
+    
+}
+#pragma mark - scrollView滚动半个屏幕宽度时滑动下划线
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat index = (scrollView.contentOffset.x/scrollView.yj_width);
+    
+    index = index - self.lastBtn.tag;
+    
+    self.lineView.yj_centerX = self.lastBtn.yj_centerX + index * self.lastBtn.yj_width;
+    
+    NSInteger leftIndex = scrollView.contentOffset.x / ScreenW;
+    NSInteger rightIndex = leftIndex + 1;
+    UIButton *leftBtn = self.btnArr[leftIndex];
+    UIButton *rightBtn = nil;
+    
+    if (rightIndex < self.btnArr.count) {
+        rightBtn = self.btnArr[rightIndex];
+    }
+    CGFloat rightRatio = scrollView.contentOffset.x / ScreenW;
+    
+    rightRatio = rightRatio - leftIndex;
+    
+    CGFloat leftRatio = 1 - rightRatio;
+    
+    leftBtn.transform = CGAffineTransformMakeScale(1+0.1*leftRatio,1+0.1*leftRatio);
+    rightBtn.transform = CGAffineTransformMakeScale(1+0.1*rightRatio,1+0.1*rightRatio);
+    
+    
+    self.lastBtn.selected = NO;
+    [leftBtn setTitleColor:[UIColor colorWithRed:leftRatio green:0 blue:0 alpha:1.0] forState:0];
+    [rightBtn setTitleColor:[UIColor colorWithRed:rightRatio green:0 blue:0 alpha:1.0] forState:0];
+
+}
+
+-(void)addChildVc{
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+    [self addChildViewController:[FQTestViewC new]];
+}
+
+-(void)addContentScrollView{
+    UIScrollView *contentScrollView = [[UIScrollView alloc]init];
+    [self.view addSubview:contentScrollView];
+    contentScrollView.frame = CGRectMake(0, NavBarH+TopTitleViewH, self.view.yj_width, self.view.yj_height-NavBarH-TopTitleViewH-49);
+    contentScrollView.showsHorizontalScrollIndicator = NO;
+    contentScrollView.contentSize = CGSizeMake(self.view.yj_width*STUserDefaults.mainfuncs.count, 0);
+    contentScrollView.bounces = YES;
+    contentScrollView.pagingEnabled = YES;
+    contentScrollView.delegate = self;
+    self.contentScrollView = contentScrollView;
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSInteger index = scrollView.contentOffset.x/self.view.yj_width;
+    [self selectBtn:self.btnArr[index]];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (IBAction)click:(id)sender {
     CMPopTipView *popView;
@@ -367,6 +614,14 @@
     [self.view addSubview:imageView];
 }
 
+
+- (void)dealloc
+{
+    NSLog(@"%s",__FUNCTION__);
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+}
 
 //- (void)addScrollView
 //{
