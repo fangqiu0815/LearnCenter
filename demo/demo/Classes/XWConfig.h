@@ -14,6 +14,7 @@
 #import "UIView+Frame.h"
 #import "XWBaseVC.h"
 #import "XWUserDefault+XWPropertity.h"
+#import "WMPageController.h"
 
 
 
@@ -24,6 +25,8 @@
 
 /** 自定义颜色 */
 #define CUSTOMCOLOR(r,g,b)  [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+#define MainRedColor                CUSTOMCOLOR(244, 75, 80)  //244, 75, 80 主色f44b50
+#define NightMainTextColor          CUSTOMCOLOR(117, 118, 119)
 
 #define random(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
 
@@ -44,7 +47,9 @@
 /** 适配字体大小 */
 #define RemindFont(x,y,z) (IPHONE_W == 320?(x):IPHONE_W == 375? (y):(z))
 
-
+/** 白色 */
+#define WhiteColor [UIColor whiteColor]
+#define BlackColor [UIColor blackColor]
 
 
 

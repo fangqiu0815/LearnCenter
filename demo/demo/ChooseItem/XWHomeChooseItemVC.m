@@ -134,12 +134,18 @@
     }
     
     NSDictionary *dict = @{
-                           @"managerArr":managerArr
+                           @"topChannelArr":self.manager.topChannelArr,
+                           @"bottomChannelArr":self.manager.bottomChannelArr
                            };
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"postTopArray" object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeUserChannelsItem" object:nil userInfo:dict];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.topArray = [NSArray arrayWithArray:self.manager.topChannelArr];
+    self.bottomArray = [NSArray arrayWithArray:self.manager.bottomChannelArr];
+    
+    NSLog(@"self.topArray---%@\nself.bottomArray--%@",self.topArray,self.bottomArray);
     
 }
 

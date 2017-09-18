@@ -16,7 +16,7 @@
 #import "UIImage+CH.h"
 #import "FQTestViewC.h"
 #import "XWHomeChooseItemVC.h"
-
+#import "WMPageController.h"
 
 /* 标题栏的高度 */
 NSInteger const TopTitleViewH = 36;
@@ -66,23 +66,38 @@ NSInteger const TabBarH = 49;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets=NO;
-
+//    self.automaticallyAdjustsScrollViewInsets=NO;
     self.title = @"测试";
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveArrayFromChoose:) name:@"postTopArray" object:nil];
     
     
-
+    
+    
+    
+    
     
     
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+
+
+
+
+
+
+
+
+- (void)test6{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveArrayFromChoose:) name:@"postTopArray" object:nil];
     [self addTopView];
     [self addContentScrollView];
     [self addChildVc];
     [self selectBtn:self.btnArr[0]];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     
 }
 
@@ -150,6 +165,9 @@ NSInteger const TabBarH = 49;
 - (void)plusClick
 {
     XWHomeChooseItemVC *chooseVC = [[XWHomeChooseItemVC alloc]init];
+    
+    
+    
     [self presentViewController:chooseVC animated:YES completion:nil];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "XWHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     STUserDefaults.mainfuncs = [NSMutableArray arrayWithArray:@[@"头条",@"趣味",@"影视",@"游戏",@"科技",@"动漫",@"福利"]];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window.backgroundColor = WhiteColor;
+    self.window.rootViewController = [XWHomeViewController new];
+    
+    [self.window makeKeyAndVisible];
     
     
     return YES;

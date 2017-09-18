@@ -13,4 +13,10 @@
 
 @property (nonatomic, strong) XWChannelStyle *channelstyle;
 
+@property (nonatomic, strong) NSArray *topArray;
+
+@property (nonatomic, strong) NSArray *bottomArray;
+
+
+
 @end
