@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  博饼游戏
+//
+//  Created by apple-gaofangqiu on 2017/9/22.
+//  Copyright © 2017年 apple-fangqiu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+
+#endif /* PrefixHeader_pch */
