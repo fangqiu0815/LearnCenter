@@ -1,0 +1,103 @@
+//
+//  XDShareView.m
+//  XDCommonApp
+//
+//  Created by XD-XY on 4/10/14.
+//  Copyright (c) 2014 XD-XY. All rights reserved.
+//
+
+#import "XDShareView.h"
+#import "XDTools.h"
+#import "XDHeader.h"
+
+@implementation XDShareView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        [self makeView];
+    }
+    return self;
+}
+
+-(void)makeView
+{
+    
+    if (IOS7){
+        aheight = UI_SCREEN_HEIGHT;
+    }else{
+        aheight  = UI_MAINSCREEN_HEIGHT;
+    }
+    self.hview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, aheight-277/2.0f)];
+    _hview.backgroundColor = [UIColor blackColor];
+    _hview.alpha = .5f;
+    [self addSubview:_hview];
+    
+    self.Bgview = [[UIView alloc] initWithFrame:CGRectMake(0, height_y(self.hview), UI_SCREEN_WIDTH, 277/2.0f)];
+    _Bgview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shareBg"]];
+    [self addSubview:_Bgview];
+    
+    self.xlBtn = [XDTools getAButtonWithFrame:CGRectMake(8, 15, 302/2.0f, 84/2.0f) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:nil nbgImage:@"share_weibo" hbgImage:@"share_weibo" action:@selector(btnClick:) target:self buttonTpye:UIButtonTypeCustom];
+    _xlBtn.tag = 1001;
+    [_Bgview addSubview:_xlBtn];
+    
+    self.wxBtn = [XDTools getAButtonWithFrame:CGRectMake(width_x(_xlBtn), _xlBtn.frame.origin.y, 302/2.0f, 84/2.0f) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:nil nbgImage:@"share_weixin" hbgImage:@"share_weixin" action:@selector(btnClick:) target:self buttonTpye:UIButtonTypeCustom];
+    _wxBtn.tag = 1002;
+    [_Bgview addSubview:_wxBtn];
+    
+    UIImageView * lineIV = [[UIImageView alloc] initWithFrame:CGRectMake(27.5, height_y(self.wxBtn) + 13, 270, 1)];
+    lineIV.image = [UIImage imageNamed:@"share_line"];
+    [_Bgview addSubview:lineIV];
+    
+    self.canelBtn = [XDTools getAButtonWithFrame:CGRectMake(10, height_y(_xlBtn)+52/2.0f, 300, 40) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:nil nbgImage:@"shareCanel" hbgImage:@"shareCanel" action:@selector(btnClick:) target:self buttonTpye:UIButtonTypeCustom];
+    [_canelBtn addTarget:self action:@selector(canelBtnClick) forControlEvents:UIControlEventTouchDown];
+    [_Bgview addSubview:_canelBtn];
+    
+    self.hidden =YES;
+}
+
+-(void)setViewHidden
+{
+    [UIView animateKeyframesWithDuration:0.3 delay:0 options:0 animations:^{
+        _hview.hidden =YES;
+        _Bgview.frame = CGRectMake(0, aheight, UI_SCREEN_WIDTH, 277/2.0f);
+    } completion:^(BOOL finished) {
+        self.hidden =YES;
+    }];
+}
+
+-(void)setViewShow
+{
+    self.hidden =NO;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _hview.hidden =NO;
+    _Bgview.frame = CGRectMake(0, aheight-277/2.0f, UI_SCREEN_WIDTH, 277/2.0f);
+    [UIView commitAnimations];
+    
+}
+
+-(void)canelBtnClick
+{
+    [self setViewHidden];
+}
+
+#pragma mark ====================分享=========================
+-(void)btnClick:(UIButton *)button
+{
+    [_delegate shareViewBtnCLick:button];
+}
+
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

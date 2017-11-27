@@ -1,0 +1,224 @@
+//
+//  PhoneTwoViewController.m
+//  XDCommonApp
+//
+//  Created by wanglong8889@126.com on 14-6-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "PhoneTwoViewController.h"
+#define XZB   20
+
+@interface PhoneTwoViewController ()
+{
+    BOOL seleState;
+}
+@end
+
+@implementation PhoneTwoViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.titleLabel.text =@"注册";
+    [self initPhoneRegisterTwoView];
+}
+
+
+-(void)initPhoneRegisterTwoView{
+    UILabel *inputLabel = [[UILabel alloc] initWithFrame:CGRectMake(XZB+10,15, 187, 15)];
+    inputLabel.text = @"请设置密码";
+    inputLabel.font = [UIFont systemFontOfSize:15.0];
+    inputLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:inputLabel];
+    
+    UIImageView *phoneView = [[UIImageView alloc] initWithFrame:CGRectMake(XZB, inputLabel.frame.origin.y+inputLabel.frame.size.height+10, 281, 41)];
+    [phoneView setImage:[UIImage imageNamed:@"input_kuag"]];
+    phoneView.userInteractionEnabled = YES;
+    
+    [self.contentView addSubview:phoneView];
+    
+    passwordTf = [[UITextField alloc] initWithFrame:CGRectMake(5, 5,271, 31)];
+    passwordTf.borderStyle = UITextBorderStyleNone;
+    passwordTf.backgroundColor =  [UIColor clearColor];
+    passwordTf.placeholder = @"请输入密码";
+    passwordTf.returnKeyType = UIReturnKeyDone;
+    passwordTf.textColor = [UIColor grayColor];
+    passwordTf.secureTextEntry = YES;
+    
+    passwordTf.delegate = self;
+    passwordTf.font = [UIFont systemFontOfSize:15.0];
+    passwordTf.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [phoneView addSubview:passwordTf];
+    
+    
+    UILabel *isecInputLabel = [[UILabel alloc] initWithFrame:CGRectMake(XZB+10,phoneView.frame.origin.y+phoneView.frame.size.height+20, 187, 15)];
+    isecInputLabel.text = @"请再次输入密码";
+    isecInputLabel.font = [UIFont systemFontOfSize:15.0];
+    isecInputLabel.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:isecInputLabel];
+    
+    
+    
+    UIImageView *verticalView = [[UIImageView alloc] initWithFrame:CGRectMake(XZB, isecInputLabel.frame.origin.y+isecInputLabel.frame.size.height+10, 281, 41)];
+    [verticalView setImage:[UIImage imageNamed:@"input_kuag"]];
+    verticalView.userInteractionEnabled = YES;
+    
+    [self.contentView addSubview:verticalView];
+    
+    secPasswordTf = [[UITextField alloc] initWithFrame:passwordTf.frame];
+    secPasswordTf.borderStyle = UITextBorderStyleNone;
+    secPasswordTf.backgroundColor =  [UIColor clearColor];
+    secPasswordTf.placeholder = @"请再次输入密码";
+    secPasswordTf.returnKeyType = UIReturnKeyDone;
+    secPasswordTf.secureTextEntry = YES;
+    
+    secPasswordTf.textColor = [UIColor grayColor];
+    secPasswordTf.returnKeyType = UIReturnKeyDone;
+    secPasswordTf.delegate = self;
+    secPasswordTf.font = [UIFont systemFontOfSize:15.0];
+    secPasswordTf.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [verticalView addSubview:secPasswordTf];
+    
+    
+    
+    
+    UIButton *registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    registerBtn.frame = CGRectMake(XZB, verticalView.frame.origin.y+verticalView.frame.size.height+92, 281, 40);
+    [registerBtn setBackgroundImage:[UIImage imageNamed:@"launch_btn"] forState:UIControlStateNormal];
+    [registerBtn setBackgroundImage:[UIImage imageNamed:@"launch_btn"] forState:UIControlStateHighlighted];
+    [registerBtn addTarget:self action:@selector(goRegisterAction:) forControlEvents:UIControlEventTouchUpInside];
+    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    registerBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    
+    [self.contentView addSubview:registerBtn];
+    
+    
+    agreedBnt =creatXRButton(CGRectMake(10, VIEW_POINT_MAX_Y(registerBtn) +20, 22, 22), nil, [UIImage imageNamed:@"确认regist.png"], nil) ;
+    [agreedBnt addTarget:self action:@selector(agreedButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:agreedBnt];
+    seleState = YES;
+    
+    UILabel *label = creatXRLable(@"我已阅读并同意", CGRectMake(VIEW_POINT_MAX_X(agreedBnt),VIEW_POINT_MIN_Y(agreedBnt)- 5,180,30));
+    label.textAlignment =NSTextAlignmentLeft;
+    label.textColor = RGBA(159, 159, 159, 1);
+    label.font = [UIFont systemFontOfSize:16.0];
+    [self.contentView addSubview:label];
+    
+    
+    UILabel *label1 = creatXRLable(@"网络使用协议和隐私条款", CGRectMake(VIEW_POINT_MAX_X(agreedBnt),VIEW_POINT_MAX_Y(label)- 5,200,30));
+    label1.textAlignment =NSTextAlignmentLeft;
+    label1.textColor =[UIColor blueColor];
+    label1.font = [UIFont systemFontOfSize:15.0];
+    [self.contentView addSubview:label1];
+    
+    
+    
+}
+
+
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+-(void)goRegisterAction:(UIButton *)btn{
+    if (!IS_NOT_EMPTY(passwordTf.text)||!IS_NOT_EMPTY(secPasswordTf.text)) {
+        [XDTools showTips:@"密码不能为空" toView:self.view];
+    }else{
+        if (![passwordTf.text isEqualToString:secPasswordTf.text]) {
+            [XDTools showTips:@"两次密码不一致" toView:self.view];
+        }else{
+            NSDictionary *dic = @{@"mobilePhone": self.phone,
+                                  @"password":passwordTf.text,
+                                  @"securitySignal":@"334543"};
+            [self getPhoneRegisterTwoParms:dic];
+        }
+       
+    }
+}
+
+//注册第二步
+- (void)getPhoneRegisterTwoParms:(NSDictionary *)parms{
+    
+    __weak  ASIFormDataRequest *request = [XDTools postRequestWithDict:parms API:API_REGISTERTTWO];
+    
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+        
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+        NSDictionary *dict=[tempDic objectForKey:@"userinfo"];
+        if([[tempDic objectForKey:@"result"]intValue] == 1){
+            NSUserDefaults *userDef=[NSUserDefaults standardUserDefaults];
+            [userDef setObject:dict forKey:kMMyUserInfo];
+            [userDef synchronize];
+            [XDTools showTips:@"注册成功" toView:self.view];
+            
+            //调用登录接口
+            
+            
+        }else{
+            [XDTools showTips:tempDic[@"msg"] toView:self.view];
+            
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        
+        [XDTools hideProgress:self.view];
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+    
+    [XDTools showProgress:self.view];
+    [request startAsynchronous];
+    
+}
+
+//服务协议
+-(void)agreedButtonClick:(UIButton *)sender{
+    if(seleState){
+        seleState = NO;
+        [agreedBnt setBackgroundImage:[UIImage imageNamed:@"确认2regist.png"] forState:UIControlStateNormal];
+        regbnt.enabled =NO;
+    }else{
+        [agreedBnt setBackgroundImage:[UIImage imageNamed:@"确认regist.png"] forState:UIControlStateNormal];
+        seleState = YES;
+        regbnt.enabled = YES;
+    }
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

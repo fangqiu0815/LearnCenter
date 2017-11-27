@@ -1,0 +1,59 @@
+//
+//  ThirdViewController.m
+//  XDCommonApp
+//
+//  Created by XD-XY on 2/12/14.
+//  Copyright (c) 2014 XD-XY. All rights reserved.
+//
+
+#import "ThirdViewController.h"
+#import "LoginViewController.h"
+#import "XDHeader.h"
+
+@interface ThirdViewController ()
+
+@end
+
+@implementation ThirdViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    self.leftBtn.hidden =YES;
+    self.titleLabel.text = THIRDVIEWTITLETEXT;
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(60, 100,200, 100);
+    btn.backgroundColor = [UIColor orangeColor];
+    [btn setTitle:@"Coming soon !!!" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(goto) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:btn];
+
+}
+-(void)goto
+{
+    LoginViewController * fvc = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:fvc animated:YES];
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A00D935B191888A0007C1E4A /* SBABaseOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A00D935A191888A0007C1E4A /* SBABaseOperator.m */; };
+		A01AD68C191CFCE500E3269B /* NSDictionary+EntityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A01AD68B191CFCE500E3269B /* NSDictionary+EntityHelper.m */; };
+		A0BB99CF19186B0000B4648C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99CE19186B0000B4648C /* Foundation.framework */; };
+		A0BB99D119186B0000B4648C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99D019186B0000B4648C /* CoreGraphics.framework */; };
+		A0BB99D319186B0000B4648C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99D219186B0000B4648C /* UIKit.framework */; };
+		A0BB99D919186B0000B4648C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0BB99D719186B0000B4648C /* InfoPlist.strings */; };
+		A0BB99DB19186B0000B4648C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB99DA19186B0000B4648C /* main.m */; };
+		A0BB99DF19186B0000B4648C /* SBAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB99DE19186B0000B4648C /* SBAAppDelegate.m */; };
+		A0BB99E219186B0000B4648C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0BB99E019186B0000B4648C /* Main.storyboard */; };
+		A0BB99E719186B0000B4648C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0BB99E619186B0000B4648C /* Images.xcassets */; };
+		A0BB99EE19186B0000B4648C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99ED19186B0000B4648C /* XCTest.framework */; };
+		A0BB99EF19186B0000B4648C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99CE19186B0000B4648C /* Foundation.framework */; };
+		A0BB99F019186B0000B4648C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BB99D219186B0000B4648C /* UIKit.framework */; };
+		A0BB99F819186B0000B4648C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0BB99F619186B0000B4648C /* InfoPlist.strings */; };
+		A0BB99FA19186B0000B4648C /* SmartBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB99F919186B0000B4648C /* SmartBusTests.m */; };
+		A0BB9A0B19186D6900B4648C /* SBABusOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A0A19186D6900B4648C /* SBABusOperator.m */; };
+		A0BB9A0E19186DE600B4648C /* SBAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A0D19186DE600B4648C /* SBAViewController.m */; };
+		A0BB9A1419186E5100B4648C /* SBABasicOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A1319186E5100B4648C /* SBABasicOperator.m */; };
+		A0BB9A1719186E8700B4648C /* SBABaseData.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A1619186E8700B4648C /* SBABaseData.m */; };
+		A0BB9A1A19186EE100B4648C /* SBAJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A1919186EE100B4648C /* SBAJson.m */; };
+		A0BB9A1F1918759500B4648C /* SBAMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BB9A1E1918759500B4648C /* SBAMapView.m */; };
+		A0D5CC1F1923A6D900E26FD5 /* wellcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A0D5CC1E1923A6D900E26FD5 /* wellcome.jpg */; };
+		A0D5CC211923A86400E26FD5 /* SBIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D5CC201923A86400E26FD5 /* SBIcon.png */; };
+		A0D5CC23192467D900E26FD5 /* map.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A0D5CC22192467D900E26FD5 /* map.jpeg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A0BB99F119186B0000B4648C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0BB99C319186B0000B4648C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A0BB99CA19186B0000B4648C;
+			remoteInfo = SmartBus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A00D9359191888A0007C1E4A /* SBABaseOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBABaseOperator.h; path = Model/SBABaseOperator.h; sourceTree = "<group>"; };
+		A00D935A191888A0007C1E4A /* SBABaseOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBABaseOperator.m; path = Model/SBABaseOperator.m; sourceTree = "<group>"; };
+		A01AD68A191CFCE500E3269B /* NSDictionary+EntityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+EntityHelper.h"; sourceTree = "<group>"; };
+		A01AD68B191CFCE500E3269B /* NSDictionary+EntityHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+EntityHelper.m"; sourceTree = "<group>"; };
+		A0BB99CB19186B0000B4648C /* SmartBusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartBusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0BB99CE19186B0000B4648C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A0BB99D019186B0000B4648C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A0BB99D219186B0000B4648C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A0BB99D619186B0000B4648C /* SmartBusApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartBusApp-Info.plist"; sourceTree = "<group>"; };
+		A0BB99D819186B0000B4648C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A0BB99DA19186B0000B4648C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A0BB99DC19186B0000B4648C /* SmartBusApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartBusApp-Prefix.pch"; sourceTree = "<group>"; };
+		A0BB99DD19186B0000B4648C /* SBAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBAAppDelegate.h; sourceTree = "<group>"; };
+		A0BB99DE19186B0000B4648C /* SBAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAAppDelegate.m; sourceTree = "<group>"; };
+		A0BB99E119186B0000B4648C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A0BB99E619186B0000B4648C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A0BB99EC19186B0000B4648C /* SmartBusAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartBusAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0BB99ED19186B0000B4648C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A0BB99F519186B0000B4648C /* SmartBusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartBusTests-Info.plist"; sourceTree = "<group>"; };
+		A0BB99F719186B0000B4648C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A0BB99F919186B0000B4648C /* SmartBusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartBusTests.m; sourceTree = "<group>"; };
+		A0BB9A0919186D6900B4648C /* SBABusOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBABusOperator.h; path = Model/SBABusOperator.h; sourceTree = "<group>"; };
+		A0BB9A0A19186D6900B4648C /* SBABusOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBABusOperator.m; path = Model/SBABusOperator.m; sourceTree = "<group>"; };
+		A0BB9A0C19186DE600B4648C /* SBAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBAViewController.h; path = Controller/SBAViewController.h; sourceTree = "<group>"; };
+		A0BB9A0D19186DE600B4648C /* SBAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBAViewController.m; path = Controller/SBAViewController.m; sourceTree = "<group>"; };
+		A0BB9A1219186E5100B4648C /* SBABasicOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBABasicOperator.h; path = Model/SBABasicOperator.h; sourceTree = "<group>"; };
+		A0BB9A1319186E5100B4648C /* SBABasicOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBABasicOperator.m; path = Model/SBABasicOperator.m; sourceTree = "<group>"; };
+		A0BB9A1519186E8700B4648C /* SBABaseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBABaseData.h; path = Model/SBABaseData.h; sourceTree = "<group>"; };
+		A0BB9A1619186E8700B4648C /* SBABaseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBABaseData.m; path = Model/SBABaseData.m; sourceTree = "<group>"; };
+		A0BB9A1819186EE100B4648C /* SBAJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBAJson.h; path = Model/SBAJson.h; sourceTree = "<group>"; };
+		A0BB9A1919186EE100B4648C /* SBAJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBAJson.m; path = Model/SBAJson.m; sourceTree = "<group>"; };
+		A0BB9A1D1918759500B4648C /* SBAMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBAMapView.h; sourceTree = "<group>"; };
+		A0BB9A1E1918759500B4648C /* SBAMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAMapView.m; sourceTree = "<group>"; };
+		A0D5CC1E1923A6D900E26FD5 /* wellcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wellcome.jpg; sourceTree = "<group>"; };
+		A0D5CC201923A86400E26FD5 /* SBIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SBIcon.png; sourceTree = "<group>"; };
+		A0D5CC22192467D900E26FD5 /* map.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpeg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0BB99C819186B0000B4648C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99D119186B0000B4648C /* CoreGraphics.framework in Frameworks */,
+				A0BB99D319186B0000B4648C /* UIKit.framework in Frameworks */,
+				A0BB99CF19186B0000B4648C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0BB99E919186B0000B4648C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99EE19186B0000B4648C /* XCTest.framework in Frameworks */,
+				A0BB99F019186B0000B4648C /* UIKit.framework in Frameworks */,
+				A0BB99EF19186B0000B4648C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A01AD689191CFCA900E3269B /* SBACategory */ = {
+			isa = PBXGroup;
+			children = (
+				A01AD68A191CFCE500E3269B /* NSDictionary+EntityHelper.h */,
+				A01AD68B191CFCE500E3269B /* NSDictionary+EntityHelper.m */,
+			);
+			name = SBACategory;
+			sourceTree = "<group>";
+		};
+		A0BB99C219186B0000B4648C = {
+			isa = PBXGroup;
+			children = (
+				A0BB99D419186B0000B4648C /* SmartBusApp */,
+				A0BB99F319186B0000B4648C /* SmartBusAppTests */,
+				A0BB99CD19186B0000B4648C /* Frameworks */,
+				A0BB99CC19186B0000B4648C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0BB99CC19186B0000B4648C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB99CB19186B0000B4648C /* SmartBusApp.app */,
+				A0BB99EC19186B0000B4648C /* SmartBusAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0BB99CD19186B0000B4648C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB99CE19186B0000B4648C /* Foundation.framework */,
+				A0BB99D019186B0000B4648C /* CoreGraphics.framework */,
+				A0BB99D219186B0000B4648C /* UIKit.framework */,
+				A0BB99ED19186B0000B4648C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0BB99D419186B0000B4648C /* SmartBusApp */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5CC1D1923A6CA00E26FD5 /* Resource */,
+				A0BB9A0519186BBC00B4648C /* View */,
+				A0BB9A0419186BB300B4648C /* Model */,
+				A0BB9A0319186B9B00B4648C /* Controller */,
+				A0BB99DD19186B0000B4648C /* SBAAppDelegate.h */,
+				A0BB99DE19186B0000B4648C /* SBAAppDelegate.m */,
+				A0BB99E019186B0000B4648C /* Main.storyboard */,
+				A0BB99E619186B0000B4648C /* Images.xcassets */,
+				A0BB99D519186B0000B4648C /* Supporting Files */,
+			);
+			name = SmartBusApp;
+			path = SmartBus;
+			sourceTree = "<group>";
+		};
+		A0BB99D519186B0000B4648C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB99D619186B0000B4648C /* SmartBusApp-Info.plist */,
+				A0BB99D719186B0000B4648C /* InfoPlist.strings */,
+				A0BB99DA19186B0000B4648C /* main.m */,
+				A0BB99DC19186B0000B4648C /* SmartBusApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0BB99F319186B0000B4648C /* SmartBusAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB99F919186B0000B4648C /* SmartBusTests.m */,
+				A0BB99F419186B0000B4648C /* Supporting Files */,
+			);
+			name = SmartBusAppTests;
+			path = SmartBusTests;
+			sourceTree = "<group>";
+		};
+		A0BB99F419186B0000B4648C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB99F519186B0000B4648C /* SmartBusTests-Info.plist */,
+				A0BB99F619186B0000B4648C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0BB9A0319186B9B00B4648C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A0C19186DE600B4648C /* SBAViewController.h */,
+				A0BB9A0D19186DE600B4648C /* SBAViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A0BB9A0419186BB300B4648C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5CC1C192224F900E26FD5 /* SBAData */,
+				A01AD689191CFCA900E3269B /* SBACategory */,
+				A0BB9A1C19186EF100B4648C /* SBJson */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A0BB9A0519186BBC00B4648C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A1D1918759500B4648C /* SBAMapView.h */,
+				A0BB9A1E1918759500B4648C /* SBAMapView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A0BB9A1B19186EE600B4648C /* SBBusOperator */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A0919186D6900B4648C /* SBABusOperator.h */,
+				A0BB9A0A19186D6900B4648C /* SBABusOperator.m */,
+			);
+			name = SBBusOperator;
+			sourceTree = "<group>";
+		};
+		A0BB9A1C19186EF100B4648C /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A1819186EE100B4648C /* SBAJson.h */,
+				A0BB9A1919186EE100B4648C /* SBAJson.m */,
+			);
+			name = SBJson;
+			sourceTree = "<group>";
+		};
+		A0BB9A2019187CFF00B4648C /* SBABasicOperator */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A1219186E5100B4648C /* SBABasicOperator.h */,
+				A0BB9A1319186E5100B4648C /* SBABasicOperator.m */,
+			);
+			name = SBABasicOperator;
+			sourceTree = "<group>";
+		};
+		A0BB9A2119187D1E00B4648C /* SBADataOperator */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A1B19186EE600B4648C /* SBBusOperator */,
+				A0BB9A2019187CFF00B4648C /* SBABasicOperator */,
+				A00D9359191888A0007C1E4A /* SBABaseOperator.h */,
+				A00D935A191888A0007C1E4A /* SBABaseOperator.m */,
+			);
+			name = SBADataOperator;
+			sourceTree = "<group>";
+		};
+		A0D5CC1B1922243A00E26FD5 /* SBADataEntity */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A1519186E8700B4648C /* SBABaseData.h */,
+				A0BB9A1619186E8700B4648C /* SBABaseData.m */,
+			);
+			name = SBADataEntity;
+			sourceTree = "<group>";
+		};
+		A0D5CC1C192224F900E26FD5 /* SBAData */ = {
+			isa = PBXGroup;
+			children = (
+				A0BB9A2119187D1E00B4648C /* SBADataOperator */,
+				A0D5CC1B1922243A00E26FD5 /* SBADataEntity */,
+			);
+			name = SBAData;
+			sourceTree = "<group>";
+		};
+		A0D5CC1D1923A6CA00E26FD5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A0D5CC22192467D900E26FD5 /* map.jpeg */,
+				A0D5CC201923A86400E26FD5 /* SBIcon.png */,
+				A0D5CC1E1923A6D900E26FD5 /* wellcome.jpg */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0BB99CA19186B0000B4648C /* SmartBusApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0BB99FD19186B0000B4648C /* Build configuration list for PBXNativeTarget "SmartBusApp" */;
+			buildPhases = (
+				A0BB99C719186B0000B4648C /* Sources */,
+				A0BB99C819186B0000B4648C /* Frameworks */,
+				A0BB99C919186B0000B4648C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartBusApp;
+			productName = SmartBus;
+			productReference = A0BB99CB19186B0000B4648C /* SmartBusApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A0BB99EB19186B0000B4648C /* SmartBusAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0BB9A0019186B0000B4648C /* Build configuration list for PBXNativeTarget "SmartBusAppTests" */;
+			buildPhases = (
+				A0BB99E819186B0000B4648C /* Sources */,
+				A0BB99E919186B0000B4648C /* Frameworks */,
+				A0BB99EA19186B0000B4648C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0BB99F219186B0000B4648C /* PBXTargetDependency */,
+			);
+			name = SmartBusAppTests;
+			productName = SmartBusTests;
+			productReference = A0BB99EC19186B0000B4648C /* SmartBusAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0BB99C319186B0000B4648C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SB;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "飞瞳凡想";
+				TargetAttributes = {
+					A0BB99CA19186B0000B4648C = {
+						DevelopmentTeam = 3FP6QMDR76;
+					};
+					A0BB99EB19186B0000B4648C = {
+						TestTargetID = A0BB99CA19186B0000B4648C;
+					};
+				};
+			};
+			buildConfigurationList = A0BB99C619186B0000B4648C /* Build configuration list for PBXProject "SmartBusApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0BB99C219186B0000B4648C;
+			productRefGroup = A0BB99CC19186B0000B4648C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0BB99CA19186B0000B4648C /* SmartBusApp */,
+				A0BB99EB19186B0000B4648C /* SmartBusAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0BB99C919186B0000B4648C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99E719186B0000B4648C /* Images.xcassets in Resources */,
+				A0BB99D919186B0000B4648C /* InfoPlist.strings in Resources */,
+				A0D5CC23192467D900E26FD5 /* map.jpeg in Resources */,
+				A0D5CC211923A86400E26FD5 /* SBIcon.png in Resources */,
+				A0BB99E219186B0000B4648C /* Main.storyboard in Resources */,
+				A0D5CC1F1923A6D900E26FD5 /* wellcome.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0BB99EA19186B0000B4648C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99F819186B0000B4648C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0BB99C719186B0000B4648C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99DB19186B0000B4648C /* main.m in Sources */,
+				A0BB9A1719186E8700B4648C /* SBABaseData.m in Sources */,
+				A0BB9A1A19186EE100B4648C /* SBAJson.m in Sources */,
+				A0BB9A0E19186DE600B4648C /* SBAViewController.m in Sources */,
+				A00D935B191888A0007C1E4A /* SBABaseOperator.m in Sources */,
+				A01AD68C191CFCE500E3269B /* NSDictionary+EntityHelper.m in Sources */,
+				A0BB9A1419186E5100B4648C /* SBABasicOperator.m in Sources */,
+				A0BB9A1F1918759500B4648C /* SBAMapView.m in Sources */,
+				A0BB99DF19186B0000B4648C /* SBAAppDelegate.m in Sources */,
+				A0BB9A0B19186D6900B4648C /* SBABusOperator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0BB99E819186B0000B4648C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0BB99FA19186B0000B4648C /* SmartBusTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0BB99F219186B0000B4648C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A0BB99CA19186B0000B4648C /* SmartBusApp */;
+			targetProxy = A0BB99F119186B0000B4648C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A0BB99D719186B0000B4648C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0BB99D819186B0000B4648C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A0BB99E019186B0000B4648C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0BB99E119186B0000B4648C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A0BB99F619186B0000B4648C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A0BB99F719186B0000B4648C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A0BB99FB19186B0000B4648C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A0BB99FC19186B0000B4648C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A0BB99FE19186B0000B4648C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartBus/SmartBusApp-Prefix.pch";
+				INFOPLIST_FILE = "SmartBus/SmartBusApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = SmartBusApp;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A0BB99FF19186B0000B4648C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartBus/SmartBusApp-Prefix.pch";
+				INFOPLIST_FILE = "SmartBus/SmartBusApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = SmartBusApp;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A0BB9A0119186B0000B4648C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartBus.app/SmartBus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartBus/SmartBus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartBusTests/SmartBusTests-Info.plist";
+				PRODUCT_NAME = SmartBusAppTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A0BB9A0219186B0000B4648C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartBus.app/SmartBus";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartBus/SmartBus-Prefix.pch";
+				INFOPLIST_FILE = "SmartBusTests/SmartBusTests-Info.plist";
+				PRODUCT_NAME = SmartBusAppTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0BB99C619186B0000B4648C /* Build configuration list for PBXProject "SmartBusApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0BB99FB19186B0000B4648C /* Debug */,
+				A0BB99FC19186B0000B4648C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0BB99FD19186B0000B4648C /* Build configuration list for PBXNativeTarget "SmartBusApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0BB99FE19186B0000B4648C /* Debug */,
+				A0BB99FF19186B0000B4648C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0BB9A0019186B0000B4648C /* Build configuration list for PBXNativeTarget "SmartBusAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0BB9A0119186B0000B4648C /* Debug */,
+				A0BB9A0219186B0000B4648C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A0BB99C319186B0000B4648C /* Project object */;
+}

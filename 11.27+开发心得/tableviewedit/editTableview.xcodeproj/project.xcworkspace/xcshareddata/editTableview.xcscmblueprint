@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5DA17B5000A54E5CA4476E6DE04A3330E23A63E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2FD93C72715D8536AE00712BB60826E6E2E85C81" : 9223372036854775807,
+    "5DA17B5000A54E5CA4476E6DE04A3330E23A63E7" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4798967D-A9F8-4430-965C-9950E75D5E2C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2FD93C72715D8536AE00712BB60826E6E2E85C81" : "",
+    "5DA17B5000A54E5CA4476E6DE04A3330E23A63E7" : "tableviewedit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "editTableview",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "editTableview.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/T1_mine\/tableviewedit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2FD93C72715D8536AE00712BB60826E6E2E85C81"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/T1_mine\/tableviewedit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5DA17B5000A54E5CA4476E6DE04A3330E23A63E7"
+    }
+  ]
+}

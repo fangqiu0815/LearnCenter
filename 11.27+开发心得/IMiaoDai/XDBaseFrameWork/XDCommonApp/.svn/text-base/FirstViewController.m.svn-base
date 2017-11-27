@@ -1,0 +1,322 @@
+//
+//  FirstViewController.m
+//  XDCommonApp
+//
+//  Created by XD-XY on 2/12/14.
+//  Copyright (c) 2014 XD-XY. All rights reserved.
+//
+
+#import "FirstViewController.h"
+#import "XDHeader.h"
+#import "XDTools.h"
+#import "UIButton+Category.h"
+#import "UIImageView+WebCache.h"
+#import "MainGoodsCell.h"
+#import "GoodsDetailViewController.h"
+#import "ASIHTTPRequest.h"
+#define image_tag 10000
+
+@interface FirstViewController ()
+
+@end
+
+@implementation FirstViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    DDLOG_CURRENT_METHOD;
+    [pageView openTimerTask];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    DDLOG_CURRENT_METHOD;
+    [pageView closeTimerTask];
+    [super viewWillDisappear:NO];
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    self.leftBtn.hidden =YES;
+
+//    NSUserDefaults *userDef=[NSUserDefaults standardUserDefaults];
+//    //存登录信息
+//    NSDictionary *userDic = @{@"name": @"maboyi"};
+//    [userDef setObject:userDic forKey:kMMyUserInfo];
+//    [userDef synchronize];
+
+
+
+    [self changeFrameWhenHiddenNavigationBar];
+
+//    [[XDTools sharedXDTools] checkVersion:self isShowAlert:YES];
+    dataArray = [[NSMutableArray alloc] init];
+    bannerDataArray = [[NSMutableArray alloc] init];
+
+    myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_MAINSCREEN_HEIGHT - UI_TAB_BAR_HEIGHT)];
+    myTableView.delegate = self;
+    myTableView.dataSource = self;
+    myTableView.backgroundColor = [UIColor clearColor];
+    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.contentView addSubview:myTableView];
+    
+    headerView = [[MJRefreshHeaderView alloc] initWithScrollView:myTableView];
+    headerView.delegate = self;
+    
+//    footerView = [[MJRefreshFooterView alloc] initWithScrollView:myTableView];
+//    footerView.delegate = self;
+
+    curpage = 1;
+    totalCount = 0;
+
+    [self getDataWithPageNum:@"1" api:API_HOMEPAGE];
+}
+
+- (void)createFourButtonsForView:(UIView *)view{
+//    NSArray * nameArr = [NSArray arrayWithObjects:@"0首付",@"手续简单",@"在线还贷",@"最长20期", nil];
+//    UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 150, UI_SCREEN_WIDTH, 67)];
+//    for (int i = 0; i < 4; i++) {
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [btn setTitle:nameArr[i] forState:UIControlStateNormal];
+//        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [btn setFrame:CGRectMake(i*80, 1, 80, 65)];
+//        btn.backgroundColor = [UIColor whiteColor];
+//        [bgView addSubview:btn];
+//    }
+//    [view addSubview:bgView];
+
+    UIImageView * fourTabs = [[UIImageView alloc] initWithFrame:CGRectMake(0, 150, UI_SCREEN_WIDTH, 67.5f)];
+    fourTabs.image = [UIImage imageNamed:@"fourTab"];
+    [view addSubview:fourTabs];
+}
+
+#pragma mark - UITableView DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return dataArray.count+1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!indexPath.row) {
+        return 217;
+    }else{
+        return 163;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!indexPath.row) {
+        NSString * cellIde0 = @"cell0";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIde0];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIde0];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            /*图片轮播*/
+            pageView = [[XYScrollView alloc] initPageScrollView:CGRectMake(0, 0, 320, 150) pageControllerFrame:CGRectMake(120,135, 100, 10) backgroudImage:nil pageNumber:PAGESCROLLVIEWNUMBER];
+            //如果有图片点击事件，就设置代理，没有则不设置
+            pageView.delegate = self;
+
+            //图片来源于网络
+            NSMutableArray * imageUrlArray = [[NSMutableArray alloc] init];
+            for (NSDictionary * dic in bannerDataArray) {
+                [imageUrlArray addObject:dic[@"pic"]];
+            }
+
+            if (imageUrlArray.count) {
+                [pageView setTheImageUrlArray:imageUrlArray andplaceholderImage:PAGEDEFAULTIAMGE];
+            }
+
+
+            [cell.contentView addSubview:pageView];
+            
+            [self createFourButtonsForView:cell.contentView];
+            
+            UIImageView * lineIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 216.5f, UI_SCREEN_WIDTH, .5f)];
+            lineIV.image = [UIImage imageNamed:@"line"];
+            [cell.contentView addSubview:lineIV];
+        }
+        return cell;
+    }else{
+        NSString * cellIde = @"cell";
+        MainGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MainGoodsCell" owner:self options:nil] lastObject];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            cell.goodsIV.backgroundColor = [UIColor grayColor];
+            cell.bgIV.backgroundColor = [UIColor whiteColor];
+            cell.bgIV.layer.borderWidth = .5f;
+            cell.bgIV.layer.borderColor = UIColorFromRGB(0xcbcbcb).CGColor;
+
+            cell.normalLB.hidden = YES;
+            cell.shortLine.hidden = YES;
+        }
+        NSDictionary * dic = dataArray[indexPath.row-1];
+        [cell.goodsIV setImageWithURL:[NSURL URLWithString:dic[@"pic"]] placeholderImage:nil];
+        cell.VIPLB.text = dic[@"price"];
+        cell.monthPayLB.text = [NSString stringWithFormat:@"月供：%@",dic[@"payment"]];
+        return cell;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!indexPath.row) {
+        return;
+    }
+    GoodsDetailViewController * detail = [[GoodsDetailViewController alloc] init];
+    detail.goodsId = dataArray[indexPath.row][@"productId"];
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+-(void)btnClick:(UIButton *)sender
+{
+    DDLOG_CURRENT_METHOD;
+    if (sender.tag==1){
+        [XDTools showTips:@"操作成功" toView:self.contentView];
+    }else if (sender.tag ==2){
+        [XDTools showProgress:self.contentView];
+    }else if (sender.tag ==3){
+        [XDTools showProgress:self.contentView showText:@"正在加载..."];
+    }else if (sender.tag ==4){
+    
+    }else if (sender.tag ==5){
+    
+    }
+}
+
+- (void)getDataWithPageNum:(NSString *)page api:(NSString *)api{
+    if ([XDTools NetworkReachable])
+    {
+        
+        NSString *requestURlString = [NSString stringWithFormat:@"%@%@",HOST_URL,API_HOMEPAGE];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:requestURlString]];
+//        [XDTools getRequestWithDict:@{@"":@""} API:API_HOMEPAGE];
+
+        __weak ASIHTTPRequest * mrequest = request;
+
+        [request setCompletionBlock:^{
+
+            [XDTools hideProgress:self.contentView];
+            [headerView endRefreshing];
+            [footerView endRefreshingWithoutIdle];
+
+            NSDictionary *tempDic = [XDTools  JSonFromString:[mrequest responseString]];
+            if ([[tempDic objectForKey:@"result"] intValue] == 0)
+            {
+                if (page.intValue == 1) {
+                    bannerDataArray = [NSMutableArray arrayWithArray:tempDic[@"data"][@"topic"]];
+                    dataArray = [NSMutableArray arrayWithArray:tempDic[@"data"][@"productList"]];
+                }else{
+                    [dataArray addObjectsFromArray:tempDic[@"data"][@"list"]];
+                }
+                [myTableView reloadData];
+            }
+            else
+            {
+                [XDTools showTips:[tempDic objectForKey:@"msg"] toView:self.view];
+
+            }
+        }];
+
+        [request setFailedBlock:^{
+            [headerView endRefreshing];
+            [footerView endRefreshingWithoutIdle];
+            [XDTools hideProgress:self.contentView];
+            NSError *error = [mrequest error];
+            DDLOG_CURRENT_METHOD;
+            DDLOG(@"error=%@",error);
+            if (mrequest.error.code == 2) {
+                [XDTools showTips:@"网络请求超时" toView:self.view];
+            }
+        }];
+        if (isFirst) {
+            [XDTools showProgress:self.contentView];
+            isFirst = NO;
+        }
+        [request startAsynchronous];
+
+    }
+    else
+    {
+        [XDTools showTips:brokenNetwork toView:self.view];
+        [headerView endRefreshing];
+        [footerView endRefreshingWithoutIdle];
+    }
+    
+}
+
+#pragma mark - MJRefreshView Delegate
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView{
+    if (refreshView == headerView) {
+        [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(getNewData) userInfo:nil repeats:NO];
+    }else if (refreshView == footerView) {
+        [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(getNextData) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)getNewData{
+//    isRefresh = YES;
+//    curpage = 1;
+//    totalCount = 0;
+    [self getDataWithPageNum:@"1" api:API_HOMEPAGE];
+
+}
+
+
+- (void)getNextData{
+//    isGetMore = YES;
+    if (totalCount == -999)
+    {
+        [headerView endRefreshing];
+        [footerView endRefreshingWithoutIdle];
+        [XDTools showTips:@"没有更多数据" toView:self.view];
+        [self yoffset:dataArray andTableview:myTableView];
+    }
+    else
+    {
+        curpage++;
+        [self getDataWithPageNum:@"1" api:API_HOMEPAGE];
+        
+    }
+}
+
+- (void)yoffset:(NSMutableArray *)arr andTableview:(UITableView *)tableview
+{
+    CGFloat y = tableview.contentOffset.y;
+    tableview.contentOffset = CGPointMake(0, y-60);
+    
+}
+
+
+
+//这个是XYScrollView中的代理方法，主要的功能可以实现里面每个imageview的点击事件的
+-(void)gestureClick:(UITapGestureRecognizer *)sender
+{
+    DDLOG_CURRENT_METHOD;
+    UIImageView * imageView =(UIImageView *)[pageView.myScrollView viewWithTag:sender.view.tag];
+    
+    //这里就写跳到下一的代码....imageView.tag-image_tag
+    DDLOG(@"imageView.tag = %d",imageView.tag);
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

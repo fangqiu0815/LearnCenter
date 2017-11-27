@@ -1,0 +1,1014 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		063839C81370C46B6FD9634D /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 799E1541AB005F1758D498F6 /* libPods-Gank.a */; };
+		26603924A372D3ECC9941448 /* libPods-GankTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 620EBF0332BE82B03FCFE935 /* libPods-GankTests.a */; };
+		6B0272611E6E98BE00A30D9E /* PYSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0272601E6E98BE00A30D9E /* PYSearchResultViewController.m */; };
+		6B0272651E6EB51C00A30D9E /* PYSearchResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0272631E6EB51C00A30D9E /* PYSearchResourceCell.m */; };
+		6B0272661E6EB51C00A30D9E /* PYSearchResourceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B0272641E6EB51C00A30D9E /* PYSearchResourceCell.xib */; };
+		6B0272681E6EE0A400A30D9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0272671E6EE0A400A30D9E /* SystemConfiguration.framework */; };
+		6B0272741E70F06D00A30D9E /* PYMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0272731E70F06D00A30D9E /* PYMenuViewController.m */; };
+		6B0272771E7173C100A30D9E /* PYLaunchVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0272761E7173C100A30D9E /* PYLaunchVideoController.m */; };
+		6B02727A1E7173D900A30D9E /* PYWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0272791E7173D900A30D9E /* PYWebController.m */; };
+		6B02727E1E72979500A30D9E /* Launch.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6B02727D1E72979500A30D9E /* Launch.mov */; };
+		6B25B9E21E63C25B008BC23F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25B9E11E63C25B008BC23F /* main.m */; };
+		6B25B9E51E63C25B008BC23F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25B9E41E63C25B008BC23F /* AppDelegate.m */; };
+		6B25B9ED1E63C25B008BC23F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B25B9EC1E63C25B008BC23F /* Assets.xcassets */; };
+		6B25B9F01E63C25B008BC23F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B25B9EE1E63C25B008BC23F /* LaunchScreen.storyboard */; };
+		6B25B9FB1E63C25B008BC23F /* GankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25B9FA1E63C25B008BC23F /* GankTests.m */; };
+		6B25BA061E63C25B008BC23F /* GankUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA051E63C25B008BC23F /* GankUITests.m */; };
+		6B25BA5D1E63F628008BC23F /* PYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA5C1E63F628008BC23F /* PYHomeViewController.m */; };
+		6B25BA601E63F664008BC23F /* PYPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA5F1E63F664008BC23F /* PYPageTitleView.m */; };
+		6B25BA661E63F894008BC23F /* UIColor+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA631E63F894008BC23F /* UIColor+PYExtension.m */; };
+		6B25BA671E63F894008BC23F /* UIView+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA651E63F894008BC23F /* UIView+PYExtension.m */; };
+		6B25BA6E1E6401ED008BC23F /* CardCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA691E6401ED008BC23F /* CardCellCollectionViewCell.m */; };
+		6B25BA6F1E6401ED008BC23F /* CardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA6B1E6401ED008BC23F /* CardLayout.m */; };
+		6B25BA701E6401ED008BC23F /* CardSelectedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA6D1E6401ED008BC23F /* CardSelectedLayout.m */; };
+		6B25BA731E640206008BC23F /* PYCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA721E640206008BC23F /* PYCardViewController.m */; };
+		6B25BA7D1E6440F1008BC23F /* PYResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA7C1E6440F1008BC23F /* PYResource.m */; };
+		6B25BA811E644619008BC23F /* PYResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA7F1E644619008BC23F /* PYResourceCell.m */; };
+		6B25BA851E64715D008BC23F /* NSString+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA841E64715D008BC23F /* NSString+PYExtension.m */; };
+		6B25BA871E650852008BC23F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B25BA861E650852008BC23F /* CoreGraphics.framework */; };
+		6B25BA891E650870008BC23F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B25BA881E650870008BC23F /* QuartzCore.framework */; };
+		6B25BA8B1E650877008BC23F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B25BA8A1E650877008BC23F /* ImageIO.framework */; };
+		6B25BA8D1E65088A008BC23F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B25BA8C1E65088A008BC23F /* MobileCoreServices.framework */; };
+		6B25BA901E654824008BC23F /* PYPageTitleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA8F1E654824008BC23F /* PYPageTitleContentView.m */; };
+		6B25BA931E65640D008BC23F /* PYCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA921E65640D008BC23F /* PYCalendarView.m */; };
+		6B25BA991E66A255008BC23F /* YJWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA981E66A255008BC23F /* YJWebProgressLayer.m */; };
+		6B25BA9C1E66A265008BC23F /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B25BA9B1E66A265008BC23F /* NSTimer+addition.m */; };
+		6B8812B31E763094007A435A /* PYHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8812B21E763094007A435A /* PYHUD.m */; };
+		6B8812B61E7631C1007A435A /* PYRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8812B51E7631C1007A435A /* PYRefreshHeader.m */; };
+		6B8812C11E76396B007A435A /* UIViewController+YQSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8812BD1E76396B007A435A /* UIViewController+YQSlideMenu.m */; };
+		6B8812C21E76396B007A435A /* YQSlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B8812BF1E76396B007A435A /* YQSlideMenuController.m */; };
+		6B8812C31E76396B007A435A /* YQSlideMenuImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B8812C01E76396B007A435A /* YQSlideMenuImages.xcassets */; };
+		6BEDE8B41E66D22E00A0D377 /* UIBarButtonItem+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDE8B31E66D22E00A0D377 /* UIBarButtonItem+PYExtension.m */; };
+		6BEDE9001E6998A600A0D377 /* PYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BEDE8FF1E6998A600A0D377 /* PYImage.m */; };
+		9668F40BFDB6D51B45590F57 /* libPods-GankUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4AAEC0DA0805D0D37128E4 /* libPods-GankUITests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6B25B9F71E63C25B008BC23F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B25B9D51E63C25B008BC23F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B25B9DC1E63C25B008BC23F;
+			remoteInfo = Gank;
+		};
+		6B25BA021E63C25B008BC23F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6B25B9D51E63C25B008BC23F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6B25B9DC1E63C25B008BC23F;
+			remoteInfo = Gank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2F7C8E12933DC97BAC9B1D55 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
+		620EBF0332BE82B03FCFE935 /* libPods-GankTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GankTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66F9416845251C3C7080781F /* Pods-GankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankTests/Pods-GankTests.debug.xcconfig"; sourceTree = "<group>"; };
+		69A61AB9AFAA2E6807DA1489 /* Pods-GankUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6B02725F1E6E98BE00A30D9E /* PYSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchResultViewController.h; sourceTree = "<group>"; };
+		6B0272601E6E98BE00A30D9E /* PYSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchResultViewController.m; sourceTree = "<group>"; };
+		6B0272621E6EB51C00A30D9E /* PYSearchResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchResourceCell.h; sourceTree = "<group>"; };
+		6B0272631E6EB51C00A30D9E /* PYSearchResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchResourceCell.m; sourceTree = "<group>"; };
+		6B0272641E6EB51C00A30D9E /* PYSearchResourceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PYSearchResourceCell.xib; sourceTree = "<group>"; };
+		6B0272671E6EE0A400A30D9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6B0272721E70F06D00A30D9E /* PYMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMenuViewController.h; sourceTree = "<group>"; };
+		6B0272731E70F06D00A30D9E /* PYMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYMenuViewController.m; sourceTree = "<group>"; };
+		6B0272751E7173C100A30D9E /* PYLaunchVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYLaunchVideoController.h; sourceTree = "<group>"; };
+		6B0272761E7173C100A30D9E /* PYLaunchVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYLaunchVideoController.m; sourceTree = "<group>"; };
+		6B0272781E7173D900A30D9E /* PYWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYWebController.h; sourceTree = "<group>"; };
+		6B0272791E7173D900A30D9E /* PYWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYWebController.m; sourceTree = "<group>"; };
+		6B02727D1E72979500A30D9E /* Launch.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Launch.mov; path = ../Launch.mov; sourceTree = "<group>"; };
+		6B25B9DD1E63C25B008BC23F /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B25B9E11E63C25B008BC23F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6B25B9E31E63C25B008BC23F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6B25B9E41E63C25B008BC23F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6B25B9EC1E63C25B008BC23F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B25B9EF1E63C25B008BC23F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6B25B9F11E63C25B008BC23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B25B9F61E63C25B008BC23F /* GankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B25B9FA1E63C25B008BC23F /* GankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GankTests.m; sourceTree = "<group>"; };
+		6B25B9FC1E63C25B008BC23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B25BA011E63C25B008BC23F /* GankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B25BA051E63C25B008BC23F /* GankUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GankUITests.m; sourceTree = "<group>"; };
+		6B25BA071E63C25B008BC23F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B25BA5B1E63F628008BC23F /* PYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHomeViewController.h; sourceTree = "<group>"; };
+		6B25BA5C1E63F628008BC23F /* PYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYHomeViewController.m; sourceTree = "<group>"; };
+		6B25BA5E1E63F664008BC23F /* PYPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYPageTitleView.h; sourceTree = "<group>"; };
+		6B25BA5F1E63F664008BC23F /* PYPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYPageTitleView.m; sourceTree = "<group>"; };
+		6B25BA621E63F894008BC23F /* UIColor+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYExtension.h"; sourceTree = "<group>"; };
+		6B25BA631E63F894008BC23F /* UIColor+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYExtension.m"; sourceTree = "<group>"; };
+		6B25BA641E63F894008BC23F /* UIView+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYExtension.h"; sourceTree = "<group>"; };
+		6B25BA651E63F894008BC23F /* UIView+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYExtension.m"; sourceTree = "<group>"; };
+		6B25BA681E6401ED008BC23F /* CardCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCellCollectionViewCell.h; sourceTree = "<group>"; };
+		6B25BA691E6401ED008BC23F /* CardCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCellCollectionViewCell.m; sourceTree = "<group>"; };
+		6B25BA6A1E6401ED008BC23F /* CardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardLayout.h; sourceTree = "<group>"; };
+		6B25BA6B1E6401ED008BC23F /* CardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardLayout.m; sourceTree = "<group>"; };
+		6B25BA6C1E6401ED008BC23F /* CardSelectedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardSelectedLayout.h; sourceTree = "<group>"; };
+		6B25BA6D1E6401ED008BC23F /* CardSelectedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardSelectedLayout.m; sourceTree = "<group>"; };
+		6B25BA711E640206008BC23F /* PYCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCardViewController.h; sourceTree = "<group>"; };
+		6B25BA721E640206008BC23F /* PYCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYCardViewController.m; sourceTree = "<group>"; };
+		6B25BA7B1E6440F1008BC23F /* PYResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYResource.h; sourceTree = "<group>"; };
+		6B25BA7C1E6440F1008BC23F /* PYResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYResource.m; sourceTree = "<group>"; };
+		6B25BA7E1E644619008BC23F /* PYResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYResourceCell.h; sourceTree = "<group>"; };
+		6B25BA7F1E644619008BC23F /* PYResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYResourceCell.m; sourceTree = "<group>"; };
+		6B25BA831E64715D008BC23F /* NSString+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PYExtension.h"; sourceTree = "<group>"; };
+		6B25BA841E64715D008BC23F /* NSString+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PYExtension.m"; sourceTree = "<group>"; };
+		6B25BA861E650852008BC23F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6B25BA881E650870008BC23F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B25BA8A1E650877008BC23F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		6B25BA8C1E65088A008BC23F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6B25BA8E1E654824008BC23F /* PYPageTitleContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYPageTitleContentView.h; sourceTree = "<group>"; };
+		6B25BA8F1E654824008BC23F /* PYPageTitleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYPageTitleContentView.m; sourceTree = "<group>"; };
+		6B25BA911E65640D008BC23F /* PYCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCalendarView.h; sourceTree = "<group>"; };
+		6B25BA921E65640D008BC23F /* PYCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYCalendarView.m; sourceTree = "<group>"; };
+		6B25BA971E66A255008BC23F /* YJWebProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YJWebProgressLayer.h; sourceTree = "<group>"; };
+		6B25BA981E66A255008BC23F /* YJWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJWebProgressLayer.m; sourceTree = "<group>"; };
+		6B25BA9A1E66A265008BC23F /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
+		6B25BA9B1E66A265008BC23F /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
+		6B8812B11E763094007A435A /* PYHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHUD.h; sourceTree = "<group>"; };
+		6B8812B21E763094007A435A /* PYHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYHUD.m; sourceTree = "<group>"; };
+		6B8812B41E7631C1007A435A /* PYRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYRefreshHeader.h; sourceTree = "<group>"; };
+		6B8812B51E7631C1007A435A /* PYRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYRefreshHeader.m; sourceTree = "<group>"; };
+		6B8812BC1E76396B007A435A /* UIViewController+YQSlideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+YQSlideMenu.h"; sourceTree = "<group>"; };
+		6B8812BD1E76396B007A435A /* UIViewController+YQSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+YQSlideMenu.m"; sourceTree = "<group>"; };
+		6B8812BE1E76396B007A435A /* YQSlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQSlideMenuController.h; sourceTree = "<group>"; };
+		6B8812BF1E76396B007A435A /* YQSlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQSlideMenuController.m; sourceTree = "<group>"; };
+		6B8812C01E76396B007A435A /* YQSlideMenuImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = YQSlideMenuImages.xcassets; sourceTree = "<group>"; };
+		6BEDE8B21E66D22E00A0D377 /* UIBarButtonItem+PYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+PYExtension.h"; sourceTree = "<group>"; };
+		6BEDE8B31E66D22E00A0D377 /* UIBarButtonItem+PYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+PYExtension.m"; sourceTree = "<group>"; };
+		6BEDE8FE1E6998A600A0D377 /* PYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYImage.h; sourceTree = "<group>"; };
+		6BEDE8FF1E6998A600A0D377 /* PYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYImage.m; sourceTree = "<group>"; };
+		799E1541AB005F1758D498F6 /* libPods-Gank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF3C44CFB11328D0A813A12 /* Pods-GankUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A6C5E7595689469294AD610A /* Pods-GankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankTests/Pods-GankTests.release.xcconfig"; sourceTree = "<group>"; };
+		DCFC1833367A3C9974A15F21 /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
+		EE4AAEC0DA0805D0D37128E4 /* libPods-GankUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GankUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6B25B9DA1E63C25B008BC23F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0272681E6EE0A400A30D9E /* SystemConfiguration.framework in Frameworks */,
+				6B25BA8D1E65088A008BC23F /* MobileCoreServices.framework in Frameworks */,
+				6B25BA8B1E650877008BC23F /* ImageIO.framework in Frameworks */,
+				6B25BA891E650870008BC23F /* QuartzCore.framework in Frameworks */,
+				6B25BA871E650852008BC23F /* CoreGraphics.framework in Frameworks */,
+				063839C81370C46B6FD9634D /* libPods-Gank.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9F31E63C25B008BC23F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26603924A372D3ECC9941448 /* libPods-GankTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9FE1E63C25B008BC23F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9668F40BFDB6D51B45590F57 /* libPods-GankUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19453C8047A4E5900105E217 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F7C8E12933DC97BAC9B1D55 /* Pods-Gank.debug.xcconfig */,
+				DCFC1833367A3C9974A15F21 /* Pods-Gank.release.xcconfig */,
+				66F9416845251C3C7080781F /* Pods-GankTests.debug.xcconfig */,
+				A6C5E7595689469294AD610A /* Pods-GankTests.release.xcconfig */,
+				69A61AB9AFAA2E6807DA1489 /* Pods-GankUITests.debug.xcconfig */,
+				7BF3C44CFB11328D0A813A12 /* Pods-GankUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6B02726E1E70F04800A30D9E /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				6B02726F1E70F04800A30D9E /* Controller */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		6B02726F1E70F04800A30D9E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B0272721E70F06D00A30D9E /* PYMenuViewController.h */,
+				6B0272731E70F06D00A30D9E /* PYMenuViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B25B9D41E63C25B008BC23F = {
+			isa = PBXGroup;
+			children = (
+				6B25B9DF1E63C25B008BC23F /* Gank */,
+				6B25B9F91E63C25B008BC23F /* GankTests */,
+				6B25BA041E63C25B008BC23F /* GankUITests */,
+				6B25B9DE1E63C25B008BC23F /* Products */,
+				19453C8047A4E5900105E217 /* Pods */,
+				9FECF6B7AF880CBEDD2CB132 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6B25B9DE1E63C25B008BC23F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B25B9DD1E63C25B008BC23F /* Gank.app */,
+				6B25B9F61E63C25B008BC23F /* GankTests.xctest */,
+				6B25BA011E63C25B008BC23F /* GankUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B25B9DF1E63C25B008BC23F /* Gank */ = {
+			isa = PBXGroup;
+			children = (
+				6B25B9E31E63C25B008BC23F /* AppDelegate.h */,
+				6B25B9E41E63C25B008BC23F /* AppDelegate.m */,
+				6B8812BA1E76394F007A435A /* Lib */,
+				6B25BA741E6421FD008BC23F /* Main */,
+				6B25BA771E6421FD008BC23F /* Tool */,
+				6B25BA611E63F875008BC23F /* Gategory */,
+				6B25BA561E63F5DF008BC23F /* Home */,
+				6B02726E1E70F04800A30D9E /* Menu */,
+				6B25B9E01E63C25B008BC23F /* Supporting Files */,
+			);
+			path = Gank;
+			sourceTree = "<group>";
+		};
+		6B25B9E01E63C25B008BC23F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B02727D1E72979500A30D9E /* Launch.mov */,
+				6B25B9EC1E63C25B008BC23F /* Assets.xcassets */,
+				6B25B9EE1E63C25B008BC23F /* LaunchScreen.storyboard */,
+				6B25B9F11E63C25B008BC23F /* Info.plist */,
+				6B25B9E11E63C25B008BC23F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B25B9F91E63C25B008BC23F /* GankTests */ = {
+			isa = PBXGroup;
+			children = (
+				6B25B9FA1E63C25B008BC23F /* GankTests.m */,
+				6B25B9FC1E63C25B008BC23F /* Info.plist */,
+			);
+			path = GankTests;
+			sourceTree = "<group>";
+		};
+		6B25BA041E63C25B008BC23F /* GankUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA051E63C25B008BC23F /* GankUITests.m */,
+				6B25BA071E63C25B008BC23F /* Info.plist */,
+			);
+			path = GankUITests;
+			sourceTree = "<group>";
+		};
+		6B25BA561E63F5DF008BC23F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA571E63F5DF008BC23F /* Controller */,
+				6B25BA581E63F5DF008BC23F /* Model */,
+				6B25BA5A1E63F5DF008BC23F /* View */,
+				6B25BA591E63F5DF008BC23F /* Other */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6B25BA571E63F5DF008BC23F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA5B1E63F628008BC23F /* PYHomeViewController.h */,
+				6B25BA5C1E63F628008BC23F /* PYHomeViewController.m */,
+				6B25BA711E640206008BC23F /* PYCardViewController.h */,
+				6B25BA721E640206008BC23F /* PYCardViewController.m */,
+				6B02725F1E6E98BE00A30D9E /* PYSearchResultViewController.h */,
+				6B0272601E6E98BE00A30D9E /* PYSearchResultViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B25BA581E63F5DF008BC23F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA7B1E6440F1008BC23F /* PYResource.h */,
+				6B25BA7C1E6440F1008BC23F /* PYResource.m */,
+				6BEDE8FE1E6998A600A0D377 /* PYImage.h */,
+				6BEDE8FF1E6998A600A0D377 /* PYImage.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6B25BA591E63F5DF008BC23F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		6B25BA5A1E63F5DF008BC23F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA5E1E63F664008BC23F /* PYPageTitleView.h */,
+				6B25BA5F1E63F664008BC23F /* PYPageTitleView.m */,
+				6B25BA8E1E654824008BC23F /* PYPageTitleContentView.h */,
+				6B25BA8F1E654824008BC23F /* PYPageTitleContentView.m */,
+				6B25BA681E6401ED008BC23F /* CardCellCollectionViewCell.h */,
+				6B25BA691E6401ED008BC23F /* CardCellCollectionViewCell.m */,
+				6B25BA6A1E6401ED008BC23F /* CardLayout.h */,
+				6B25BA6B1E6401ED008BC23F /* CardLayout.m */,
+				6B25BA6C1E6401ED008BC23F /* CardSelectedLayout.h */,
+				6B25BA6D1E6401ED008BC23F /* CardSelectedLayout.m */,
+				6B25BA7E1E644619008BC23F /* PYResourceCell.h */,
+				6B25BA7F1E644619008BC23F /* PYResourceCell.m */,
+				6B25BA911E65640D008BC23F /* PYCalendarView.h */,
+				6B25BA921E65640D008BC23F /* PYCalendarView.m */,
+				6B0272621E6EB51C00A30D9E /* PYSearchResourceCell.h */,
+				6B0272631E6EB51C00A30D9E /* PYSearchResourceCell.m */,
+				6B0272641E6EB51C00A30D9E /* PYSearchResourceCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B25BA611E63F875008BC23F /* Gategory */ = {
+			isa = PBXGroup;
+			children = (
+				6BEDE8B21E66D22E00A0D377 /* UIBarButtonItem+PYExtension.h */,
+				6BEDE8B31E66D22E00A0D377 /* UIBarButtonItem+PYExtension.m */,
+				6B25BA9A1E66A265008BC23F /* NSTimer+addition.h */,
+				6B25BA9B1E66A265008BC23F /* NSTimer+addition.m */,
+				6B25BA831E64715D008BC23F /* NSString+PYExtension.h */,
+				6B25BA841E64715D008BC23F /* NSString+PYExtension.m */,
+				6B25BA621E63F894008BC23F /* UIColor+PYExtension.h */,
+				6B25BA631E63F894008BC23F /* UIColor+PYExtension.m */,
+				6B25BA641E63F894008BC23F /* UIView+PYExtension.h */,
+				6B25BA651E63F894008BC23F /* UIView+PYExtension.m */,
+			);
+			path = Gategory;
+			sourceTree = "<group>";
+		};
+		6B25BA741E6421FD008BC23F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA751E6421FD008BC23F /* Controller */,
+				6B25BA761E6421FD008BC23F /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6B25BA751E6421FD008BC23F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6B0272781E7173D900A30D9E /* PYWebController.h */,
+				6B0272791E7173D900A30D9E /* PYWebController.m */,
+				6B0272751E7173C100A30D9E /* PYLaunchVideoController.h */,
+				6B0272761E7173C100A30D9E /* PYLaunchVideoController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6B25BA761E6421FD008BC23F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B25BA971E66A255008BC23F /* YJWebProgressLayer.h */,
+				6B25BA981E66A255008BC23F /* YJWebProgressLayer.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B25BA771E6421FD008BC23F /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				6B8812B41E7631C1007A435A /* PYRefreshHeader.h */,
+				6B8812B51E7631C1007A435A /* PYRefreshHeader.m */,
+				6B8812B11E763094007A435A /* PYHUD.h */,
+				6B8812B21E763094007A435A /* PYHUD.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		6B8812BA1E76394F007A435A /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				6B8812BB1E76396B007A435A /* YQSlideMenuController */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		6B8812BB1E76396B007A435A /* YQSlideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				6B8812BC1E76396B007A435A /* UIViewController+YQSlideMenu.h */,
+				6B8812BD1E76396B007A435A /* UIViewController+YQSlideMenu.m */,
+				6B8812BE1E76396B007A435A /* YQSlideMenuController.h */,
+				6B8812BF1E76396B007A435A /* YQSlideMenuController.m */,
+				6B8812C01E76396B007A435A /* YQSlideMenuImages.xcassets */,
+			);
+			path = YQSlideMenuController;
+			sourceTree = "<group>";
+		};
+		9FECF6B7AF880CBEDD2CB132 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B0272671E6EE0A400A30D9E /* SystemConfiguration.framework */,
+				6B25BA8C1E65088A008BC23F /* MobileCoreServices.framework */,
+				6B25BA8A1E650877008BC23F /* ImageIO.framework */,
+				6B25BA881E650870008BC23F /* QuartzCore.framework */,
+				6B25BA861E650852008BC23F /* CoreGraphics.framework */,
+				799E1541AB005F1758D498F6 /* libPods-Gank.a */,
+				620EBF0332BE82B03FCFE935 /* libPods-GankTests.a */,
+				EE4AAEC0DA0805D0D37128E4 /* libPods-GankUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6B25B9DC1E63C25B008BC23F /* Gank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B25BA0A1E63C25B008BC23F /* Build configuration list for PBXNativeTarget "Gank" */;
+			buildPhases = (
+				D75B8F3E7957C9607985E637 /* [CP] Check Pods Manifest.lock */,
+				6B25B9D91E63C25B008BC23F /* Sources */,
+				6B25B9DA1E63C25B008BC23F /* Frameworks */,
+				6B25B9DB1E63C25B008BC23F /* Resources */,
+				A2D9C341209BE8BE10D3B0CF /* [CP] Embed Pods Frameworks */,
+				2CB9135574D0605D7B17E7CA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gank;
+			productName = Gank;
+			productReference = 6B25B9DD1E63C25B008BC23F /* Gank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6B25B9F51E63C25B008BC23F /* GankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B25BA0D1E63C25B008BC23F /* Build configuration list for PBXNativeTarget "GankTests" */;
+			buildPhases = (
+				AB4013B4FE3A9B44780E7450 /* [CP] Check Pods Manifest.lock */,
+				6B25B9F21E63C25B008BC23F /* Sources */,
+				6B25B9F31E63C25B008BC23F /* Frameworks */,
+				6B25B9F41E63C25B008BC23F /* Resources */,
+				E41AA4ACA84A7FE39E5BE57F /* [CP] Embed Pods Frameworks */,
+				1C76199E9FBB350AF223DB12 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B25B9F81E63C25B008BC23F /* PBXTargetDependency */,
+			);
+			name = GankTests;
+			productName = GankTests;
+			productReference = 6B25B9F61E63C25B008BC23F /* GankTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6B25BA001E63C25B008BC23F /* GankUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B25BA101E63C25B008BC23F /* Build configuration list for PBXNativeTarget "GankUITests" */;
+			buildPhases = (
+				004A78440B56E269610DFBD1 /* [CP] Check Pods Manifest.lock */,
+				6B25B9FD1E63C25B008BC23F /* Sources */,
+				6B25B9FE1E63C25B008BC23F /* Frameworks */,
+				6B25B9FF1E63C25B008BC23F /* Resources */,
+				8412A18AF34727898FDA61E7 /* [CP] Embed Pods Frameworks */,
+				08E867D9458749F78BBDFEE2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6B25BA031E63C25B008BC23F /* PBXTargetDependency */,
+			);
+			name = GankUITests;
+			productName = GankUITests;
+			productReference = 6B25BA011E63C25B008BC23F /* GankUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B25B9D51E63C25B008BC23F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PY;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = CoderKo1o;
+				TargetAttributes = {
+					6B25B9DC1E63C25B008BC23F = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AR9M6JHEVE;
+						ProvisioningStyle = Automatic;
+					};
+					6B25B9F51E63C25B008BC23F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6B25B9DC1E63C25B008BC23F;
+					};
+					6B25BA001E63C25B008BC23F = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6B25B9DC1E63C25B008BC23F;
+					};
+				};
+			};
+			buildConfigurationList = 6B25B9D81E63C25B008BC23F /* Build configuration list for PBXProject "Gank" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6B25B9D41E63C25B008BC23F;
+			productRefGroup = 6B25B9DE1E63C25B008BC23F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6B25B9DC1E63C25B008BC23F /* Gank */,
+				6B25B9F51E63C25B008BC23F /* GankTests */,
+				6B25BA001E63C25B008BC23F /* GankUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6B25B9DB1E63C25B008BC23F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B02727E1E72979500A30D9E /* Launch.mov in Resources */,
+				6B0272661E6EB51C00A30D9E /* PYSearchResourceCell.xib in Resources */,
+				6B8812C31E76396B007A435A /* YQSlideMenuImages.xcassets in Resources */,
+				6B25B9F01E63C25B008BC23F /* LaunchScreen.storyboard in Resources */,
+				6B25B9ED1E63C25B008BC23F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9F41E63C25B008BC23F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9FF1E63C25B008BC23F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		004A78440B56E269610DFBD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		08E867D9458749F78BBDFEE2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C76199E9FBB350AF223DB12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankTests/Pods-GankTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CB9135574D0605D7B17E7CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8412A18AF34727898FDA61E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankUITests/Pods-GankUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2D9C341209BE8BE10D3B0CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB4013B4FE3A9B44780E7450 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D75B8F3E7957C9607985E637 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E41AA4ACA84A7FE39E5BE57F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankTests/Pods-GankTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6B25B9D91E63C25B008BC23F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B0272611E6E98BE00A30D9E /* PYSearchResultViewController.m in Sources */,
+				6B25B9E51E63C25B008BC23F /* AppDelegate.m in Sources */,
+				6B25BA661E63F894008BC23F /* UIColor+PYExtension.m in Sources */,
+				6B25BA9C1E66A265008BC23F /* NSTimer+addition.m in Sources */,
+				6B8812B31E763094007A435A /* PYHUD.m in Sources */,
+				6B25BA701E6401ED008BC23F /* CardSelectedLayout.m in Sources */,
+				6BEDE8B41E66D22E00A0D377 /* UIBarButtonItem+PYExtension.m in Sources */,
+				6B25BA731E640206008BC23F /* PYCardViewController.m in Sources */,
+				6B0272771E7173C100A30D9E /* PYLaunchVideoController.m in Sources */,
+				6B25BA991E66A255008BC23F /* YJWebProgressLayer.m in Sources */,
+				6B25BA901E654824008BC23F /* PYPageTitleContentView.m in Sources */,
+				6B25B9E21E63C25B008BC23F /* main.m in Sources */,
+				6B25BA5D1E63F628008BC23F /* PYHomeViewController.m in Sources */,
+				6B8812B61E7631C1007A435A /* PYRefreshHeader.m in Sources */,
+				6B25BA6E1E6401ED008BC23F /* CardCellCollectionViewCell.m in Sources */,
+				6B0272741E70F06D00A30D9E /* PYMenuViewController.m in Sources */,
+				6B25BA931E65640D008BC23F /* PYCalendarView.m in Sources */,
+				6B25BA7D1E6440F1008BC23F /* PYResource.m in Sources */,
+				6BEDE9001E6998A600A0D377 /* PYImage.m in Sources */,
+				6B8812C21E76396B007A435A /* YQSlideMenuController.m in Sources */,
+				6B25BA601E63F664008BC23F /* PYPageTitleView.m in Sources */,
+				6B0272651E6EB51C00A30D9E /* PYSearchResourceCell.m in Sources */,
+				6B25BA811E644619008BC23F /* PYResourceCell.m in Sources */,
+				6B25BA671E63F894008BC23F /* UIView+PYExtension.m in Sources */,
+				6B25BA6F1E6401ED008BC23F /* CardLayout.m in Sources */,
+				6B8812C11E76396B007A435A /* UIViewController+YQSlideMenu.m in Sources */,
+				6B02727A1E7173D900A30D9E /* PYWebController.m in Sources */,
+				6B25BA851E64715D008BC23F /* NSString+PYExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9F21E63C25B008BC23F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B25B9FB1E63C25B008BC23F /* GankTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6B25B9FD1E63C25B008BC23F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B25BA061E63C25B008BC23F /* GankUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6B25B9F81E63C25B008BC23F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B25B9DC1E63C25B008BC23F /* Gank */;
+			targetProxy = 6B25B9F71E63C25B008BC23F /* PBXContainerItemProxy */;
+		};
+		6B25BA031E63C25B008BC23F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6B25B9DC1E63C25B008BC23F /* Gank */;
+			targetProxy = 6B25BA021E63C25B008BC23F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6B25B9EE1E63C25B008BC23F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B25B9EF1E63C25B008BC23F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6B25BA081E63C25B008BC23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6B25BA091E63C25B008BC23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6B25BA0B1E63C25B008BC23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F7C8E12933DC97BAC9B1D55 /* Pods-Gank.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
+				INFOPLIST_FILE = Gank/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CoderKo1o.Gank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6B25BA0C1E63C25B008BC23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCFC1833367A3C9974A15F21 /* Pods-Gank.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
+				INFOPLIST_FILE = Gank/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CoderKo1o.Gank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6B25BA0E1E63C25B008BC23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66F9416845251C3C7080781F /* Pods-GankTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GankTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iphone5solo.GankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gank.app/Gank";
+			};
+			name = Debug;
+		};
+		6B25BA0F1E63C25B008BC23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6C5E7595689469294AD610A /* Pods-GankTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GankTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iphone5solo.GankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gank.app/Gank";
+			};
+			name = Release;
+		};
+		6B25BA111E63C25B008BC23F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69A61AB9AFAA2E6807DA1489 /* Pods-GankUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = GankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iphone5solo.GankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gank;
+			};
+			name = Debug;
+		};
+		6B25BA121E63C25B008BC23F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF3C44CFB11328D0A813A12 /* Pods-GankUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = GankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iphone5solo.GankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gank;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6B25B9D81E63C25B008BC23F /* Build configuration list for PBXProject "Gank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B25BA081E63C25B008BC23F /* Debug */,
+				6B25BA091E63C25B008BC23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B25BA0A1E63C25B008BC23F /* Build configuration list for PBXNativeTarget "Gank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B25BA0B1E63C25B008BC23F /* Debug */,
+				6B25BA0C1E63C25B008BC23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B25BA0D1E63C25B008BC23F /* Build configuration list for PBXNativeTarget "GankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B25BA0E1E63C25B008BC23F /* Debug */,
+				6B25BA0F1E63C25B008BC23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6B25BA101E63C25B008BC23F /* Build configuration list for PBXNativeTarget "GankUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6B25BA111E63C25B008BC23F /* Debug */,
+				6B25BA121E63C25B008BC23F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B25B9D51E63C25B008BC23F /* Project object */;
+}

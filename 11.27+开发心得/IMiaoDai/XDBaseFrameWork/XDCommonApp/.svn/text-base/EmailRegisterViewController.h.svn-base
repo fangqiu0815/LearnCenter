@@ -1,0 +1,23 @@
+//
+//  EmailRegisterViewController.h
+//  XDCommonApp
+//
+//  Created by wanglong8889@126.com on 14-6-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface EmailRegisterViewController : XDBaseViewController<UIScrollViewDelegate,UITextFieldDelegate>
+{
+    UITextField *nameTextFiel;
+    UITextField *passwordTextFiel;
+    UITextField *secPassWordTextFiel;
+    UITextField *emailTextFiel;
+    BOOL seleState;
+    UIScrollView *mScrollView;
+    
+    UIButton *agreedBnt;
+    UIButton *regbnt;
+}
+@end

@@ -1,0 +1,399 @@
+//
+//  SettingsViewController.m
+//  XDCommonApp
+//
+//  Created by wanglong8889@126.com on 14-6-12.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "SettingsViewController.h"
+#import "XRSetCell.h"
+#import "AboutViewController.h"
+#import "FeedBackViewController.h"
+
+@interface SettingsViewController ()
+{
+    BOOL isBangQQ;
+    BOOL isBangWeibo;
+    UILabel *label;
+    NSString *downUrl;
+    
+    NSString *cString;
+   
+}
+@end
+
+@implementation SettingsViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.titleLabel.text = @"设置";
+   
+    NSDictionary *dic = [[NSDictionary alloc] init];
+    [self getGradeUrlParms:dic];
+    [self initSettingsViews];
+    // Do any additional setup after loading the view.
+}
+
+
+-(void)initSettingsViews{
+    dataArray =[[NSMutableArray alloc]initWithObjects:@"意见反馈",@"缓存清理",@"给我打个分吧",@"检测新版本",@"关于", nil];
+    
+    
+    mTableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0,UI_SCREEN_WIDTH , self.contentView.frame.size.height-2) style:UITableViewStylePlain];
+    mTableView.delegate =self;
+    mTableView.dataSource =self;
+    mTableView.showsVerticalScrollIndicator = NO;
+    mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    mTableView.backgroundColor =[UIColor clearColor];
+    [self.contentView addSubview:mTableView];
+}
+
+
+
+#pragma mark tableView delegate and datasouce
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *ID = @"ID";
+    XRSetCell *cell =[tableView dequeueReusableCellWithIdentifier:ID];
+    if(!cell){
+        cell = [[XRSetCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+       
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if(indexPath.section == 0){
+            
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.contentLabel.frame = CGRectMake(54, 2, 220, 40);
+            cell.mlabel.hidden = NO;
+            
+            
+            if(indexPath.row == 0){
+                if (ISLOGING) {
+                    cell.imageView1.image =[UIImage imageNamed:@"bigsina"];
+                    if (isBangWeibo) {
+                        cell.imageView2.image = [UIImage imageNamed:@"cancel_bang"];
+                        cell.mlabel.text = @"取消";
+                        cell.mlabel.textColor = RGBA(127, 127, 127, 1);
+                    }else{
+                        cell.imageView2.image = [UIImage imageNamed:@"bangding"];
+                        cell.mlabel.text = @"绑定";
+                        cell.mlabel.textColor = [UIColor blackColor];
+                    }
+                }else{
+                    cell.imageView1.image =[UIImage imageNamed:@"bigsina_gray"];
+                    cell.imageView2.image = [UIImage imageNamed:@"bangding"];
+                    label.text = @"绑定";
+                }
+                cell.imageView1.frame=CGRectMake(17, 11, 28, 22.5f);
+                cell.contentLabel.text =@"新浪微博";
+            }else{
+                
+                    if (ISLOGING) {
+                        cell.imageView1.image =[UIImage imageNamed:@"bigqq"];
+                        if (isBangQQ) {
+                            cell.imageView2.image = [UIImage imageNamed:@"cancel_bang"];
+                            cell.mlabel.text = @"取消";
+                            cell.mlabel.textColor = RGBA(127, 127, 127, 1);
+                        }else{
+                            cell.imageView2.image = [UIImage imageNamed:@"bangding"];
+                            cell.mlabel.text = @"绑定";
+                            cell.mlabel.textColor = [UIColor blackColor];
+                        }
+                    }else{
+                        cell.imageView1.image =[UIImage imageNamed:@"bigqq_gray"];
+                        cell.imageView2.image = [UIImage imageNamed:@"bangding"];
+                        cell.mlabel.text = @"绑定";
+                    }
+                    cell.imageView1.frame=CGRectMake(19, 9.5f, 22.5f, 25.5f);
+                    cell.contentLabel.text =@"QQ账号";
+                
+            }
+        }else if(indexPath.section == 1){
+            cell.contentLabel.text = @"推送通知";
+            
+            
+        }else if (indexPath.section == 2)
+            {
+                cell.contentLabel.text =[dataArray objectAtIndex:indexPath.row];
+                if(indexPath.row !=1){
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
+                if(indexPath.row == 1){
+                    int size = [XDTools sizeOfFolder:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]];
+                    NSString * lastSize = @"";
+                    if (size < (1024*1024)) {
+                        lastSize = [NSString stringWithFormat:@"%.1fkb",size/1024.0f];
+                    }else if(size > (1024*1024)){
+                        lastSize = [NSString stringWithFormat:@"%.1fmb",size/1024.0f/1024.0f];
+                    }
+                    
+                    label=creatXRLable(lastSize, CGRectMake(UI_SCREEN_WIDTH -100, 5, 80, 34));
+                    label.tag =5000;
+                    label.font =[UIFont systemFontOfSize:16.0];
+                    label.textColor =[UIColor grayColor];
+                    label.textAlignment =NSTextAlignmentRight;
+                    [cell.bgImageView addSubview:label];
+                }
+            }else{
+                cell.contentLabel.text =[dataArray objectAtIndex:indexPath.row+4];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+        
+       
+        
+    }
+  
+    
+
+    if (indexPath.row == 0) {
+        cell.upImageView.hidden = NO;
+        cell.downImageView.hidden = NO;
+        
+    }else{
+        cell.upImageView.hidden = YES;
+        cell.downImageView.hidden = NO;
+
+    }
+    
+    return cell;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if(section == 0){
+        return 2;
+    }else if (section == 1){
+        return 1;
+    }else if (section == 2){
+        return [dataArray count]-1;
+    }
+    return 1;
+    
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 25.0;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==0 &&indexPath.row == 0) {
+        if (!isBangWeibo) {
+            DDLOG(@"绑定新浪");
+            
+        }else{
+            //解除绑定微博
+        }
+    }
+    if (indexPath.section ==0 &&indexPath.row == 1) {
+        if (!isBangQQ) {
+            DDLOG(@"绑定QQ");
+            
+        }else{
+            //解除绑定qq
+        }
+        
+    }
+    if (indexPath.section == 2) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                FeedBackViewController *feedVC = [[FeedBackViewController alloc] init];
+                [self.navigationController pushViewController:feedVC animated:YES];
+            }
+                break;
+                
+            case 1:
+            {
+                if ([label.text isEqualToString:@"0kb"]) {
+                    [XDTools showTips:@"缓存已清除" toView:self.contentView];
+                }else{
+                    [self clearMemory];
+                }
+                
+            }
+                break;
+            case 2:
+            {
+               
+                
+                appStoreUrl = @"www.baidu.com";
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreUrl]];
+                
+            }
+                break;
+            case 3:
+            {
+               
+                [self updateVerson];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    if (indexPath.section == 3) {
+        AboutViewController *aboutVC = [[AboutViewController alloc] init];
+        [self.navigationController pushViewController:aboutVC animated:YES];
+    }
+    
+}
+
+
+//清理缓存
+
+-(void)clearMemory{
+    dispatch_async(
+                   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                   , ^{
+                       NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                       
+                       NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+                       NSLog(@"files :%d",[files count]);
+                       for (NSString *p in files) {
+                           NSError *error;
+                           NSString *path = [cachPath stringByAppendingPathComponent:p];
+                           if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                               [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+                           }
+                       }
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           [XDTools showProgress:self.view showText:@"正在清理"];
+                           dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                               
+                               sleep(1.0);
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   [XDTools hideProgress:self.view];
+                                   
+                                   label.text=@"0kb";
+                               });
+                           });
+                       });});
+}
+
+
+//获取打分的url
+
+
+- (void)getGradeUrlParms:(NSDictionary *)parms{
+    
+    __weak  ASIHTTPRequest * request =[ASIHTTPRequest requestWithURL:[NSURL URLWithString:API_GRADE]];
+    
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+        
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+        if([[tempDic objectForKey:@"result"]intValue] == 1){
+            
+            appStoreUrl = [tempDic objectForKey:@"appStoreUrl"];
+            
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        
+        
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+    
+    
+    [request startAsynchronous];
+    
+}
+
+
+//版本更新
+-(void)updateVerson{
+    
+    if(![XDTools NetworkReachable]){
+        return;
+    }
+    
+    __weak  ASIHTTPRequest * request =[ASIHTTPRequest requestWithURL:[NSURL URLWithString:API_UPDATEVERSION]];
+    [request setCompletionBlock:^{
+        NSDictionary * tmpDict= [XDTools JSonFromString:[request responseString]];
+        
+        if ([[tmpDict objectForKey:@"result"] intValue] == 1) {
+            NSDictionary * dict =[tmpDict valueForKey:@"ios"];
+            
+            NSString *oldVerson = [[NSString alloc] initWithString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+            
+            NSString *newVerson = [dict valueForKey:@"version"];
+            
+            downUrl = [dict objectForKey:@"url"];
+            cString = [dict objectForKey:@"content"];
+            
+            if ([newVerson isEqualToString:oldVerson]) {
+                [XDTools showTips:@"已是最新版本" toView:self.view];
+            }else{
+                UIAlertView *al = [[UIAlertView alloc] initWithTitle:@"提示" message:cString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+                al.tag = 1000;
+                [al show];
+            }
+        }else{
+            [XDTools showTips:[tmpDict objectForKey:@"msg"] toView:self.view];
+        }
+        
+        
+        
+    }];
+    
+    [request setFailedBlock:^{
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+
+#pragma mark- UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1000){
+        if (buttonIndex == 0) {
+            NSURL *url = [NSURL URLWithString:downUrl];
+            [[UIApplication sharedApplication] openURL:url];
+            
+        }
+    }
+    
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

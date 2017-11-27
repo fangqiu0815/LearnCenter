@@ -1,0 +1,21 @@
+//
+//  WBParams.m
+//  XDLookPic
+//
+//  Created by wanglong8889@126.com on 14-6-2.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "WBParams.h"
+
+@implementation WBParams
+-(id)initWithWbId:(NSString *)aWbId expireTime:(NSString *)aTime wbToken:(NSString *)aToken{
+    self = [super init];
+    if (self) {
+        self.wbId = aWbId;
+        self.wbToken = aToken;
+        self.expireTime = aTime;
+    }
+    return self;
+}
+@end

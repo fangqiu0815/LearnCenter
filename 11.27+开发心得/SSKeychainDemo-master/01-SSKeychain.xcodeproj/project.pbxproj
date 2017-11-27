@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA35B2D41E9CA9BC004C166D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B2D31E9CA9BC004C166D /* main.m */; };
+		BA35B2D71E9CA9BC004C166D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B2D61E9CA9BC004C166D /* AppDelegate.m */; };
+		BA35B2DA1E9CA9BC004C166D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B2D91E9CA9BC004C166D /* ViewController.m */; };
+		BA35B2DD1E9CA9BC004C166D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA35B2DB1E9CA9BC004C166D /* Main.storyboard */; };
+		BA35B2DF1E9CA9BC004C166D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA35B2DE1E9CA9BC004C166D /* Assets.xcassets */; };
+		BA35B2E21E9CA9BC004C166D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA35B2E01E9CA9BC004C166D /* LaunchScreen.storyboard */; };
+		BA35B2ED1E9CA9BC004C166D /* _1_SSKeychainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B2EC1E9CA9BC004C166D /* _1_SSKeychainTests.m */; };
+		BA35B2F81E9CA9BC004C166D /* _1_SSKeychainUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B2F71E9CA9BC004C166D /* _1_SSKeychainUITests.m */; };
+		BA35B3071E9CAA3E004C166D /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = BA35B3061E9CAA3E004C166D /* SSKeychain.m */; };
+		BA35B30A1E9CAA84004C166D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA35B3091E9CAA84004C166D /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA35B2E91E9CA9BC004C166D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA35B2C71E9CA9BC004C166D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA35B2CE1E9CA9BC004C166D;
+			remoteInfo = "01-SSKeychain";
+		};
+		BA35B2F41E9CA9BC004C166D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA35B2C71E9CA9BC004C166D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA35B2CE1E9CA9BC004C166D;
+			remoteInfo = "01-SSKeychain";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA35B2CF1E9CA9BC004C166D /* 01-SSKeychain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "01-SSKeychain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA35B2D31E9CA9BC004C166D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BA35B2D51E9CA9BC004C166D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BA35B2D61E9CA9BC004C166D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BA35B2D81E9CA9BC004C166D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BA35B2D91E9CA9BC004C166D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BA35B2DC1E9CA9BC004C166D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA35B2DE1E9CA9BC004C166D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA35B2E11E9CA9BC004C166D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA35B2E31E9CA9BC004C166D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA35B2E81E9CA9BC004C166D /* 01-SSKeychainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-SSKeychainTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA35B2EC1E9CA9BC004C166D /* _1_SSKeychainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _1_SSKeychainTests.m; sourceTree = "<group>"; };
+		BA35B2EE1E9CA9BC004C166D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA35B2F31E9CA9BC004C166D /* 01-SSKeychainUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "01-SSKeychainUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA35B2F71E9CA9BC004C166D /* _1_SSKeychainUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _1_SSKeychainUITests.m; sourceTree = "<group>"; };
+		BA35B2F91E9CA9BC004C166D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA35B3051E9CAA3E004C166D /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		BA35B3061E9CAA3E004C166D /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		BA35B3091E9CAA84004C166D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		BA35B30B1E9CAC11004C166D /* 01-SSKeychain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "01-SSKeychain.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA35B2CC1E9CA9BC004C166D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA35B30A1E9CAA84004C166D /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2E51E9CA9BC004C166D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2F01E9CA9BC004C166D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA35B2C61E9CA9BC004C166D = {
+			isa = PBXGroup;
+			children = (
+				BA35B3051E9CAA3E004C166D /* SSKeychain.h */,
+				BA35B3061E9CAA3E004C166D /* SSKeychain.m */,
+				BA35B2D11E9CA9BC004C166D /* 01-SSKeychain */,
+				BA35B2EB1E9CA9BC004C166D /* 01-SSKeychainTests */,
+				BA35B2F61E9CA9BC004C166D /* 01-SSKeychainUITests */,
+				BA35B2D01E9CA9BC004C166D /* Products */,
+				BA35B3081E9CAA84004C166D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BA35B2D01E9CA9BC004C166D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B2CF1E9CA9BC004C166D /* 01-SSKeychain.app */,
+				BA35B2E81E9CA9BC004C166D /* 01-SSKeychainTests.xctest */,
+				BA35B2F31E9CA9BC004C166D /* 01-SSKeychainUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA35B2D11E9CA9BC004C166D /* 01-SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B30B1E9CAC11004C166D /* 01-SSKeychain.entitlements */,
+				BA35B2D51E9CA9BC004C166D /* AppDelegate.h */,
+				BA35B2D61E9CA9BC004C166D /* AppDelegate.m */,
+				BA35B2D81E9CA9BC004C166D /* ViewController.h */,
+				BA35B2D91E9CA9BC004C166D /* ViewController.m */,
+				BA35B2DB1E9CA9BC004C166D /* Main.storyboard */,
+				BA35B2DE1E9CA9BC004C166D /* Assets.xcassets */,
+				BA35B2E01E9CA9BC004C166D /* LaunchScreen.storyboard */,
+				BA35B2E31E9CA9BC004C166D /* Info.plist */,
+				BA35B2D21E9CA9BC004C166D /* Supporting Files */,
+			);
+			path = "01-SSKeychain";
+			sourceTree = "<group>";
+		};
+		BA35B2D21E9CA9BC004C166D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B2D31E9CA9BC004C166D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA35B2EB1E9CA9BC004C166D /* 01-SSKeychainTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B2EC1E9CA9BC004C166D /* _1_SSKeychainTests.m */,
+				BA35B2EE1E9CA9BC004C166D /* Info.plist */,
+			);
+			path = "01-SSKeychainTests";
+			sourceTree = "<group>";
+		};
+		BA35B2F61E9CA9BC004C166D /* 01-SSKeychainUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B2F71E9CA9BC004C166D /* _1_SSKeychainUITests.m */,
+				BA35B2F91E9CA9BC004C166D /* Info.plist */,
+			);
+			path = "01-SSKeychainUITests";
+			sourceTree = "<group>";
+		};
+		BA35B3081E9CAA84004C166D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA35B3091E9CAA84004C166D /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA35B2CE1E9CA9BC004C166D /* 01-SSKeychain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA35B2FC1E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychain" */;
+			buildPhases = (
+				BA35B2CB1E9CA9BC004C166D /* Sources */,
+				BA35B2CC1E9CA9BC004C166D /* Frameworks */,
+				BA35B2CD1E9CA9BC004C166D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "01-SSKeychain";
+			productName = "01-SSKeychain";
+			productReference = BA35B2CF1E9CA9BC004C166D /* 01-SSKeychain.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA35B2E71E9CA9BC004C166D /* 01-SSKeychainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA35B2FF1E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychainTests" */;
+			buildPhases = (
+				BA35B2E41E9CA9BC004C166D /* Sources */,
+				BA35B2E51E9CA9BC004C166D /* Frameworks */,
+				BA35B2E61E9CA9BC004C166D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA35B2EA1E9CA9BC004C166D /* PBXTargetDependency */,
+			);
+			name = "01-SSKeychainTests";
+			productName = "01-SSKeychainTests";
+			productReference = BA35B2E81E9CA9BC004C166D /* 01-SSKeychainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA35B2F21E9CA9BC004C166D /* 01-SSKeychainUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA35B3021E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychainUITests" */;
+			buildPhases = (
+				BA35B2EF1E9CA9BC004C166D /* Sources */,
+				BA35B2F01E9CA9BC004C166D /* Frameworks */,
+				BA35B2F11E9CA9BC004C166D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA35B2F51E9CA9BC004C166D /* PBXTargetDependency */,
+			);
+			name = "01-SSKeychainUITests";
+			productName = "01-SSKeychainUITests";
+			productReference = BA35B2F31E9CA9BC004C166D /* 01-SSKeychainUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA35B2C71E9CA9BC004C166D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = wumian;
+				TargetAttributes = {
+					BA35B2CE1E9CA9BC004C166D = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = Z98U24TXF9;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					BA35B2E71E9CA9BC004C166D = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA35B2CE1E9CA9BC004C166D;
+					};
+					BA35B2F21E9CA9BC004C166D = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA35B2CE1E9CA9BC004C166D;
+					};
+				};
+			};
+			buildConfigurationList = BA35B2CA1E9CA9BC004C166D /* Build configuration list for PBXProject "01-SSKeychain" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA35B2C61E9CA9BC004C166D;
+			productRefGroup = BA35B2D01E9CA9BC004C166D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA35B2CE1E9CA9BC004C166D /* 01-SSKeychain */,
+				BA35B2E71E9CA9BC004C166D /* 01-SSKeychainTests */,
+				BA35B2F21E9CA9BC004C166D /* 01-SSKeychainUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA35B2CD1E9CA9BC004C166D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA35B2E21E9CA9BC004C166D /* LaunchScreen.storyboard in Resources */,
+				BA35B2DF1E9CA9BC004C166D /* Assets.xcassets in Resources */,
+				BA35B2DD1E9CA9BC004C166D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2E61E9CA9BC004C166D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2F11E9CA9BC004C166D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA35B2CB1E9CA9BC004C166D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA35B2DA1E9CA9BC004C166D /* ViewController.m in Sources */,
+				BA35B3071E9CAA3E004C166D /* SSKeychain.m in Sources */,
+				BA35B2D71E9CA9BC004C166D /* AppDelegate.m in Sources */,
+				BA35B2D41E9CA9BC004C166D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2E41E9CA9BC004C166D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA35B2ED1E9CA9BC004C166D /* _1_SSKeychainTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA35B2EF1E9CA9BC004C166D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA35B2F81E9CA9BC004C166D /* _1_SSKeychainUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA35B2EA1E9CA9BC004C166D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA35B2CE1E9CA9BC004C166D /* 01-SSKeychain */;
+			targetProxy = BA35B2E91E9CA9BC004C166D /* PBXContainerItemProxy */;
+		};
+		BA35B2F51E9CA9BC004C166D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA35B2CE1E9CA9BC004C166D /* 01-SSKeychain */;
+			targetProxy = BA35B2F41E9CA9BC004C166D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA35B2DB1E9CA9BC004C166D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA35B2DC1E9CA9BC004C166D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA35B2E01E9CA9BC004C166D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA35B2E11E9CA9BC004C166D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA35B2FA1E9CA9BC004C166D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA35B2FB1E9CA9BC004C166D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA35B2FD1E9CA9BC004C166D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "01-SSKeychain/01-SSKeychain.entitlements";
+				DEVELOPMENT_TEAM = Z98U24TXF9;
+				INFOPLIST_FILE = "01-SSKeychain/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychain";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BA35B2FE1E9CA9BC004C166D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "01-SSKeychain/01-SSKeychain.entitlements";
+				DEVELOPMENT_TEAM = Z98U24TXF9;
+				INFOPLIST_FILE = "01-SSKeychain/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychain";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BA35B3001E9CA9BC004C166D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "01-SSKeychainTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychainTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/01-SSKeychain.app/01-SSKeychain";
+			};
+			name = Debug;
+		};
+		BA35B3011E9CA9BC004C166D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "01-SSKeychainTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychainTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/01-SSKeychain.app/01-SSKeychain";
+			};
+			name = Release;
+		};
+		BA35B3031E9CA9BC004C166D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "01-SSKeychainUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychainUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "01-SSKeychain";
+			};
+			name = Debug;
+		};
+		BA35B3041E9CA9BC004C166D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "01-SSKeychainUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wumian.lunbo.-1-SSKeychainUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "01-SSKeychain";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA35B2CA1E9CA9BC004C166D /* Build configuration list for PBXProject "01-SSKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA35B2FA1E9CA9BC004C166D /* Debug */,
+				BA35B2FB1E9CA9BC004C166D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA35B2FC1E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA35B2FD1E9CA9BC004C166D /* Debug */,
+				BA35B2FE1E9CA9BC004C166D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BA35B2FF1E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA35B3001E9CA9BC004C166D /* Debug */,
+				BA35B3011E9CA9BC004C166D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BA35B3021E9CA9BC004C166D /* Build configuration list for PBXNativeTarget "01-SSKeychainUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA35B3031E9CA9BC004C166D /* Debug */,
+				BA35B3041E9CA9BC004C166D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA35B2C71E9CA9BC004C166D /* Project object */;
+}

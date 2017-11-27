@@ -105,39 +105,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self.view addSubview:button];
 
     
-    NSArray *array1 = @[@"1",@"2",@"2",@"4",@"4",@"6"];
     
-    NSMutableArray *array = [NSMutableArray arrayWithArray:array1];
-    
-    NSMutableArray *dateMutablearray = [@[] mutableCopy];
-    for (int i = 0; i < array.count; i ++) {
-        
-        NSString *string = array[i];
-        
-        NSMutableArray *tempArray = [@[] mutableCopy];
-        
-        [tempArray addObject:string];
-        
-        for (int j = i+1; j < array.count; j ++) {
-            
-            NSString *jstring = array[j];
-            
-            if([string isEqualToString:jstring]){
-                
-                [tempArray addObject:jstring];
-                
-                [array removeObjectAtIndex:j];
-                j -= 1;
-                
-            }
-            
-        }
-        
-        [dateMutablearray addObject:tempArray];
-        
-    }
-    
-    NSLog(@"dateMutable:%@",dateMutablearray);
     
    
 }
@@ -419,14 +387,9 @@ static SystemSoundID shake_sound_male_id = 0;
     NSString *str5 = [NSString stringWithFormat:@"%d",result5];
     NSString *str6 = [NSString stringWithFormat:@"%d",result6];
 
+    NSArray *array1 = @[str1,str2,str3,str4,str5,str6];
     
-    
-    
-}
-
-- (void)judgeAwardResult:(NSArray *)array
-{
-    NSMutableArray *array1 = [NSMutableArray arrayWithArray:array];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:array1];
     
     NSMutableArray *dateMutablearray = [@[] mutableCopy];
     for (int i = 0; i < array.count; i ++) {
@@ -445,7 +408,7 @@ static SystemSoundID shake_sound_male_id = 0;
                 
                 [tempArray addObject:jstring];
                 
-                [array1 removeObjectAtIndex:j];
+                [array removeObjectAtIndex:j];
                 j -= 1;
                 
             }
@@ -457,10 +420,40 @@ static SystemSoundID shake_sound_male_id = 0;
     }
     
     NSLog(@"dateMutable:%@",dateMutablearray);
+
+    if (dateMutablearray.count == 6) {
+        
+        resultLab.text = @"对堂";
+        
+    } else if (dateMutablearray.count == 1){
+        
+        if ([dateMutablearray[0] isEqualToString:@"1"]) {
+            resultLab.text = @"对堂";
+
+        }else if ([dateMutablearray[0] isEqualToString:@"2"]){
+            resultLab.text = @"黑六勃";
+
+        }else if ([dateMutablearray[0] isEqualToString:@"4"]){
+            resultLab.text = @"红六勃";
+
+        }else{
+            resultLab.text = @"未中奖";
+
+        }
+        
+    } else {
+        
+        resultLab.text = @"待定";
+
+        
+    }
+    
     
     
     
 }
+
+
 
 
 

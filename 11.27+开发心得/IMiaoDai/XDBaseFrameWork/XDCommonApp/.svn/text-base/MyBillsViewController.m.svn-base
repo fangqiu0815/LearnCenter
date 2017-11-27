@@ -1,0 +1,227 @@
+//
+//  MyBillsViewController.m
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "MyBillsViewController.h"
+#import "UIImageView+WebCache.h"
+#import "MySystemCell.h"
+#import "SingelBillViewController.h"
+@interface MyBillsViewController ()
+
+@end
+
+@implementation MyBillsViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.titleLabel.text = @"我的账单";
+
+    dataDict = [[NSMutableDictionary alloc] initWithDictionary:@{
+                                                                 @"billDate":@"2014-8-10",//账单日期
+                                                                 @"billAmount":@"460",//账单金额
+                                                                 @"overdueFine":@"20",//滞纳金
+                                                                 @"payedAmount":@"230",//已归还金额
+                                                                 @"surplusDays":@"10",//剩余多少天
+                                                                 @"orderList":@[
+                                                                         @{@"orderId":@"223435345",
+                                                                           @"productName" : @"taobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobaotaobao小广告",
+                                                                           @"productPic":@"http://gtms01.alicdn.com/tps/i1/TB1T.b0FVXXXXaAXVXXXK5zTVXX-520-280.png",
+                                                                           @"isOverdue":@"1",//1:逾期，0：不逾期
+                                                                           @"overdueDayCount":@"3",//逾期天数
+                                                                           @"overdueFine":@"20",//滞纳金
+                                                                           @"payedAmount":@"230",//已归还金额
+                                                                           @"periodNum":@"4",//当前是第几期账单
+                                                                           @"payment" : @{
+                                                                                   @"paymentId":@"6",
+                                                                                   @"titel":@"6个月",//分期数
+                                                                                   @"shoufu":@"0",//首付款
+                                                                                   @"yuefu":@"370"//月供金额
+                                                                                   }
+                                                                           }
+                                                                         ]
+                                                                 }];
+
+    myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_MAINSCREEN_HEIGHT - UI_NAVIGATION_BAR_HEIGHT) style:UITableViewStylePlain];
+    myTableView.delegate = self;
+    myTableView.dataSource = self;
+    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    myTableView.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:myTableView];
+
+
+
+}
+
+#pragma mark - TableView DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!indexPath.section) {
+        return 40;
+    }else if (indexPath.section == 1) {
+        return 75;
+    }else{
+        return 40;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (!section) {
+        return 3;
+    }else  if (section == 1) {
+        return [dataDict[@"orderList"] count];
+    }else{
+        return 1;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString * cellIde = @"cell";
+    MySystemCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+    if (cell == nil) {
+        cell = [[MySystemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIde];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+//    cell.textLabel.text = nil;
+//    cell.detailTextLabel.text = nil;
+//    cell.imageView.image = nil;
+    cell.firstLB.font = [UIFont systemFontOfSize:14];
+    cell.secondLB.font = [UIFont systemFontOfSize:13];
+
+    NSString * time = dataDict[@"billDate"];
+    NSString * month = [time componentsSeparatedByString:@"-"][1];
+
+    if (!indexPath.row) {
+        cell.topLine.hidden = NO;
+    }else{
+        cell.topLine.hidden = YES;
+    }
+
+    if (!indexPath.section) {
+        cell.bottomLine.frame = CGRectMake(0, 40-.5f, 320, .5f);
+
+        [cell.firstLB setFrame:CGRectMake(10, 10, 280, 20)];
+        [cell.secondLB setFrame:CGRectMake(250, 10, 150, 20)];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (!indexPath.row) {
+            if ([dataDict[@"overdueFine"] intValue] > 0) {
+                cell.firstLB.text = [NSString stringWithFormat:@"%@月账单：%@元+%@元滞纳金",month,dataDict[@"billAmount"],dataDict[@"overdueFine"]];
+            }else{
+                cell.firstLB.text = [NSString stringWithFormat:@"%@月账单：%@元",month,dataDict[@"billAmount"]];
+            }
+            cell.firstLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[dataDict[@"billAmount"],dataDict[@"overdueFine"]] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:15] AllText:cell.firstLB.text];
+        }else if (indexPath.row == 1) {
+            int needPayStr = [dataDict[@"billAmount"] intValue] + [dataDict[@"overdueFine"] intValue] - [dataDict[@"payedAmount"] intValue];
+            cell.firstLB.text = [NSString stringWithFormat:@"%@月账单已还：%@元，还需还款%d元",month,dataDict[@"payedAmount"],needPayStr];
+            cell.firstLB.attributedText = [XDTools getAcolorfulStringWithText1:dataDict[@"payedAmount"] Color1:UIColorFromRGB(0xfb8f20) Font1:[UIFont systemFontOfSize:15] Text2:[NSString stringWithFormat:@"%d",needPayStr]
+                                                                        Color2:UIColorFromRGB(0xd10000) Font2:[UIFont systemFontOfSize:16] AllText:cell.firstLB.text];
+
+        }else{
+            cell.firstLB.text = [NSString stringWithFormat:@"%@月账单还款日：%@",month,dataDict[@"billDate"]];
+            cell.secondLB.text = [NSString stringWithFormat:@"还有%@天",dataDict[@"surplusDays"]];
+            cell.secondLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[dataDict[@"surplusDays"]] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:15] AllText:cell.secondLB.text];
+
+        }
+    }else if (indexPath.section == 1) {
+
+        cell.bottomLine.frame = CGRectMake(0, 75-.5f, 320, .5f);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.headIV.frame = CGRectMake(10, 10, 55, 55);
+        [cell.firstLB setFrame:CGRectMake(75, 10, 200, 30)];
+
+        NSDictionary * dic = dataDict[@"orderList"][indexPath.row];
+
+        [cell.headIV setImageWithURL:[NSURL URLWithString:dic[@"productPic"]] placeholderImage:[UIImage imageNamed:@"line"]];
+
+        cell.headIV.backgroundColor = [UIColor orangeColor];
+        cell.firstLB.text = dic[@"productName"];
+        [cell.firstLB sizeToFit];
+        if (cell.firstLB.frame.size.height > 40) {
+            [cell.firstLB setFrame:CGRectMake(75, 10, 200, 40)];
+        }
+        [cell.secondLB setFrame:CGRectMake(75, height_y(cell.firstLB), 200, 20)];
+        int mainMoney = [dic[@"overdueFine"] intValue] + [dic[@"payment"][@"yuefu"] intValue];
+        cell.secondLB.text = [NSString stringWithFormat:@"%@月应还%d元，已还%@元",month,mainMoney,dic[@"payedAmount"]];
+        cell.secondLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[[NSString stringWithFormat:@"%d",mainMoney],dic[@"payedAmount"]] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:13] AllText:cell.secondLB.text];
+
+
+    }else if (indexPath.section == 2) {
+        cell.bottomLine.frame = CGRectMake(0, 40-.5f, 320, .5f);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.firstLB.frame = CGRectMake(10, 10, 200, 20);
+        cell.firstLB.text = @"还款历史明细";
+
+    }else{
+        cell.backgroundColor = [UIColor clearColor];
+        cell.topLine.hidden = YES;
+        cell.bottomLine.frame = CGRectMake(0, 80-.5f, 320, 0);
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(10, 0, 300, 40) nomalTitle:@"马上还款" hlTitle:@"马上还款" titleColor:[UIColor whiteColor] bgColor:UIColorFromRGB(0xf28d01) nbgImage:nil hbgImage:nil action:@selector(payNow) target:self buttonTpye:UIButtonTypeCustom];
+        [cell.contentView addSubview:btn];
+    }
+
+    return cell;
+}
+
+#pragma mark - TableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary * dic = dataDict[@"orderList"][indexPath.row];
+    SingelBillViewController * bill = [[SingelBillViewController alloc] init];
+    bill.picStr = dic[@"productPic"];
+    bill.titleStr = dic[@"productName"];
+    bill.payNum = dic[@"payment"][@"titel"];
+    bill.leftDays = dataDict[@"surplusDays"];
+    [self.navigationController pushViewController:bill animated:YES];
+}
+
+
+- (void)payNow{
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

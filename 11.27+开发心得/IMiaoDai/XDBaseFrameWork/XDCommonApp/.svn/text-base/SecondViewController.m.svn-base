@@ -1,0 +1,248 @@
+//
+//  SecondViewController.m
+//  XDCommonApp
+//
+//  Created by XD-XY on 2/12/14.
+//  Copyright (c) 2014 XD-XY. All rights reserved.
+//
+
+#import "SecondViewController.h"
+#import "XDHeader.h"
+#import "XDTools.h"
+#import "UIImageView+WebCache.h"
+#import "LoginViewController.h"
+#import "RegisterViewController.h"
+#import "MyInfoViewController.h"
+#import "MyOrdersViewController.h"
+#import "MyBillsViewController.h"
+#import "MaterialsViewController.h"
+@interface SecondViewController ()
+
+@end
+
+@implementation SecondViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    self.leftBtn.hidden =YES;
+    self.titleLabel.text = @"我的";
+
+    self.contentView.backgroundColor = UIColorFromRGB(0xececec);
+    
+    myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,UI_SCREEN_WIDTH, self.contentView.frame.size.height-UI_TAB_BAR_HEIGHT) style:UITableViewStylePlain];
+    myTableView.delegate =self;
+    myTableView.dataSource = self;
+    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    myTableView.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:myTableView];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!indexPath.section) {
+        return 75;
+    }else{
+        return 40;
+    }
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (!section || section == 3) {
+        return 1;
+    }else{
+        return 2;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * headerBg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, 10)];
+    headerBg.backgroundColor = [UIColor clearColor];
+    return headerBg;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (!indexPath.section) {
+        NSString * cellName = @"cell0";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellName];
+        if (cell == nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+            headerIV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 55, 55)];
+            headerIV.layer.masksToBounds = YES;
+            headerIV.layer.cornerRadius = headerIV.bounds.size.height/2;
+            [cell.contentView addSubview:headerIV];
+
+            loginBtn = [XDTools getAButtonWithFrame:CGRectMake(75,75/2.0f-25/2.0f, 56, 25) nomalTitle:@"登录" hlTitle:@"登录" titleColor:UIColorFromRGB(0xf18d00) bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(login) target:self buttonTpye:UIButtonTypeCustom];
+            loginBtn.layer.borderColor = UIColorFromRGB(0xf18d00).CGColor;
+            loginBtn.layer.borderWidth = .5f;
+            [cell.contentView addSubview:loginBtn];
+
+            registerBtn = [XDTools getAButtonWithFrame:CGRectMake(150,75/2.0f-25/2.0f, 56, 25) nomalTitle:@"注册" hlTitle:@"注册" titleColor:UIColorFromRGB(0xf18d00) bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(gotoRegister) target:self buttonTpye:UIButtonTypeCustom];
+            registerBtn.layer.borderColor = UIColorFromRGB(0xf18d00).CGColor;
+            registerBtn.layer.borderWidth = .5f;
+            [cell.contentView addSubview:registerBtn];
+
+            userinfoLB = [XDTools addAlabelForAView:cell.contentView withText:nil frame:CGRectMake(70,75/2.0f-30/2.0f, 156, 40) font:[UIFont systemFontOfSize:14] textColor:UIColorFromRGB(0x636363)];
+
+
+            UIImageView * line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 74.5f, UI_SCREEN_WIDTH, .5f)];
+            line.image = [UIImage imageNamed:@"line"];
+            [cell.contentView addSubview:line];
+
+        }
+        if (!ISLOGING) {
+            headerIV.image = [UIImage imageNamed:@"miaodai_header"];
+            loginBtn.hidden = NO;
+            registerBtn.hidden = NO;
+            userinfoLB.hidden = YES;
+        }else{
+//            NSString * headImage = [[[NSUserDefaults standardUserDefaults] objectForKey:kMMyUserInfo] objectForKey:@"headImage"];
+//            [headerIV setImageWithURL:[NSURL URLWithString:headImage] placeholderImage:nil];
+            headerIV.image = [UIImage imageNamed:@"Icon_ios7"];
+            loginBtn.hidden = YES;
+            registerBtn.hidden = YES;
+            userinfoLB.hidden = NO;
+            userinfoLB.text = [NSString stringWithFormat:@"喵小贷同学\n%@",[[[NSUserDefaults standardUserDefaults] objectForKey:kMMyUserInfo] objectForKey:@"userName"]];
+
+        }
+
+        return cell;
+    }else{
+        NSString * cellName = @"cell1";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellName];
+        if (cell == nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellName];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.frame = CGRectMake(VIEW_POINT_MAX_X(cell.imageView), 10, 150, 20);
+            cell.textLabel.font = [UIFont systemFontOfSize:15];
+
+            if (indexPath.section == 1) {
+                if (!indexPath.row) {
+                    cell.imageView.frame = CGRectMake(10, 12.5f, 29/2.0f, 30/2.0f);
+                    cell.imageView.image = [UIImage imageNamed:@"dingdanIcon"];
+                    cell.textLabel.text = @"我的订单";
+                }else{
+                    cell.imageView.frame = CGRectMake(10, 12.5f, 29/2.0f, 30/2.0f);
+                    cell.imageView.image = [UIImage imageNamed:@"zhangdanIcon"];
+                    cell.textLabel.text = @"我的账单";
+                }
+            }else if (indexPath.section == 2){
+                if (!indexPath.row) {
+                    cell.imageView.frame = CGRectMake(10, 12.5f, 29/2.0f, 30/2.0f);
+                    cell.imageView.image = [UIImage imageNamed:@"ziliaoIcon"];
+                    cell.textLabel.text = @"我的资料";
+                }else{
+                    cell.imageView.frame = CGRectMake(10, 9.5f, 29/2.0f, 41/2.0f);
+                    cell.imageView.image = [UIImage imageNamed:@"addressIcon"];
+                    cell.textLabel.text = @"收货地址";
+                }
+            }else{
+                UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(10, 0, 300, 40) nomalTitle:@"退出" hlTitle:@"退出" titleColor:UIColorFromRGB(0x636363) bgColor:UIColorFromRGB(0xcbcbcb) nbgImage:nil hbgImage:nil action:@selector(quit) target:self buttonTpye:UIButtonTypeCustom];
+                btn.tag = 181240;
+                [cell.contentView addSubview:btn];
+
+                cell.backgroundColor = [UIColor clearColor];
+
+                if (!ISLOGING) {
+                    btn.hidden = YES;
+                }
+            }
+
+            if (indexPath.section != 3) {
+                UIImageView * line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 39.5f, UI_SCREEN_WIDTH, .5f)];
+                line.image = [UIImage imageNamed:@"line"];
+                [cell.contentView addSubview:line];
+
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+
+            
+        }
+
+        UIButton * btn = (UIButton *)[self.contentView viewWithTag:181240];
+        if (ISLOGING) {
+            btn.hidden = NO;
+        }else{
+            btn.hidden = YES;
+        }
+        return cell;
+    }
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!ISLOGING) {
+        return;
+    }else{
+        if (!indexPath.section) {
+            MyInfoViewController * change = [[MyInfoViewController alloc] init];
+            [self.navigationController pushViewController:change animated:YES];
+        }else if (indexPath.section == 1) {
+            if (!indexPath.row) {
+                MyOrdersViewController * orders = [[MyOrdersViewController alloc] init];
+                [self.navigationController pushViewController:orders animated:YES];
+            }else{
+                MyBillsViewController * bills = [[MyBillsViewController alloc] init];
+                [self.navigationController pushViewController:bills animated:YES];
+            }
+        }else if (indexPath.section == 2) {
+            if (!indexPath.row) {
+                MaterialsViewController * ziliao = [[MaterialsViewController alloc] init];
+                ziliao.type = @"2";
+                [self.navigationController pushViewController:ziliao animated:YES];
+            }
+        }
+    }
+}
+
+- (void)login{
+    LoginViewController * login = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:login animated:YES];
+}
+
+- (void)gotoRegister{
+    RegisterViewController * registerVC = [[RegisterViewController alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+- (void)quit{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMMyUserInfo];
+    [XDTools showTips:@"退出成功" toView:self.contentView];
+    [myTableView reloadData];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [myTableView reloadData];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

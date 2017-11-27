@@ -1,0 +1,26 @@
+//
+//  LoginViewController.h
+//  XDCommonApp
+//
+//  Created by XD-WangLong on 2/13/14.
+//  Copyright (c) 2014 XD-WangLong. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+#import"TencentOpenAPI/TencentOAuth.h"
+#import "WeiboSDK.h"
+
+
+@interface LoginViewController : XDBaseViewController<UITextFieldDelegate,TencentSessionDelegate,WBHttpRequestDelegate,UIScrollViewDelegate,WeiboSDKDelegate>
+{
+    UITextField *userNameField;
+    UITextField *passWordField;
+    UIScrollView *mScrollView;
+    
+    TencentOAuth *_tencentOAuth;
+}
+
+@property (nonatomic,strong) NSArray *permissions;
+
+@end

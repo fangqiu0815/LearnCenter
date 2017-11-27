@@ -1,0 +1,27 @@
+//
+//  GoodsDetailViewController.h
+//  XDCommonApp
+//
+//  Created by maboyi on 14-7-29.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+#import "XYScrollView.h"
+#import "XDShareView.h"
+#import "UMSocial.h"
+
+@interface GoodsDetailViewController : XDBaseViewController<XYScrollViewDelegate,XDShareViewDelegate,UMSocialDataDelegate,UMSocialUIDelegate>
+{
+    UIScrollView * backScrollView;
+    XYScrollView * banner;
+    UILabel * showLB;
+    NSString * price;
+    NSString * months;
+    NSMutableArray * priceArray;
+    NSMutableArray * monthArray;
+    BOOL isFirst;
+}
+@property (nonatomic,strong)XDShareView * shareView;
+@property (nonatomic,copy) NSString * goodsId;
+@end

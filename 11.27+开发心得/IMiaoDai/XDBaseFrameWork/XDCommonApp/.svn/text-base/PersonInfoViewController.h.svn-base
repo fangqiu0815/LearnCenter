@@ -1,0 +1,43 @@
+//
+//  PersonInfoViewController.h
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-6.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface PersonInfoViewController : XDBaseViewController<UIScrollViewDelegate,UITextFieldDelegate>
+{
+    UIScrollView * backScrollView;
+
+    UIButton * maleBtn;
+    UIButton * femaleBtn;
+    UIButton * classmateBtn;
+    UIButton * familyBtn;
+    UIButton * friendBtn;
+    UIButton * othersBtn;
+
+    NSMutableArray * relationBtnArray;
+
+    UITextField * nameTF;
+    UITextField * humanCardTF;
+    UITextField * QQTF;
+    UITextField * schoolNameTF;
+    UITextField * zhuanyeTF;
+    UITextField * schoolAddressTF;
+    UITextField * goSchoolTimeTF;
+    UITextField * xuezhiTF;
+    UITextField * relationNameTF;
+    UITextField * relationPhoneTF;
+    UITextField * familyAddressTF;
+    UITextField * familyPhoneTF;
+
+    
+
+    BOOL isFirstResponse;
+}
+@property (nonatomic,strong) NSMutableDictionary * infoDict;
+@property (nonatomic,strong) NSMutableDictionary * errorDict;
+@end

@@ -1,0 +1,21 @@
+//
+//  FetterViewController.h
+//  XDLookPic
+//
+//  Created by wanglong8889@126.com on 14-6-2.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+#import "WBParams.h"
+@interface FetterViewController : XDBaseViewController<UIScrollViewDelegate,UITextFieldDelegate>{
+    UIScrollView *mScrollView;
+}
+@property (nonatomic,strong) NSString *type;
+@property (nonatomic,strong) UITextField *userTf;
+@property (nonatomic,strong) UITextField *passWordTf;
+@property (nonatomic,strong) NSString *openId;
+@property (nonatomic,strong) WBParams *wbparams;
+
+-(void)fetterWithData;
+@end

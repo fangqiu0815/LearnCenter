@@ -1,0 +1,83 @@
+//
+//  OrderListCell.m
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "OrderListCell.h"
+#import "UIImageView+WebCache.h"
+@implementation OrderListCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (void)getDataWithDict:(NSDictionary *)dict{
+
+    self.firstLine.frame = CGRectMake(0, 0, 320, .5f);
+    self.scondLine.frame = CGRectMake(0, 75, 320, .5f);
+    self.thirdLine.frame = CGRectMake(0, 115, 320, .5f);
+    self.fourthLine.frame = CGRectMake(0, 155, 320, .5f);
+    self.fifthLine.frame = CGRectMake(0, 194.5f, 320, .5f);
+
+
+    if(dict){
+        [self.headIv setImageWithURL:[NSURL URLWithString:dict[@"pic"]] placeholderImage:nil];
+
+        self.goodsTitleLB.text = dict[@"productName"];
+        self.goodsTitleLB.textColor = UIColorFromRGB(0x363636);
+
+        self.canshuLB.text = dict[@"tag"];
+        self.canshuLB.textColor = UIColorFromRGB(0x686868);
+
+        self.bianhaoLB.text = [NSString stringWithFormat:@"订单编号:%@",dict[@"orderId"]];
+        self.bianhaoLB.textColor = UIColorFromRGB(0x686868);
+
+
+        NSString * shoufu = [NSString stringWithFormat:@"%@",dict[@"payment"][@"shoufu"]];
+        NSString * fenqi = [NSString stringWithFormat:@"%@",dict[@"payment"][@"titel"]];
+        NSString * yuegong = [NSString stringWithFormat:@"%@",dict[@"payment"][@"yuefu"]];
+        self.fenqiLB.text = [NSString stringWithFormat:@"分期:%@首付,分%@期,月供%@元",shoufu,fenqi,yuegong];
+        self.fenqiLB.textColor = UIColorFromRGB(0x686868);
+        self.fenqiLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[shoufu,fenqi,yuegong] Color:UIColorFromRGB(0xfa8800) Font:[UIFont systemFontOfSize:14] AllText:self.fenqiLB.text];
+
+        NSArray * statusArray = @[@"订单提交",@"审核中",@"审核未通过",@"商家已发货",@"商品已签收",@"拒收"];
+        self.statusLB.text = [NSString stringWithFormat:@"状态:%@",statusArray[[dict[@"status"] intValue]]];
+        if ([dict[@"status"] intValue] == 3) {
+            self.checkGoodsBtn.hidden = NO;
+            self.statusLB.textColor = UIColorFromRGB(0x079937);
+        }else{
+            self.checkGoodsBtn.hidden = NO;
+            self.statusLB.textColor = UIColorFromRGB(0xd10000);
+        }
+        self.statusLB.attributedText = [XDTools getAcolorfulStringWithText1:@"状态:" Color1:UIColorFromRGB(0x686868) Font1:[UIFont systemFontOfSize:14] Text2:nil Color2:nil Font2:nil AllText:self.statusLB.text];
+
+        self.timeLB.text = [[dict[@"createTime"] componentsSeparatedByString:@" "] firstObject];
+        self.timeLB.textColor = UIColorFromRGB(0x686868);
+
+
+    }
+
+
+}
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

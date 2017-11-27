@@ -1,0 +1,13 @@
+//
+//  AboutViewController.h
+//  XDLookPic
+//
+//  Created by maboyi on 14-5-29.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface AboutViewController : XDBaseViewController
+
+@end

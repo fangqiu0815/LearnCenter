@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+
+target 'Weibo11' do
+pod 'CocoaLumberjack'
+pod 'Masonry'
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'SVProgressHUD'
+pod 'pop'
+end

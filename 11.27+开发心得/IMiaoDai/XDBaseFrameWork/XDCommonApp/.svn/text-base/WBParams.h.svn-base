@@ -1,0 +1,17 @@
+//
+//  WBParams.h
+//  XDLookPic
+//
+//  Created by wanglong8889@126.com on 14-6-2.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface WBParams : NSObject
+@property (nonatomic,strong) NSString *wbId;
+@property (nonatomic,strong) NSString *expireTime;
+@property (nonatomic,strong) NSString *wbToken;
+
+-(id)initWithWbId:(NSString *)aWbId expireTime:(NSString *)aTime wbToken:(NSString *)aToken;
+@end

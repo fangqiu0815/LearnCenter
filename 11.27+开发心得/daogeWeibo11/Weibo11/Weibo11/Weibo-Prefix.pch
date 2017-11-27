@@ -1,0 +1,30 @@
+//
+//  Weibo-Prefix.pch
+//  Weibo11
+//
+//  Created by 刘凡 on 15/12/5.
+//  Copyright © 2015年 itheima. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+
+#pragma mark - 头文件
+#import <Masonry/Masonry.h>
+#import "HMUserAccountViewModel.h"
+#import "HMExtensions.h"
+#import "HMNetworkTools.h"
+
+#pragma mark - CocoaLumberjack
+#define LOG_LEVEL_DEF ddLogLevel
+#import <CocoaLumberjack/CocoaLumberjack.h>
+static const DDLogLevel ddLogLevel = DDLogLevelAll;
+
+#pragma mark - 常用函数
+/// 根据指定的 RGB 创建 UIColor
+#define RGB(r, g, b) ([UIColor colorWithRed:(r / 255.0) green:(g / 255.0) blue:(b / 255.0) alpha:1.0])
+/// 创建随机颜色
+#define RandomColor (RGB(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256)))
+
+#endif

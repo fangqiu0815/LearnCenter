@@ -1,0 +1,373 @@
+//
+//  GoodsDetailViewController.m
+//  XDCommonApp
+//
+//  Created by maboyi on 14-7-29.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "GoodsDetailViewController.h"
+#import "GoodsBuyerViewController.h"
+#import "ConfirmOrderViewController.h"
+@interface GoodsDetailViewController ()
+
+@end
+
+@implementation GoodsDetailViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	
+    self.titleLabel.text = @"商品详情";
+
+    priceArray = [[NSMutableArray alloc] initWithObjects:@"200",@"250",@"300",@"350", nil];
+    monthArray = [[NSMutableArray alloc] initWithObjects:@"3",@"6",@"9",@"12",@"15",@"18", nil];
+
+    self.shareView = [[XDShareView alloc]initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT)];
+    _shareView.delegate = self;
+    [self.view addSubview:_shareView];
+
+    float h = 0;
+    if (IOS7) {
+        h = 20;
+    }
+
+    UIImageView * shareIV = [[UIImageView alloc] initWithFrame:CGRectMake(280, h+9.5, 25, 25)];
+    shareIV.image = [UIImage imageNamed:@"shareBtn_img"];
+    [self.navigationBarView addSubview:shareIV];
+
+    UIButton * shareBtn = [XDTools getAButtonWithFrame:CGRectMake(270, h, 50, 44) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(shareBtnClick) target:self buttonTpye:UIButtonTypeCustom];
+    [self.navigationBarView addSubview:shareBtn];
+
+
+    backScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_MAINSCREEN_HEIGHT-UI_NAVIGATION_BAR_HEIGHT-60)];
+    backScrollView.backgroundColor = [UIColor clearColor];
+    backScrollView.contentSize = CGSizeMake(UI_SCREEN_WIDTH, 1000);
+    [self.contentView addSubview:backScrollView];
+    
+    banner = [[XYScrollView alloc] initPageScrollView:CGRectMake(0, 0, UI_SCREEN_WIDTH, 220) pageControllerFrame:CGRectMake(120, 205, 100, 10) backgroudImage:nil pageNumber:PAGESCROLLVIEWNUMBER];
+    banner.delegate = self;
+    [backScrollView addSubview:banner];
+
+    [self createViews];
+
+    [self getDataWithPageNum:@"1" api:API_GETDETAILINFO];
+}
+
+- (void)createViews{
+    
+    if (ISREQUSETIMAGE){
+        //图片来源于网络
+        NSArray * imageUrlArray = @[@"http://app.lgmi.com/upload/1.png",
+                                    @"http://app.lgmi.com/upload/2.png",
+                                    @"http://app.lgmi.com/upload/4.png",
+                                    @"http://app.lgmi.com/upload/7.png",
+                                    ];
+        [banner setTheImageUrlArray:imageUrlArray andplaceholderImage:PAGEDEFAULTIAMGE];
+    }else{
+        //图片来源于本地
+        NSArray * imageArray = [[NSArray alloc] initWithObjects:PAGESCROLLVIEWIMAGE1,PAGESCROLLVIEWIMAGE2,PAGESCROLLVIEWIMAGE3,PAGESCROLLVIEWIMAGE4,nil];
+        [banner setTheImageArray:imageArray];
+    }
+    
+    UIView * bg1 = [self getBgViewWithFrame:CGRectMake(0, 220, UI_SCREEN_WIDTH, 70)];
+    UILabel * nameLB = [XDTools addAlabelForAView:bg1 withText:@"iOS……iOS……iOS……iOS……iOS……iOS……iOS……iOS……iOS……iOS……iOS" frame:CGRectMake(10, 5, 280, 35) font:[UIFont systemFontOfSize:15] textColor:[UIColor blackColor]];
+    nameLB.numberOfLines = 0;
+    [nameLB sizeToFit];
+    
+    UILabel * vipPriceLB = [XDTools addAlabelForAView:bg1 withText:@"¥4800" frame:CGRectMake(10, height_y(nameLB)+10, 70, 20) font:[UIFont boldSystemFontOfSize:17] textColor:[UIColor orangeColor]];
+    UILabel * normalLB = [XDTools addAlabelForAView:bg1 withText:@"¥5000" frame:CGRectMake(90, height_y(nameLB)+12, 70, 16) font:[UIFont systemFontOfSize:14] textColor:[UIColor blackColor]];
+    [normalLB sizeToFit];
+    UILabel * label = [XDTools addAlabelForAView:bg1 withText:@"" frame:CGRectMake(85, height_y(normalLB)-9.5f, normalLB.frame.size.width+10, 1) font:[UIFont systemFontOfSize:14] textColor:[UIColor blackColor]];
+    label.backgroundColor = [UIColor blackColor];
+    [XDTools addAlabelForAView:bg1 withText:@"109位同学已购买" frame:CGRectMake(190, height_y(nameLB)+10, 110, 20) font:[UIFont systemFontOfSize:14] textColor:[UIColor blackColor]];
+    bg1.frame = CGRectMake(0, 220, UI_SCREEN_WIDTH, height_y(vipPriceLB)+3);
+    UIImageView * line1 = (UIImageView *)[bg1 viewWithTag:45601];
+    line1.frame = CGRectMake(0, bg1.frame.size.height-.5f, UI_SCREEN_WIDTH, .5f);
+
+    
+    
+    //规格
+    UIView * bg2 = [self getBgViewWithFrame:CGRectMake(0, height_y(bg1)+10, UI_SCREEN_WIDTH, 90)];
+    float height = 0;
+
+    [self getGuiGeCellOnView:bg2 offY:height title:@"版本:" contentArray:@[@"灰色，8G，联通版",@"灰色，16G，联通版",@"灰色，32G，联通版",@"灰色，64G，联通版"] type:2];
+
+    UIImageView * line2 = (UIImageView *)[bg2 viewWithTag:45601];
+    line2.frame = CGRectMake(0, bg2.frame.size.height-.5f, UI_SCREEN_WIDTH, .5f);
+//    UIView * bg2 = [self getBgViewWithFrame:CGRectMake(0, height_y(bg1)+10, UI_SCREEN_WIDTH, 90)];
+//    float height = 0;
+//    
+//    height = [self getGuiGeCellOnView:bg2 offY:height title:@"颜色:" contentArray:@[@"深空灰",@"土豪金",@"葡萄紫",@"木耳黑"]];
+//    height = [self getGuiGeCellOnView:bg2 offY:height title:@"内存:" contentArray:@[@"8GB",@"16GB",@"32GB",@"64GB"]];
+//    height = [self getGuiGeCellOnView:bg2 offY:height title:@"版本:" contentArray:@[@"移动版",@"联通版",@"开放版"]];
+//    UIImageView * line2 = (UIImageView *)[bg2 viewWithTag:45601];
+//    line2.frame = CGRectMake(0, bg2.frame.size.height-.5f, UI_SCREEN_WIDTH, .5f);
+
+    //分期
+    UIView * bg3 = [self getBgViewWithFrame:CGRectMake(0, height_y(bg2)+10, UI_SCREEN_WIDTH, 90)];
+    [self getGuiGeCellOnView:bg3 offY:0 title:@"分期:" contentArray:@[@"3期",@"6期",@"9期",@"12期",@"15期",@"18期"] type:1];
+    UIImageView * line3 = (UIImageView *)[bg3 viewWithTag:45601];
+    line3.frame = CGRectMake(0, bg3.frame.size.height-.5f, UI_SCREEN_WIDTH, .5f);
+
+
+    //图文详情+购买该商品的人
+    UIView * bg4 = [self getBgViewWithFrame:CGRectMake(0, height_y(bg3)+10, UI_SCREEN_WIDTH, 88)];
+    NSArray * nameArr = @[@"图文详情",@"购买该商品的同学"];
+    for (int i = 0; i < 2; i++) {
+
+        [XDTools addAlabelForAView:bg4 withText:nameArr[i] frame:CGRectMake(12, 12+i*44, 200, 20) font:[UIFont systemFontOfSize:16] textColor:[UIColor blackColor]];
+        UIImageView * arrowIV = [[UIImageView alloc] initWithFrame:CGRectMake(302, 13+44*i, 15, 18)];
+        arrowIV.image = [UIImage imageNamed:@"arrow"];
+        [bg4 addSubview:arrowIV];
+
+        UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(0, i*44, 320, 44) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(cellDidClicked:) target:self buttonTpye:UIButtonTypeCustom];
+        btn.tag = 766200 + i;
+        [bg4 addSubview:btn];
+    }
+
+    UIImageView * line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44, 320, .5f)];
+    line.image = [UIImage imageNamed:@"line"];
+    [bg4 addSubview:line];
+
+    backScrollView.contentSize = CGSizeMake(UI_SCREEN_WIDTH, height_y(bg4) + 20);
+
+
+    //底部view
+    UIView * bottomBg = [[UIView alloc] initWithFrame:CGRectMake(0, UI_MAINSCREEN_HEIGHT - UI_NAVIGATION_BAR_HEIGHT - 60, UI_SCREEN_WIDTH, 60)];
+    bottomBg.backgroundColor = RGBA(236, 236, 236, 1);
+    [self.contentView addSubview:bottomBg];
+
+//    lastGuiGeBtn = [XDTools getAButtonWithFrame:CGRectMake(10, 10, 145, 40) nomalTitle:@"0首付，340x12期" hlTitle:@"0首付，340x12期" titleColor:[UIColor blackColor] bgColor:[UIColor whiteColor] nbgImage:nil hbgImage:nil action:<#(SEL)#> target:<#(id)#> buttonTpye:<#(UIButtonType)#>]
+    showLB = [XDTools addAlabelForAView:bottomBg withText:@"0首付" frame:CGRectMake(10, 10, 145, 40) font:[UIFont systemFontOfSize:15] textColor:RGBA(102, 102, 102, 1)];
+
+    showLB.attributedText = [XDTools getAcolorfulStringWithText1:@"340" Color1:[UIColor orangeColor] Font1:[UIFont systemFontOfSize:15] Text2:nil Color2:nil Font2:nil AllText:showLB.text];
+    showLB.backgroundColor = [UIColor clearColor];
+    showLB.textAlignment = NSTextAlignmentCenter;
+    UIButton * payBtn = [XDTools getAButtonWithFrame:CGRectMake(165, 10, 145, 40) nomalTitle:@"立即购买" hlTitle:@"立即购买" titleColor:[UIColor whiteColor] bgColor:[UIColor orangeColor] nbgImage:nil hbgImage:nil action:@selector(pay) target:self buttonTpye:UIButtonTypeCustom];
+    [bottomBg addSubview:payBtn];
+
+}
+
+- (UIView *)getBgViewWithFrame:(CGRect)frame{
+    UIView * bgView = [[UIView alloc] initWithFrame:frame];
+    bgView.backgroundColor = [UIColor whiteColor];
+    for (int i = 0; i < 2; i++) {
+        UIImageView * lineIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, i*(frame.size.height-.5f), UI_SCREEN_WIDTH, .5f)];
+        lineIV.image = [UIImage imageNamed:@"line"];
+        lineIV.tag = 45600+i;
+        [bgView addSubview:lineIV];
+    }
+    [backScrollView addSubview:bgView];
+    return bgView;
+}
+
+- (float)getGuiGeCellOnView:(UIView *)bg2 offY:(float)height title:(NSString *)title contentArray:(NSArray *)array type:(int)type{
+    if (type == 1) {
+        UILabel * lb1 = [XDTools addAlabelForAView:bg2 withText:title frame:CGRectMake(15, 13+height, 35, 20) font:[UIFont systemFontOfSize:15] textColor:[UIColor blackColor]];
+        for (int i = 0; i < array.count; i++) {
+            UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(lb1.frame.origin.x+lb1.frame.size.width+20+(i%3)*80, i/3*30+13+height, 60, 20) nomalTitle:array[i] hlTitle:array[i] titleColor:UIColorFromRGB(0x666666) bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(chooseMonths:) target:self buttonTpye:UIButtonTypeCustom];
+            btn.tag = 786600+i;
+            btn.titleLabel.font = [UIFont systemFontOfSize:14];
+            btn.layer.borderWidth = 1;
+            btn.layer.borderColor = UIColorFromRGB(0xcbcbcb).CGColor;
+            [bg2 addSubview:btn];
+        }
+
+        UIImageView * lineIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, (array.count-1)/3*30+height+45, UI_SCREEN_WIDTH, .5f)];
+        lineIV.image = [UIImage imageNamed:@"line"];
+        //    lineIV.backgroundColor = [UIColor redColor];
+        [bg2 addSubview:lineIV];
+
+        CGRect frame = bg2.frame;
+        bg2.frame = CGRectMake(0, frame.origin.y, UI_SCREEN_WIDTH, height_y(lineIV));
+        
+        return height_y(lineIV);
+    }else{
+        UILabel * lb1 = [XDTools addAlabelForAView:bg2 withText:title frame:CGRectMake(15, 17+height, 35, 20) font:[UIFont systemFontOfSize:15] textColor:[UIColor blackColor]];
+        for (int i = 0; i < array.count; i++) {
+            UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(lb1.frame.origin.x+lb1.frame.size.width+20, i*40+13+height, 200, 30) nomalTitle:array[i] hlTitle:array[i] titleColor:UIColorFromRGB(0x666666) bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(chooseGuiGe:) target:self buttonTpye:UIButtonTypeCustom];
+            btn.tag = 786700+i;
+            btn.titleLabel.font = [UIFont systemFontOfSize:14];
+            btn.layer.borderWidth = 1;
+            btn.layer.borderColor = UIColorFromRGB(0xcbcbcb).CGColor;
+            [bg2 addSubview:btn];
+        }
+
+        UIImageView * lineIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, array.count*40+height+15, UI_SCREEN_WIDTH, .5f)];
+        lineIV.image = [UIImage imageNamed:@"line"];
+        //    lineIV.backgroundColor = [UIColor redColor];
+        [bg2 addSubview:lineIV];
+
+        CGRect frame = bg2.frame;
+        bg2.frame = CGRectMake(0, frame.origin.y, UI_SCREEN_WIDTH, height_y(lineIV));
+        
+        return height_y(lineIV);
+    }
+
+}
+
+- (void)getDataWithPageNum:(NSString *)page api:(NSString *)api{
+    if ([XDTools NetworkReachable])
+    {
+
+        NSDictionary * dic = @{@"productId": _goodsId};
+
+        ASIHTTPRequest *request = [XDTools postRequestWithDict:dic API:api];
+
+        __weak ASIHTTPRequest * mrequest = request;
+
+        [request setCompletionBlock:^{
+
+            [XDTools hideProgress:self.contentView];
+
+            NSDictionary *tempDic = [XDTools  JSonFromString:[mrequest responseString]];
+
+            if ([[tempDic objectForKey:@"result"] intValue] == 0)
+            {
+
+            }
+            else
+            {
+                [XDTools showTips:[tempDic objectForKey:@"msg"] toView:self.view];
+
+            }
+        }];
+
+        [request setFailedBlock:^{
+            
+            [XDTools hideProgress:self.contentView];
+            NSError *error = [mrequest error];
+            DDLOG_CURRENT_METHOD;
+            DDLOG(@"error=%@",error);
+            if (mrequest.error.code == 2) {
+                [XDTools showTips:@"网络请求超时" toView:self.view];
+            }
+        }];
+        if (isFirst) {
+            [XDTools showProgress:self.contentView];
+            isFirst = NO;
+        }
+        [request startAsynchronous];
+
+    }
+    else
+    {
+        [XDTools showTips:brokenNetwork toView:self.view];
+
+    }
+    
+}
+
+
+- (void)cellDidClicked:(UIButton *)sender{
+    if (sender.tag == 766200) {
+        //图文详情
+    }else if (sender.tag == 766201) {
+        //购买该商品的同学
+        GoodsBuyerViewController * buyer = [[GoodsBuyerViewController alloc] init];
+        [self.navigationController pushViewController:buyer animated:YES];
+    }
+}
+
+- (void)chooseGuiGe:(UIButton *)sender{
+    price = priceArray[sender.tag - 786700];
+    for (UIButton * btn in sender.superview.subviews) {
+        if ([btn isKindOfClass:[UIButton class]]) {
+            btn.layer.borderWidth = 1;
+            btn.layer.borderColor = UIColorFromRGB(0xcbcbcb).CGColor;
+            [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
+        }
+    }
+    sender.layer.borderWidth = 1;
+    sender.layer.borderColor = [UIColor orangeColor].CGColor;
+    [sender setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+
+    if (months.length) {
+        showLB.text = [NSString stringWithFormat:@"0首付,￥%@x%@期",price,months];
+        showLB.attributedText = [XDTools getAcolorfulStringWithText1:price Color1:[UIColor orangeColor] Font1:[UIFont systemFontOfSize:17] Text2:nil Color2:nil Font2:nil AllText:showLB.text];
+    }
+}
+
+- (void)chooseMonths:(UIButton *)sender{
+    months = monthArray[sender.tag - 786600];
+    for (UIButton * btn in sender.superview.subviews) {
+        if ([btn isKindOfClass:[UIButton class]]) {
+            btn.layer.borderWidth = 1;
+            btn.layer.borderColor = UIColorFromRGB(0xcbcbcb).CGColor;
+            [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
+        }
+    }
+    sender.layer.borderWidth = 1;
+    sender.layer.borderColor = [UIColor orangeColor].CGColor;
+    [sender setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+
+    if (price.length) {
+        showLB.text = [NSString stringWithFormat:@"0首付,￥%@x%@期",price,months];
+        showLB.attributedText = [XDTools getAcolorfulStringWithText1:price Color1:[UIColor orangeColor] Font1:[UIFont systemFontOfSize:17] Text2:nil Color2:nil Font2:nil AllText:showLB.text];
+    }
+}
+
+- (void)pay{
+    if (!price.length) {
+        [XDTools showTips:@"请选择版本类型" toView:self.contentView];
+        return;
+    }
+    if (!months.length) {
+        [XDTools showTips:@"请选择分期类型" toView:self.contentView];
+        return;
+    }
+
+    ConfirmOrderViewController * confirm = [[ConfirmOrderViewController alloc] init];
+    confirm.months = months;
+    confirm.price = price;
+    [self.navigationController pushViewController:confirm animated:YES];
+}
+
+
+-(void)gestureClick:(UITapGestureRecognizer *)sender
+{
+    DDLOG_CURRENT_METHOD;
+    UIImageView * imageView =(UIImageView *)[banner.myScrollView viewWithTag:sender.view.tag];
+    
+    //这里就写跳到下一的代码....imageView.tag-image_tag
+    DDLOG(@"imageView.tag = %d",imageView.tag);
+}
+
+#pragma mark ================分享按钮点击===================
+-(void)shareBtnClick
+{
+    [_shareView setViewShow];
+    DDLOG_CURRENT_METHOD;
+}
+
+#pragma mark ===============xdshareview delegate==========
+-(void)shareViewBtnCLick:(UIButton *)button
+{
+    if (button.tag == 1001){
+        [[UMSocialControllerService defaultControllerService] setShareText:@"新丝路/自由行/参团游from新浪微博" shareImage:[UIImage imageNamed:@"Icon"] socialUIDelegate:self];
+        [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina].snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
+    }else{
+        //朋友圈分享
+        [[UMSocialControllerService defaultControllerService] setShareText:@"新丝路/自由行/参团游from朋友圈" shareImage:[UIImage imageNamed:@"Icon"] socialUIDelegate:self];
+        [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatTimeline].snsClickHandler(self,[UMSocialControllerService defaultControllerService],YES);
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

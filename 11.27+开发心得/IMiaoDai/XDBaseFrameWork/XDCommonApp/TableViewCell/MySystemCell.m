@@ -1,0 +1,47 @@
+//
+//  MySystemCell.m
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-12.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "MySystemCell.h"
+
+@implementation MySystemCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        _topLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"line"]];
+        _topLine.frame = CGRectMake(0, 0, 320, .5f);
+        [self.contentView addSubview:_topLine];
+
+        _bottomLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"line"]];
+        [self.contentView addSubview:_bottomLine];
+
+        _headIV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 55, 55)];
+//        _headIV.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"headerPlaceholder"]];
+        [self.contentView addSubview:_headIV];
+
+        _firstLB = [XDTools addAlabelForAView:self.contentView withText:nil frame:CGRectMake(0, 0, 0, 0) font:[UIFont systemFontOfSize:15] textColor:UIColorFromRGB(0x626262)];
+        _firstLB.numberOfLines = 0;
+        _secondLB = [XDTools addAlabelForAView:self.contentView withText:nil frame:CGRectMake(0, 0, 0, 0) font:[UIFont systemFontOfSize:13] textColor:UIColorFromRGB(0x6c6c6c)];
+        }
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

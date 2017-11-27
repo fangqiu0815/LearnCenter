@@ -1,0 +1,292 @@
+//
+//  ZhengJianUploadViewController.m
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-7.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "ZhengJianUploadViewController.h"
+
+@implementation ZhengJianUploadViewController
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    self.titleLabel.text = @"个人信息";
+
+    backScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_MAINSCREEN_HEIGHT - UI_NAVIGATION_BAR_HEIGHT)];
+    backScrollView.contentSize = CGSizeMake(UI_SCREEN_WIDTH, 780);
+    backScrollView.pagingEnabled = NO;
+    backScrollView.delegate = self;
+    [self.contentView addSubview:backScrollView];
+
+    bg1 = [self createBgViewWithNumber:3 titleArray:@[@"身份证正面",@"身份证背面",@"手持身份证正面照片"] y:10 labelWidth:150];
+    bg2 = [self createBgViewWithNumber:1 titleArray:@[@"学生证"] y:height_y(bg1)+10 labelWidth:150];
+
+    NSArray * nameArray = @[@"身份证上传说明：请参照以下样式拍摄上传",@"学生证上传说明：请参照以下样式拍摄上传"];
+    for (int i = 0; i < 2; i++) {
+        UILabel * label1 = [XDTools addAlabelForAView:backScrollView withText:nameArray[i] frame:CGRectMake(10,height_y(bg2)+10+200*i,300,20) font:[UIFont systemFontOfSize:14] textColor:UIColorFromRGB(0x8d8d8d)];
+        UIImageView * IV = [[UIImageView alloc] initWithFrame:CGRectMake(10, height_y(label1), 300, 175)];
+        IV.backgroundColor = [UIColor orangeColor];
+        [backScrollView addSubview:IV];
+    }
+
+    backScrollView.contentSize = CGSizeMake(UI_SCREEN_WIDTH, 600);
+//    UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(10, height_y(bg2)+10, 300, 40) nomalTitle:@"保存" hlTitle:@"保存" titleColor:[UIColor whiteColor] bgColor:UIColorFromRGB(0xf18d00) nbgImage:nil hbgImage:nil action:@selector(save) target:self buttonTpye:UIButtonTypeCustom];
+//    [backScrollView addSubview:btn];
+}
+
+- (UIView *)createBgViewWithNumber:(int)number titleArray:(NSArray *)titleArray y:(float)height labelWidth:(float)width{
+    UIView * bgView = [[UIView alloc] initWithFrame:CGRectMake(0, height+10, UI_SCREEN_WIDTH, 35*number)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    [backScrollView addSubview:bgView];
+
+    UIImageView * line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, .5f)];
+    line.image = [UIImage imageNamed:@"line"];
+    [bgView addSubview:line];
+
+    for (int i = 0; i < number; i++) {
+        UIImageView * line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 35*(i+1)-.5f, UI_SCREEN_WIDTH, .5f)];
+        line.image = [UIImage imageNamed:@"line"];
+        [bgView addSubview:line];
+    }
+
+
+    for (int i = 0; i < number; i++) {
+        UILabel * label = [XDTools addAlabelForAView:bgView withText:titleArray[i] frame:CGRectMake(10, 7.5f+35*i, width, 20) font:[UIFont systemFontOfSize:14] textColor:UIColorFromRGB(0x8d8d8d)];
+        label.textAlignment = NSTextAlignmentLeft;
+        //        label.backgroundColor = [UIColor orangeColor];
+
+        UIImageView * greenIV = [[UIImageView alloc] initWithFrame:CGRectMake(215, 11+35*i, 107/2.0f, 27/2.0f)];
+        greenIV.image = [UIImage imageNamed:@"fk06"];
+        greenIV.tag = 873600+i;
+        greenIV.hidden = YES;
+        [bgView addSubview:greenIV];
+
+        UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(265, 7+35*i, 50, 20) nomalTitle:@"请上传" hlTitle:@"请上传" titleColor:UIColorFromRGB(0xc60203) bgColor:[UIColor clearColor] nbgImage:nil hbgImage:nil action:@selector(chooseImage:) target:self buttonTpye:UIButtonTypeCustom];
+        btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        btn.tag = 783400+i;
+        [bgView addSubview:btn];
+
+    }
+    
+    return bgView;
+}
+
+- (void)chooseImage:(UIButton *)sender{
+    switch (sender.tag - 783400) {
+        case 0:
+        {
+            if (sender.superview.bounds.size.height > 40) {
+                [XDTools showTips:@"身份证正面" toView:self.contentView];
+                uploadStr = @"1";
+            }else{
+                [XDTools showTips:@"学生证" toView:self.contentView];
+                uploadStr = @"4";
+            }
+        }
+            break;
+        case 1:
+        {
+            [XDTools showTips:@"身份证背面" toView:self.contentView];
+            uploadStr = @"2";
+        }
+            break;
+        case 2:
+        {
+            [XDTools showTips:@"手持身份证正面照片" toView:self.contentView];
+            uploadStr = @"3";
+        }
+            break;
+
+        default:
+            break;
+    }
+    UIActionSheet * alertAction = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选择", nil];
+    alertAction.tag = 100003;
+    [alertAction showInView:self.view];
+}
+
+
+#pragma mark xuan ze zhao pian de dai li
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
+
+    CGSize imagesize = image.size;
+    imagesize.height =626;
+    imagesize.width =413;
+    image = [self imageWithImage:image scaledToSize:imagesize];
+    NSData *imageData = UIImageJPEGRepresentation(image,0.00001);
+
+    //http://bbs.chinapet.com/plugin.php?id=leepet_thread:api&action=changePic
+
+    NSDictionary *dict=[[NSUserDefaults standardUserDefaults]objectForKey:kMMyUserInfo];
+
+
+
+    NSArray * keyArr = @[@"identityPic1",@"identityPic2",@"identityPic3",@"studentCard"];
+
+    NSString * keyStr = keyArr[uploadStr.intValue-1];
+
+
+    NSDictionary * dic = @{@"uid": dict[@"uid"],
+                           @"token":dict[@"token"],
+                           @"userName":dict[@"userName"]};
+
+
+    ASIFormDataRequest *request = [XDTools postRequestWithDict:dict Data:imageData imageKey:keyStr API:API_UPDATEUSERPIC];
+
+
+    //[[ASIFormDataRequest alloc]initWithURL:[NSURL URLWithString:requestUrl]];
+    //    [request setPostValue:@"leepet_thread:api" forKey:@"uid"];
+    //    [request setPostValue:@"changePic" forKey:@"action"];
+    //    [request setPostValue:[dict objectForKey:@"uid"]forKey:@"uid"];
+    //
+    //    [request addData:imageData withFileName:@"KKK" andContentType:@"image/jpeg" forKey:@"img"];
+    //
+    //    [request setRequestMethod:@"POST"];
+    //    [request setTimeOutSeconds:12];
+    //    [request setDelegate:self];
+    //    [request setDidFinishSelector:@selector(requestFinishedReturned:)];
+    //    [request setDidFailSelector:@selector(requestFinishedReturnedFailed:)];
+
+
+
+
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+
+        DDLOG(@"dic   ===    %@",tempDic);
+
+
+
+        if([[tempDic objectForKey:@"result"]intValue] == 0){
+
+            //图片状态显示成功
+            if (uploadStr.intValue < 4) {
+                UIImageView * greenIcon = (UIImageView *)[bg1 viewWithTag:873600+uploadStr.intValue-1];
+                greenIcon.hidden = NO;
+
+                UIButton * btn = (UIButton *)[bg1 viewWithTag:783400+uploadStr.intValue-1];
+                [btn setTitle:@"修改" forState:UIControlStateNormal];
+                [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
+
+            }else{
+                UIImageView * greenIcon = (UIImageView *)[bg2 viewWithTag:873600];
+                greenIcon.hidden = NO;
+
+                UIButton * btn = (UIButton *)[bg2 viewWithTag:783400];
+                [btn setTitle:@"修改" forState:UIControlStateNormal];
+                [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
+            }
+
+            [XDTools showTips:@"修改头像成功" toView:self.view];
+            [self performSelector:@selector(backPrePage) withObject:nil afterDelay:1];
+
+        }else{
+            [XDTools showTips:tempDic[@"msg"] toView:self.view];
+
+        }
+    }];
+
+    [request setFailedBlock:^{
+
+        [XDTools hideProgress:self.view];
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+    
+    
+    
+    [request startAsynchronous];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+
+
+//    if([self respondsToSelector:@selector(requestFinishedReturned:)]){
+
+
+
+
+
+//    }
+}
+-(void)requestFinishedReturned:(id)senser{
+
+    DDLOG(@"chenggong");
+}
+-(void)requestFinishedReturnedFailed:(id)sender{
+    DDLOG(@"shibai");
+}
+//对图片尺寸进行压缩--
+-(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    // End the context
+    UIGraphicsEndImageContext();
+
+    // Return the new image.
+    return newImage;
+}
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+//
+//}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:^{
+
+    }];
+}
+
+
+#pragma mark UIActionSheet Delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex ==0){
+        [self choseImageWithTypeCameraTypePhotoLibrary:UIImagePickerControllerSourceTypeCamera];
+    }else if(buttonIndex == 1){
+        [self choseImageWithTypeCameraTypePhotoLibrary:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+}
+- (void)actionSheetCancel:(UIActionSheet *)actionSheet{
+
+}
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet{
+
+}
+- (void)didPresentActionSheet:(UIActionSheet *)actionSheet{
+
+
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+
+}-(void)choseImageWithTypeCameraTypePhotoLibrary:(UIImagePickerControllerSourceType)type{
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+
+    imagePicker.delegate =self;
+    imagePicker.sourceType = type;
+
+    imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
+    imagePicker.allowsEditing =YES;
+    [self presentViewController:imagePicker animated:YES completion:^{
+
+    }];
+}
+
+
+
+
+@end

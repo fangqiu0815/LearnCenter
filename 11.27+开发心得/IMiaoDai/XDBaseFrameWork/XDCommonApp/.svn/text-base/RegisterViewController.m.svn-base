@@ -1,0 +1,419 @@
+//
+//  XRRegistViewController.m
+//  XDLookPic
+//
+//  Created by xiaorui on 14-4-21.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "RegisterViewController.h"
+#include "XDTools.h"
+#import "UserInfo.h"
+#import "FetterViewController.h"
+
+
+@interface RegisterViewController (){
+    
+    UIButton *agreedBnt;
+    UIButton *regbnt;
+}
+@end
+
+@implementation RegisterViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    self.titleLabel.text =@"注册";
+    
+}
+
+//手势处理
+-(void)handleSingleTapFrom{
+    [nameTextFiel resignFirstResponder];
+    [passwordTextFiel resignFirstResponder];
+    [secPassWordTextFiel resignFirstResponder];
+    [emailTextFiel resignFirstResponder];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self initRegisterViews];
+    
+    
+    
+}
+//初始化注册view
+-(void)initRegisterViews{
+    mScrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT -UI_STATUS_BAR_HEIGHT -UI_STATUS_BAR_HEIGHT)];
+    mScrollView.contentSize=CGSizeMake(UI_SCREEN_WIDTH, UI_SCREEN_HEIGHT -UI_STATUS_BAR_HEIGHT );
+    mScrollView.scrollEnabled =YES;
+    mScrollView.delegate = self;
+    mScrollView.showsVerticalScrollIndicator = NO;
+    [self.contentView addSubview:mScrollView];
+    
+    UITapGestureRecognizer* singleRecognizer;
+    singleRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapFrom)];
+    singleRecognizer.numberOfTapsRequired = 1; // 单击
+    [mScrollView addGestureRecognizer:singleRecognizer];
+    
+    
+    
+    
+    UIImageView *bgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 24, UI_SCREEN_WIDTH, 44 *4 +4)];
+    bgView.backgroundColor =[UIColor whiteColor];
+    bgView.userInteractionEnabled =YES;
+    bgView.image =[UIImage imageNamed:@"regist.png"];
+    [mScrollView addSubview:bgView];
+    
+    UIImageView *imageView1=[[UIImageView alloc]initWithFrame:CGRectMake (15,13,31/2,18)];
+    imageView1.image =[UIImage imageNamed:@"useName.png"];
+    imageView1.backgroundColor =[UIColor clearColor];
+    [bgView addSubview:imageView1];
+    nameTextFiel =creatXRTextField(@"请输入手机号", CGRectMake(44,5,150,39));
+    nameTextFiel.delegate =self;
+    nameTextFiel.font = [UIFont systemFontOfSize:15];
+    nameTextFiel.returnKeyType = UIReturnKeyDone;
+    nameTextFiel.borderStyle= UITextBorderStyleNone;
+    [bgView addSubview:nameTextFiel];
+    UIImageView *lineImageView=[[UIImageView alloc]initWithFrame:CGRectMake(44, 43, UI_SCREEN_WIDTH, 1)];
+    lineImageView.backgroundColor =[UIColor clearColor];
+    lineImageView.image =[UIImage imageNamed:@"line@2x.png"];
+    [bgView addSubview:lineImageView];
+
+    UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(VIEW_POINT_MAX_X(nameTextFiel)+20, 10, 80, 24) nomalTitle:@"获取验证码" hlTitle:@"获取验证码" titleColor:[UIColor whiteColor] bgColor:UIColorFromRGB(0xf18d00) nbgImage:nil hbgImage:nil action:@selector(getCode) target:self buttonTpye:UIButtonTypeCustom];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [bgView addSubview:btn];
+
+
+    UIImageView *emailImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 60, 18,12)];
+    [emailImageView setBackgroundColor:[UIColor clearColor]];
+    [emailImageView setImage:[UIImage imageNamed:@"mail.png"]];
+    [bgView addSubview:emailImageView];
+    emailTextFiel =creatXRTextField(@"请输入验证码", CGRectMake(44,50, 260, 39));
+    emailTextFiel.borderStyle= UITextBorderStyleNone;
+    emailTextFiel.delegate = self;
+    emailTextFiel.font = [UIFont systemFontOfSize:15];
+    emailTextFiel.returnKeyType = UIReturnKeyDone;
+    [bgView addSubview:emailTextFiel];
+    
+    
+    UIImageView *passImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, VIEW_POINT_MAX_Y(emailTextFiel) +11, 33/2.0f, 37/2.0f)];
+    [passImageView setBackgroundColor:[UIColor clearColor]];
+    [passImageView setImage:[UIImage imageNamed:@"passdWord"]];
+    [bgView addSubview:passImageView];
+    passwordTextFiel =creatXRTextField(@"请输入密码,6-16位字符", CGRectMake(44,44 *2 +6, 260, 39));
+    passwordTextFiel.borderStyle= UITextBorderStyleNone;
+    passwordTextFiel.secureTextEntry =YES;
+    passwordTextFiel.delegate = self;
+    passwordTextFiel.font = [UIFont systemFontOfSize:15];
+    passwordTextFiel.returnKeyType = UIReturnKeyDone;
+    [bgView addSubview:passwordTextFiel];
+    UIImageView *lineImageView2=[[UIImageView alloc]initWithFrame:CGRectMake(44, 44*2-1, UI_SCREEN_WIDTH, 1)];
+    lineImageView2.image =[UIImage imageNamed:@"line@2x.png"];
+    [bgView addSubview:lineImageView2];
+    
+    
+    
+    UIImageView *secPassImageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, VIEW_POINT_MAX_Y(passwordTextFiel) +10, 33/2.0f, 37/2.0f)];
+    [secPassImageView setBackgroundColor:[UIColor clearColor]];
+    [secPassImageView setImage:[UIImage imageNamed:@"passdWord"]];
+    [bgView addSubview:secPassImageView];
+    secPassWordTextFiel =creatXRTextField(@"重复密码", CGRectMake(44,44 *3 +4, 260, 40));
+    secPassWordTextFiel.borderStyle= UITextBorderStyleNone;
+    secPassWordTextFiel.secureTextEntry =YES;
+    secPassWordTextFiel.delegate = self;
+    secPassWordTextFiel.font = [UIFont systemFontOfSize:15];
+    secPassWordTextFiel.returnKeyType = UIReturnKeyDone;
+    [bgView addSubview:secPassWordTextFiel];
+    UIImageView *lineImageView3=[[UIImageView alloc]initWithFrame:CGRectMake(44, 44*3-1, UI_SCREEN_WIDTH, 1)];
+    lineImageView3.image =[UIImage imageNamed:@"line@2x.png"];
+    //    lineImageView.backgroundColor =[UIColor clearColor];
+    [bgView addSubview:lineImageView3];
+    
+
+
+    agreedBnt = [XDTools getAButtonWithFrame:CGRectMake(10, VIEW_POINT_MAX_Y(bgView) +18, 25, 25) nomalTitle:nil hlTitle:nil titleColor:nil bgColor:[UIColor clearColor] nbgImage:@"agreement_desel" hbgImage:@"agreement_desel" action:@selector(agreedButtonClick:) target:self buttonTpye:UIButtonTypeCustom];
+    [agreedBnt setBackgroundImage:[UIImage imageNamed:@"agreement_sel"] forState:UIControlStateSelected];
+    agreedBnt.selected = YES;
+    [mScrollView addSubview:agreedBnt];
+
+
+
+    UILabel *label = creatXRLable(@"我已阅读并同意《喵贷注册协议》", CGRectMake(VIEW_POINT_MAX_X(agreedBnt)-3,VIEW_POINT_MIN_Y(agreedBnt)- 2,250,20));
+    label.textColor = RGBA(159, 159, 159, 1);
+    label.font = [UIFont systemFontOfSize:14.0];
+    label.attributedText = [XDTools getAcolorfulStringWithText1:@"《喵贷注册协议》" Color1:[UIColor blueColor] Font1:[UIFont systemFontOfSize:14.0] Text2:nil Color2:nil Font2:nil AllText:label.text];
+    label.textAlignment =NSTextAlignmentLeft;
+    [mScrollView addSubview:label];
+
+
+    regbnt=creatXRButton(CGRectMake(10, VIEW_POINT_MAX_Y(label) +20, UI_SCREEN_WIDTH -20, 44),nil,nil,nil);
+    [regbnt setTitle:@"注册" forState:UIControlStateNormal];
+    [regbnt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    regbnt.backgroundColor = UIColorFromRGB(0xf18d00);
+    [regbnt addTarget:self action:@selector(registButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [mScrollView addSubview:regbnt];
+    
+
+}
+
+#pragma mark BUTTON SEL
+-(void)agreedButtonClick:(UIButton *)sender{
+    agreedBnt.selected = !agreedBnt.selected;
+    if (agreedBnt.selected) {
+        regbnt.enabled = YES;
+    }else{
+        regbnt.enabled = NO;
+    }
+
+}
+-(void)registButtonClick:(UIButton *)sender{
+    if (!IS_NOT_EMPTY(nameTextFiel.text)||!IS_NOT_EMPTY(passwordTextFiel.text)||!IS_NOT_EMPTY(secPassWordTextFiel.text)||!IS_NOT_EMPTY(emailTextFiel.text)) {
+        [XDTools showTips:@"注册信息不能为空" toView:self.contentView];
+    }else{
+        NSString *userName = nameTextFiel.text;
+        NSString *passWord = [passwordTextFiel.text MD5Hash];
+        
+        
+        if([passwordTextFiel.text isEqualToString:secPassWordTextFiel.text]){
+            NSDictionary *dic = @{@"userName":userName,
+                                  @"password":passWord,
+                                  @"smsToken":smsToken,
+                                  @"verifyCode":emailTextFiel.text};
+
+            [self getDataWithStr:@"1" parms:dic];
+
+//            NSUserDefaults * def = [NSUserDefaults standardUserDefaults];
+//            [def setObject:dic forKey:kMMyUserInfo];
+//            [XDTools showTips:@"注册成功" toView:self.contentView];
+//            [self.navigationController popViewControllerAnimated:YES];
+//
+//
+//            [self theKeyboardTextHide];
+        }else{
+            [XDTools showTips:@"两次密码不一致" toView:self.contentView];
+        }
+    }
+    
+    
+}
+- (void)getDataWithStr:(NSString *)type  parms:(NSDictionary *)parms{
+    
+    __block  ASIFormDataRequest *request = [XDTools postRequestWithDict:parms API:API_REGISTER];
+    
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+        
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+        if([[tempDic objectForKey:@"result"]intValue] == 0){
+
+            NSString * uid = tempDic[@"data"][@"uid"];
+            NSDictionary * dict = @{@"uid": uid,
+                                    @"userName":nameTextFiel.text,
+                                    @"password":passwordTextFiel.text};
+
+            NSUserDefaults * userDef = [NSUserDefaults standardUserDefaults];
+            [userDef setObject:dict forKey:kMMyUserInfo];
+            [userDef synchronize];
+            [XDTools showTips:@"注册成功" toView:self.view];
+
+            [self performSelector:@selector(backPrePage) withObject:nil afterDelay:1];
+
+            
+        }else{
+            [XDTools showTips:tempDic[@"msg"] toView:self.view];
+            
+        }
+    }];
+    
+    [request setFailedBlock:^{
+        
+        [XDTools hideProgress:self.view];
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+    
+    [XDTools showProgress:self.view];
+    [request startAsynchronous];
+    
+}
+
+- (void)getCode{
+    
+
+    if (nameTextFiel.text.length != 11) {
+        [XDTools showTips:@"您输入的手机号格式不正确" toView:self.contentView];
+        return;
+    }
+
+    if (![XDTools NetworkReachable]){
+        [XDTools showTips:brokenNetwork toView:self.view];
+
+        return;
+    }
+
+    NSDictionary * dic = @{@"phone": nameTextFiel.text,
+                           @"smsFmtId":@"123456"};
+
+    __block  ASIFormDataRequest *request = [XDTools postRequestWithDict:dic API:API_GETVERTICAL];
+
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+        if([[tempDic objectForKey:@"result"]intValue] == 0){
+
+            [XDTools showTips:tempDic[@"data"][@"verifyCode"] toView:self.contentView];
+            smsToken = tempDic[@"data"][@"smsToken"];
+
+        }else{
+            [XDTools showTips:tempDic[@"msg"] toView:self.view];
+
+        }
+    }];
+
+    [request setFailedBlock:^{
+
+        [XDTools hideProgress:self.view];
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+
+    [XDTools showProgress:self.view];
+    [request startAsynchronous];
+
+}
+
+
+- (void)getLogin{
+    
+    NSDictionary *dic2 = @{@"id":@"leepet_thread:api",@"action":@"login",@"username":nameTextFiel.text,@"password":passwordTextFiel.text};
+    
+    __weak  ASIHTTPRequest *request = [XDTools getRequestWithDict:dic2 API:@"plugin.php"];
+    
+    [request setCompletionBlock:^{
+        [XDTools hideProgress:self.view];
+        
+        NSDictionary *tempDic = [XDTools  JSonFromString:[request responseString]];
+        DDLOG(@"temdic == %@",tempDic);
+        
+        if([[tempDic objectForKey:@"result"]intValue] == 1){
+           
+            NSDictionary *subDict=[tempDic objectForKey:@"userinfo"];
+            NSUserDefaults *userDef=[NSUserDefaults standardUserDefaults];
+            
+            
+            [userDef setObject:subDict forKey:kMMyUserInfo];
+            [userDef synchronize];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
+        }else{
+            [XDTools showTips:[tempDic objectForKey:@"msg"] toView:self.view];
+           
+        }
+        
+    }];
+    
+    [request setFailedBlock:^{
+        
+        [XDTools hideProgress:self.view];
+        NSError *error = [request error];
+        DDLOG(@"error=%@",error);
+    }];
+    
+    [XDTools showProgress:self.view];
+    [request startAsynchronous];
+    
+}
+
+
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self theKeyboardTextHide];
+}
+-(void)theKeyboardTextHide{
+    [nameTextFiel resignFirstResponder];
+    [passwordTextFiel resignFirstResponder];
+    [secPassWordTextFiel resignFirstResponder];
+    [emailTextFiel resignFirstResponder];
+    
+}
+#pragma mark 重写父类的方法
+- (void)backPrePage
+{
+   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+   
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (!iPhone5) {
+        if (textField == passwordTextFiel) {
+            [UIView animateWithDuration:0.6 animations:^{
+                mScrollView.contentOffset = CGPointMake(0, 40);
+                [passwordTextFiel becomeFirstResponder];
+            }];
+        }else if (textField == secPassWordTextFiel) {
+            [UIView animateWithDuration:0.6 animations:^{
+                mScrollView.contentOffset = CGPointMake(0, 80);
+                [secPassWordTextFiel becomeFirstResponder];
+            }];
+        }else if (textField == emailTextFiel) {
+            [UIView animateWithDuration:0.6 animations:^{
+                mScrollView.contentOffset = CGPointMake(0, 120);
+                [emailTextFiel becomeFirstResponder];
+            }];
+        }
+        
+    }
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [UIView animateWithDuration:.3 animations:^{
+        mScrollView.contentOffset = CGPointMake(0, 0);
+    }];
+    return YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [emailTextFiel resignFirstResponder];
+    [nameTextFiel resignFirstResponder];
+    [passwordTextFiel resignFirstResponder];
+    [secPassWordTextFiel resignFirstResponder];
+}
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+@end

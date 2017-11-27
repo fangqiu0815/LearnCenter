@@ -1,0 +1,21 @@
+//
+//  ZhengJianUploadViewController.h
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-7.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface ZhengJianUploadViewController : XDBaseViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate,UIActionSheetDelegate>
+{
+    UIScrollView * backScrollView;
+    UIImagePickerController * imagePickerView;
+    NSString * uploadStr;
+    UIView * bg1;
+    UIView * bg2;
+}
+@property (nonatomic,strong) NSMutableDictionary * infoDict;
+@property (nonatomic,strong) NSMutableDictionary * errorDict;
+@end

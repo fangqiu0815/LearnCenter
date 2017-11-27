@@ -1,0 +1,204 @@
+//
+//  SingelBillViewController.m
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-12.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "SingelBillViewController.h"
+#import "MySystemCell.h"
+#import "UIImageView+WebCache.h"
+@interface SingelBillViewController ()
+
+@end
+
+@implementation SingelBillViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.titleLabel.text = @"我的账单";
+
+    dataArray = [[NSMutableArray alloc] initWithArray:@[@{
+        @"periodNum":@"4",//当前是第几期账单
+        @"billDate":@"2014-10-5",//账单日期
+        @"billAmount":@"230",//账单金额
+        @"overdueDayCount":@"3",//逾期天数
+        @"overdueFine":@"20",//滞纳金
+        @"status":@"1",//0：未还，1：还了部分款项，2：已还
+        @"payedAmount":@"230",//已归还金额
+    }]];
+
+    myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_WIDTH, UI_MAINSCREEN_HEIGHT - UI_NAVIGATION_BAR_HEIGHT) style:UITableViewStylePlain];
+    myTableView.delegate = self;
+    myTableView.dataSource = self;
+    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    myTableView.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:myTableView];
+
+
+
+}
+
+#pragma mark - TableView DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (!indexPath.section) {
+        return 75;
+    }else if (indexPath.section == 1) {
+        return 40;
+    }else{
+        return 40;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 1) {
+        return 3;
+    }else{
+        return 1;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString * cellIde = @"cell";
+    MySystemCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIde];
+    if (cell == nil) {
+        cell = [[MySystemCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIde];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    //    cell.textLabel.text = nil;
+    //    cell.detailTextLabel.text = nil;
+    //    cell.imageView.image = nil;
+    NSDictionary * dic = dataArray[0];
+
+    cell.firstLB.font = [UIFont systemFontOfSize:14];
+    cell.secondLB.font = [UIFont systemFontOfSize:13];
+
+    NSString * time = dic[@"billDate"];
+    NSString * month = [time componentsSeparatedByString:@"-"][1];
+
+    if (!indexPath.row) {
+        cell.topLine.hidden = NO;
+    }else{
+        cell.topLine.hidden = YES;
+    }
+
+    if (!indexPath.section) {
+
+        cell.bottomLine.frame = CGRectMake(0, 75-.5f, 320, .5f);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.headIV.frame = CGRectMake(10, 10, 55, 55);
+        [cell.firstLB setFrame:CGRectMake(75, 10, 200, 30)];
+
+        [cell.headIV setImageWithURL:[NSURL URLWithString:dic[@"productPic"]] placeholderImage:[UIImage imageNamed:@"line"]];
+
+        cell.headIV.backgroundColor = [UIColor orangeColor];
+        cell.firstLB.text = dic[@"productName"];
+        [cell.firstLB sizeToFit];
+        if (cell.firstLB.frame.size.height > 40) {
+            [cell.firstLB setFrame:CGRectMake(75, 10, 200, 40)];
+        }
+        [cell.secondLB setFrame:CGRectMake(75, height_y(cell.firstLB), 200, 20)];
+        cell.secondLB.text = [NSString stringWithFormat:@"%@元X%@期",dic[@"billAmount"],_payNum];
+        cell.secondLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[dic[@"billAmount"]] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:13] AllText:cell.secondLB.text];
+
+    }else if (indexPath.section == 1) {
+
+        cell.bottomLine.frame = CGRectMake(0, 40-.5f, 320, .5f);
+
+        [cell.firstLB setFrame:CGRectMake(10, 10, 280, 20)];
+        [cell.secondLB setFrame:CGRectMake(250, 10, 150, 20)];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (!indexPath.row) {
+            if ([dic[@"overdueFine"] intValue] > 0) {
+                cell.firstLB.text = [NSString stringWithFormat:@"%@月账单：%@元+%@元滞纳金",month,dic[@"billAmount"],dic[@"overdueFine"]];
+            }else{
+                cell.firstLB.text = [NSString stringWithFormat:@"%@月账单：%@元",month,dic[@"billAmount"]];
+            }
+            cell.firstLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[dic[@"billAmount"],dic[@"overdueFine"]] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:15] AllText:cell.firstLB.text];
+        }else if (indexPath.row == 1) {
+            int needPayStr = [dic[@"billAmount"] intValue] + [dic[@"overdueFine"] intValue] - [dic[@"payedAmount"] intValue];
+            cell.firstLB.text = [NSString stringWithFormat:@"%@月账单已还：%@元，还需还款%d元",month,dic[@"payedAmount"],needPayStr];
+            cell.firstLB.attributedText = [XDTools getAcolorfulStringWithText1:dic[@"payedAmount"] Color1:UIColorFromRGB(0xfb8f20) Font1:[UIFont systemFontOfSize:15] Text2:[NSString stringWithFormat:@"%d",needPayStr]
+                                                                        Color2:UIColorFromRGB(0xd10000) Font2:[UIFont systemFontOfSize:16] AllText:cell.firstLB.text];
+
+        }else{
+            cell.firstLB.text = [NSString stringWithFormat:@"%@月账单还款日：%@",month,dic[@"billDate"]];
+            cell.secondLB.text = [NSString stringWithFormat:@"还有%@天",_leftDays];
+            cell.secondLB.attributedText = [XDTools getAcolorfulStringWithTextArray:@[_leftDays] Color:UIColorFromRGB(0xfb8f20) Font:[UIFont systemFontOfSize:15] AllText:cell.secondLB.text];
+            
+        }
+
+
+    }else if (indexPath.section == 2) {
+        cell.bottomLine.frame = CGRectMake(0, 40-.5f, 320, .5f);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.firstLB.frame = CGRectMake(10, 10, 200, 20);
+        cell.firstLB.text = @"还款历史明细";
+
+    }else{
+        cell.backgroundColor = [UIColor clearColor];
+        cell.topLine.hidden = YES;
+        cell.bottomLine.frame = CGRectMake(0, 80-.5f, 320, 0);
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UIButton * btn = [XDTools getAButtonWithFrame:CGRectMake(10, 0, 300, 40) nomalTitle:@"马上还款" hlTitle:@"马上还款" titleColor:[UIColor whiteColor] bgColor:UIColorFromRGB(0xf28d01) nbgImage:nil hbgImage:nil action:@selector(payNow) target:self buttonTpye:UIButtonTypeCustom];
+        [cell.contentView addSubview:btn];
+    }
+
+    return cell;
+}
+
+#pragma mark - TableView Delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+}
+
+
+- (void)payNow{
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

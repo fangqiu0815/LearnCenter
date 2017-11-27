@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="PYSearchResourceCell">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtX-ER-mgr">
+                        <rect key="frame" x="15" y="10" width="354" height="30"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lvf-Qh-pLe">
+                        <rect key="frame" x="15" y="50" width="13" height="13"/>
+                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="NEk-gQ-4LF"/>
+                            <constraint firstAttribute="height" constant="13" id="YuA-td-sDy"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DME-a0-oio">
+                        <rect key="frame" x="33" y="49" width="341" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell-content-line" translatesAutoresizingMaskIntoConstraints="NO" id="GWR-IQ-8af">
+                        <rect key="frame" x="15" y="73" width="369" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="YOR-lh-xUG"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RtX-ER-mgr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ENX-NH-xLR"/>
+                    <constraint firstItem="DME-a0-oio" firstAttribute="leading" secondItem="Lvf-Qh-pLe" secondAttribute="trailing" constant="5" id="Gcp-c4-HYy"/>
+                    <constraint firstItem="RtX-ER-mgr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Gkm-bR-hdg"/>
+                    <constraint firstItem="GWR-IQ-8af" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="XIz-rm-1IO"/>
+                    <constraint firstItem="DME-a0-oio" firstAttribute="centerY" secondItem="Lvf-Qh-pLe" secondAttribute="centerY" id="fwb-YV-Mzb"/>
+                    <constraint firstItem="Lvf-Qh-pLe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="nQC-W5-CaS"/>
+                    <constraint firstAttribute="bottom" secondItem="GWR-IQ-8af" secondAttribute="bottom" constant="0.5" id="oHa-1l-hyo"/>
+                    <constraint firstAttribute="trailing" secondItem="RtX-ER-mgr" secondAttribute="trailing" constant="15" id="oTO-Ih-Igb"/>
+                    <constraint firstAttribute="trailing" secondItem="GWR-IQ-8af" secondAttribute="trailing" id="qGV-LX-xaW"/>
+                    <constraint firstAttribute="trailing" secondItem="DME-a0-oio" secondAttribute="trailing" constant="10" id="v3U-EB-HMJ"/>
+                    <constraint firstItem="Lvf-Qh-pLe" firstAttribute="top" secondItem="RtX-ER-mgr" secondAttribute="bottom" constant="10" id="yBl-T7-wwb"/>
+                    <constraint firstAttribute="bottom" secondItem="DME-a0-oio" secondAttribute="bottom" constant="10" id="z8J-UN-4XN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="indicatorView" destination="Lvf-Qh-pLe" id="vwh-W4-81T"/>
+                <outlet property="relateLabel" destination="DME-a0-oio" id="UCS-Dc-nvX"/>
+                <outlet property="titleLabel" destination="RtX-ER-mgr" id="maS-H4-O0o"/>
+                <outlet property="typeView" destination="Lvf-Qh-pLe" id="fUk-pl-0zS"/>
+            </connections>
+            <point key="canvasLocation" x="-264" y="-68"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cell-content-line" width="299" height="1"/>
+    </resources>
+</document>

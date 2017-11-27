@@ -1,0 +1,31 @@
+//
+//  ConfirmOrderViewController.h
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-4.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface ConfirmOrderViewController : XDBaseViewController<UITextFieldDelegate,UITextViewDelegate,UIScrollViewDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
+{
+    UIScrollView * backScrollView;
+    UIImageView * headIV;
+    UILabel * titleLB;
+    UILabel * canshuLB;
+    UILabel * payTypeLB;
+
+    UITextField * nameTF;
+    UITextField * phoneTF;
+    UIButton * cityBtn;
+    UITextView * addressTV;
+    UITextField * proxyTF;
+
+    UIButton * agreementBtn;
+    UIView * pickBg;
+    UIPickerView * myPickerView;
+}
+@property (nonatomic,copy) NSString * months;
+@property (nonatomic,copy) NSString * price;
+@end

@@ -1,0 +1,27 @@
+//
+//  MyOrdersViewController.h
+//  XDCommonApp
+//
+//  Created by xindao on 14-8-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+#import "MJRefresh.h"
+@interface MyOrdersViewController : XDBaseViewController<UITableViewDataSource,UITableViewDelegate,MJRefreshBaseViewDelegate>
+{
+    UITableView * myTableView;
+    NSMutableArray * dataArray;
+    MJRefreshHeaderView * headerView;
+    MJRefreshFooterView * footerView;
+    int currentPage;
+    int currentCount;
+    BOOL isFirst;
+
+    UIView * noGoodsView;
+
+    NSString * alertMessage;
+
+}
+
+@end

@@ -1,0 +1,20 @@
+//
+//  PhoneTwoViewController.h
+//  XDCommonApp
+//
+//  Created by wanglong8889@126.com on 14-6-11.
+//  Copyright (c) 2014年 XD-XY. All rights reserved.
+//
+
+#import "XDBaseViewController.h"
+
+@interface PhoneTwoViewController : XDBaseViewController<UITextFieldDelegate>
+{
+    UITextField *passwordTf;
+    UITextField *secPasswordTf;
+    
+    UIButton *agreedBnt;
+    UIButton *regbnt;
+}
+@property (nonatomic,strong) NSString *phone;
+@end

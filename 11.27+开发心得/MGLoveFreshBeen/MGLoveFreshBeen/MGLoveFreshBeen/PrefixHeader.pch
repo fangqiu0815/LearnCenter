@@ -1,0 +1,95 @@
+//
+//  PrefixHeader.pch
+//  MGLoveFreshBeen
+//
+//  Created by ming on 16/7/12.
+//  Copyright © 2016年 ming. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AFNetworking/AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "MBProgressHUD+XMG.h"
+#import "MJExtension.h"
+#import "Masonry.h"
+
+#import "UIView+Extension.h"
+#import "BaseController.h"
+#import "MGGlobalConstant.h"
+
+
+#import <SMS_SDK/SMSSDK.h>
+#endif
+
+//UI Common properties (color,gap...)
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+// 导航背景色
+#define MGNavBarTiniColor [UIColor colorWithRed:174/255.0f green:42/255.0f blue:44/255.0f alpha:1]
+
+// 颜色
+/** 随机色 */
+#define MGRGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define MGRandomColor MGRGBColor(arc4random_uniform(255),arc4random_uniform(255),arc4random_uniform(255))
+
+// 商品详情背景
+#define MGProductBackGray MGRGBColor(248, 248, 248)
+
+/** 地址灰色字体 */
+#define MGBackGray MGRGBColor(146, 146, 146)
+
+//字体
+#define MGFont(x) [UIFont systemFontOfSize:x]
+#define MGBoldFont(x) [UIFont boldSystemFontOfSize:x]
+
+//提醒框
+#define MGPS(obj) [SVProgressHUD showSuccessWithStatus:obj];
+#define MGPE(obj) [SVProgressHUD showErrorWithStatus:obj];
+
+//屏幕的高度和宽度
+#define MGSCREEN_width [UIScreen mainScreen].bounds.size.width
+#define MGSCREEN_height [UIScreen mainScreen].bounds.size.height
+
+//主窗口
+#define MGKeyWindow [UIApplication sharedApplication].keyWindow
+
+//判断是否为ios8
+#define ISIOS8 ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0f)
+//判断是否为ios8
+#define ISIOS9 ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0f)
+//iPhone4
+#define IS_IPHONE4 (([[UIScreen mainScreen] bounds].size.height == 480) ? YES : NO)
+//iPhone5
+#define IS_IPhone5 ([UIScreen mainScreen].bounds.size.height == 568)
+
+/* 屏幕有关 */
+#define iPone6   ([UIScreen mainScreen].bounds.size.height == 667)
+#define iPone6s   ([UIScreen mainScreen].bounds.size.height == 736)
+#define iPone5   ([UIScreen mainScreen].bounds.size.height == 568)
+#define iPone4  ([UIScreen mainScreen].bounds.size.height == 480)
+
+// 快速创建弱指针
+#define __weakSelf (__weak typeof(self) weakSelf = self)
+
+/** 通知中心 */
+#define MGNotificationCenter [NSNotificationCenter defaultCenter]
+
+
+//日志输出
+#ifdef DEBUG  //log
+#define  MGLog(...) NSLog(__VA_ARGS__)
+// 方法输出
+#define  MGLogFunc  MGLog(@"%s", __func__)
+#else  // 发布阶段-上线阶段:移除Log
+#define MGLog(...)
+#endif
+
+
+
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KFCartViewController">
+            <connections>
+                <outlet property="guangBtn" destination="LLs-5V-D6O" id="xcr-Sl-pdm"/>
+                <outlet property="guangImageView" destination="plz-AV-I9Z" id="MQV-Sq-eBm"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Ioo-44-i1C"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plz-AV-I9Z">
+                    <rect key="frame" x="67" y="120" width="240" height="240"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="5OG-jc-eao"/>
+                        <constraint firstAttribute="height" constant="240" id="COK-yg-QMb"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLs-5V-D6O">
+                    <rect key="frame" x="130" y="429" width="115" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="heu-3F-Mny"/>
+                        <constraint firstAttribute="height" constant="29" id="nvO-Rj-evn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="去逛逛"/>
+                    <connections>
+                        <action selector="goShoppingBtn:" destination="-1" eventType="touchUpInside" id="b3E-wX-qot"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="plz-AV-I9Z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="08s-aj-Eq6"/>
+                <constraint firstItem="LLs-5V-D6O" firstAttribute="top" secondItem="plz-AV-I9Z" secondAttribute="bottom" constant="69" id="3nw-yv-pZs"/>
+                <constraint firstItem="LLs-5V-D6O" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aeu-Dh-JKi"/>
+                <constraint firstItem="plz-AV-I9Z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="sgv-4H-kdy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+</document>
