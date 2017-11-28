@@ -38,7 +38,7 @@
 
 - (BottomView *)bottom_view{
     if (!_bottom_view) {
-        self.bottom_view = [[BottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, 375, 50)];
+        self.bottom_view = [[BottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.width, 50)];
         _bottom_view.backgroundColor = [UIColor yellowColor];
         [_bottom_view.deleteBtn addTarget:self action:@selector(deleteData) forControlEvents:UIControlEventTouchUpInside];
         [_bottom_view.allBtn addTarget:self action:@selector(tapAllBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -61,7 +61,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, 375, 667-64) style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
@@ -127,7 +127,6 @@
                 self.bottom_view.frame = frame;
                 [self.view addSubview:self.bottom_view];
             }];
-        
         
         
     }else{
@@ -209,14 +208,10 @@
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     //根据不同状态返回不同编辑模式
     if (_isInsertEdit) {
-        
         return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
-        
     }else{
-        
         return UITableViewCellEditingStyleDelete;
     }
 }

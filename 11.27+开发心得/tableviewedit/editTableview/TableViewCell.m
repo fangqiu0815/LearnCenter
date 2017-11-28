@@ -50,10 +50,7 @@
     if (self.editing) {
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
-//        self.textLabel.backgroundColor = [UIColor clearColor];
-//        self.detailTextLabel.backgroundColor = [UIColor clearColor];
         self.label.backgroundColor = [UIColor clearColor];
-        
       
     }
 }

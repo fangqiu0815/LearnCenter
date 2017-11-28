@@ -1401,7 +1401,7 @@
 				TargetAttributes = {
 					3A64A1C31D34D4D200288490 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = H54L47S422;
+						DevelopmentTeam = AR9M6JHEVE;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1774,6 +1774,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Peizhuang Liu (F3U44CZGQR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1790,7 +1791,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MGLoveFreshBeen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1819,6 +1820,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1835,7 +1837,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MGLoveFreshBeen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

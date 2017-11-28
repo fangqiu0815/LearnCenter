@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="VoIP_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plum" translatesAutoresizingMaskIntoConstraints="NO" id="N4Q-rV-IPR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Device Token:" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AR-KJ-XiR">
+                                <rect key="frame" x="16" y="347" width="568" height="44"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter-card-120x120" translatesAutoresizingMaskIntoConstraints="NO" id="bDh-sA-VRN">
+                                <rect key="frame" x="16" y="28" width="120" height="120"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ZeroPush VoIP Demo" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aq-gK-1as">
+                                <rect key="frame" x="144" y="44" width="265" height="88"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnl-kW-2XN">
+                                <rect key="frame" x="191" y="271" width="218" height="58"/>
+                                <state key="normal" title="Request Device Token">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oKy-rv-9uY"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Make a request to https://api.zeropush.com/broadcast/me from commandline or API explorer" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJV-7N-A8L">
+                                <rect key="frame" x="16" y="399" width="758" height="181"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8aq-gK-1as" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="24" id="0VJ-2L-Iz9"/>
+                            <constraint firstItem="bDh-sA-VRN" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="1pB-LE-nm3"/>
+                            <constraint firstAttribute="centerY" secondItem="Xnl-kW-2XN" secondAttribute="centerY" id="41p-wS-RY4"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="N4Q-rV-IPR" secondAttribute="bottom" id="8sb-XE-1iM"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="3AR-KJ-XiR" secondAttribute="bottom" constant="20" id="9Q4-TZ-QJR"/>
+                            <constraint firstItem="8aq-gK-1as" firstAttribute="leading" secondItem="bDh-sA-VRN" secondAttribute="trailing" constant="8" id="CMd-Iv-zfF"/>
+                            <constraint firstItem="bDh-sA-VRN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="G7p-1z-4WV"/>
+                            <constraint firstItem="gJV-7N-A8L" firstAttribute="top" secondItem="3AR-KJ-XiR" secondAttribute="bottom" constant="8" id="Lec-Nu-za2"/>
+                            <constraint firstItem="3AR-KJ-XiR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Pt9-2X-M4H"/>
+                            <constraint firstItem="gJV-7N-A8L" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Yb1-gW-a4U"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="gJV-7N-A8L" secondAttribute="bottom" constant="20" id="bHr-4F-hL1"/>
+                            <constraint firstItem="N4Q-rV-IPR" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="bkr-1W-P7i"/>
+                            <constraint firstItem="3AR-KJ-XiR" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="esO-cQ-gWv"/>
+                            <constraint firstItem="N4Q-rV-IPR" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="evL-EY-6Pj"/>
+                            <constraint firstItem="gJV-7N-A8L" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="gha-PX-7Sm"/>
+                            <constraint firstAttribute="centerX" secondItem="gJV-7N-A8L" secondAttribute="centerX" id="hu7-qW-6UT"/>
+                            <constraint firstAttribute="centerX" secondItem="Xnl-kW-2XN" secondAttribute="centerX" id="ilW-4K-Zwr"/>
+                            <constraint firstAttribute="centerX" secondItem="3AR-KJ-XiR" secondAttribute="centerX" id="kZc-J1-JfG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N4Q-rV-IPR" secondAttribute="trailing" constant="-16" id="zLb-ia-rfa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kZc-J1-JfG"/>
+                                <exclude reference="9Q4-TZ-QJR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="payloadLabel" destination="gJV-7N-A8L" id="G1p-og-e0l"/>
+                        <outlet property="tokenLabel" destination="3AR-KJ-XiR" id="7jY-if-ZUn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plum" width="600" height="1680"/>
+        <image name="twitter-card-120x120" width="120" height="120"/>
+    </resources>
+</document>

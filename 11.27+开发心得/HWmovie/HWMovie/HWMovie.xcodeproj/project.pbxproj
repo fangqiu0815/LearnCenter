@@ -1398,6 +1398,7 @@
 				TargetAttributes = {
 					428377EA1B589A8B001DF594 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = AR9M6JHEVE;
 					};
 					428378031B589A8B001DF594 = {
 						CreatedOnToolsVersion = 6.3;
@@ -1831,6 +1832,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
 				INFOPLIST_FILE = HWMovie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1841,6 +1843,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AR9M6JHEVE;
 				INFOPLIST_FILE = HWMovie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62244135494A7E5535FADE8B /* libPods-VoIP-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FA01D10F2B33DC9B251077 /* libPods-VoIP-Demo.a */; };
+		F86884E51A83EC170037ED79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86884E41A83EC170037ED79 /* AppDelegate.swift */; };
+		F86884E71A83EC170037ED79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86884E61A83EC170037ED79 /* ViewController.swift */; };
+		F86884EA1A83EC170037ED79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F86884E81A83EC170037ED79 /* Main.storyboard */; };
+		F86884EC1A83EC170037ED79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F86884EB1A83EC170037ED79 /* Images.xcassets */; };
+		F86884EF1A83EC170037ED79 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86884ED1A83EC170037ED79 /* LaunchScreen.xib */; };
+		F86884FB1A83EC170037ED79 /* VoIP_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86884FA1A83EC170037ED79 /* VoIP_DemoTests.swift */; };
+		F8A60E8D1A84350B00D56D2B /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A60E8C1A84350B00D56D2B /* PushKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F86884F51A83EC170037ED79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F86884D71A83EC170037ED79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F86884DE1A83EC170037ED79;
+			remoteInfo = "VoIP-Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A3A1D6B520DB60B86218F88D /* Pods-VoIP-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoIP-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoIP-Demo/Pods-VoIP-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		B115EEBD0F7A3E814ADB9825 /* Pods-VoIP-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoIP-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoIP-Demo/Pods-VoIP-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		F6FA01D10F2B33DC9B251077 /* libPods-VoIP-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VoIP-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86884DF1A83EC170037ED79 /* VoIP-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VoIP-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86884E31A83EC170037ED79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F86884E41A83EC170037ED79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F86884E61A83EC170037ED79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F86884E91A83EC170037ED79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F86884EB1A83EC170037ED79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F86884EE1A83EC170037ED79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F86884F41A83EC170037ED79 /* VoIP-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VoIP-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86884F91A83EC170037ED79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F86884FA1A83EC170037ED79 /* VoIP_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoIP_DemoTests.swift; sourceTree = "<group>"; };
+		F8A60E8B1A84235F00D56D2B /* VoIP-Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VoIP-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		F8A60E8C1A84350B00D56D2B /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F86884DC1A83EC170037ED79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8A60E8D1A84350B00D56D2B /* PushKit.framework in Frameworks */,
+				62244135494A7E5535FADE8B /* libPods-VoIP-Demo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F86884F11A83EC170037ED79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85688CDD47224BECEF19F7BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3A1D6B520DB60B86218F88D /* Pods-VoIP-Demo.debug.xcconfig */,
+				B115EEBD0F7A3E814ADB9825 /* Pods-VoIP-Demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEEE1D4D5773882D992902A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8A60E8C1A84350B00D56D2B /* PushKit.framework */,
+				F6FA01D10F2B33DC9B251077 /* libPods-VoIP-Demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F86884D61A83EC170037ED79 = {
+			isa = PBXGroup;
+			children = (
+				F8A60E8B1A84235F00D56D2B /* VoIP-Demo-Bridging-Header.h */,
+				F86884E11A83EC170037ED79 /* VoIP-Demo */,
+				F86884F71A83EC170037ED79 /* VoIP-DemoTests */,
+				F86884E01A83EC170037ED79 /* Products */,
+				85688CDD47224BECEF19F7BB /* Pods */,
+				AEEE1D4D5773882D992902A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F86884E01A83EC170037ED79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F86884DF1A83EC170037ED79 /* VoIP-Demo.app */,
+				F86884F41A83EC170037ED79 /* VoIP-DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F86884E11A83EC170037ED79 /* VoIP-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F86884E41A83EC170037ED79 /* AppDelegate.swift */,
+				F86884E61A83EC170037ED79 /* ViewController.swift */,
+				F86884E81A83EC170037ED79 /* Main.storyboard */,
+				F86884EB1A83EC170037ED79 /* Images.xcassets */,
+				F86884ED1A83EC170037ED79 /* LaunchScreen.xib */,
+				F86884E21A83EC170037ED79 /* Supporting Files */,
+			);
+			path = "VoIP-Demo";
+			sourceTree = "<group>";
+		};
+		F86884E21A83EC170037ED79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F86884E31A83EC170037ED79 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F86884F71A83EC170037ED79 /* VoIP-DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F86884FA1A83EC170037ED79 /* VoIP_DemoTests.swift */,
+				F86884F81A83EC170037ED79 /* Supporting Files */,
+			);
+			path = "VoIP-DemoTests";
+			sourceTree = "<group>";
+		};
+		F86884F81A83EC170037ED79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F86884F91A83EC170037ED79 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F86884DE1A83EC170037ED79 /* VoIP-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F86884FE1A83EC170037ED79 /* Build configuration list for PBXNativeTarget "VoIP-Demo" */;
+			buildPhases = (
+				AC149FAF45833C8C34499B16 /* Check Pods Manifest.lock */,
+				F86884DB1A83EC170037ED79 /* Sources */,
+				F86884DC1A83EC170037ED79 /* Frameworks */,
+				F86884DD1A83EC170037ED79 /* Resources */,
+				5A6EBF8AFC9F161C1BEC8CEA /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VoIP-Demo";
+			productName = "VoIP-Demo";
+			productReference = F86884DF1A83EC170037ED79 /* VoIP-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F86884F31A83EC170037ED79 /* VoIP-DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F86885011A83EC170037ED79 /* Build configuration list for PBXNativeTarget "VoIP-DemoTests" */;
+			buildPhases = (
+				F86884F01A83EC170037ED79 /* Sources */,
+				F86884F11A83EC170037ED79 /* Frameworks */,
+				F86884F21A83EC170037ED79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F86884F61A83EC170037ED79 /* PBXTargetDependency */,
+			);
+			name = "VoIP-DemoTests";
+			productName = "VoIP-DemoTests";
+			productReference = F86884F41A83EC170037ED79 /* VoIP-DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F86884D71A83EC170037ED79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = ZeroPush;
+				TargetAttributes = {
+					F86884DE1A83EC170037ED79 = {
+						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					F86884F31A83EC170037ED79 = {
+						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
+						TestTargetID = F86884DE1A83EC170037ED79;
+					};
+				};
+			};
+			buildConfigurationList = F86884DA1A83EC170037ED79 /* Build configuration list for PBXProject "VoIP-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F86884D61A83EC170037ED79;
+			productRefGroup = F86884E01A83EC170037ED79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F86884DE1A83EC170037ED79 /* VoIP-Demo */,
+				F86884F31A83EC170037ED79 /* VoIP-DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F86884DD1A83EC170037ED79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86884EA1A83EC170037ED79 /* Main.storyboard in Resources */,
+				F86884EF1A83EC170037ED79 /* LaunchScreen.xib in Resources */,
+				F86884EC1A83EC170037ED79 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F86884F21A83EC170037ED79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A6EBF8AFC9F161C1BEC8CEA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VoIP-Demo/Pods-VoIP-Demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC149FAF45833C8C34499B16 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F86884DB1A83EC170037ED79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86884E71A83EC170037ED79 /* ViewController.swift in Sources */,
+				F86884E51A83EC170037ED79 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F86884F01A83EC170037ED79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86884FB1A83EC170037ED79 /* VoIP_DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F86884F61A83EC170037ED79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F86884DE1A83EC170037ED79 /* VoIP-Demo */;
+			targetProxy = F86884F51A83EC170037ED79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F86884E81A83EC170037ED79 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F86884E91A83EC170037ED79 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F86884ED1A83EC170037ED79 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F86884EE1A83EC170037ED79 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F86884FC1A83EC170037ED79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d52fbeea-0d3a-414e-9463-4b33723807f9";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F86884FD1A83EC170037ED79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "d52fbeea-0d3a-414e-9463-4b33723807f9";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F86884FF1A83EC170037ED79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3A1D6B520DB60B86218F88D /* Pods-VoIP-Demo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "VoIP-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2a2af3c6-18d4-4878-9eb4-20c0f361f97d";
+				SWIFT_OBJC_BRIDGING_HEADER = "VoIP-Demo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F86885001A83EC170037ED79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B115EEBD0F7A3E814ADB9825 /* Pods-VoIP-Demo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "VoIP-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2a2af3c6-18d4-4878-9eb4-20c0f361f97d";
+				SWIFT_OBJC_BRIDGING_HEADER = "VoIP-Demo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		F86885021A83EC170037ED79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VoIP-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoIP-Demo.app/VoIP-Demo";
+			};
+			name = Debug;
+		};
+		F86885031A83EC170037ED79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VoIP-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoIP-Demo.app/VoIP-Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F86884DA1A83EC170037ED79 /* Build configuration list for PBXProject "VoIP-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86884FC1A83EC170037ED79 /* Debug */,
+				F86884FD1A83EC170037ED79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F86884FE1A83EC170037ED79 /* Build configuration list for PBXNativeTarget "VoIP-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86884FF1A83EC170037ED79 /* Debug */,
+				F86885001A83EC170037ED79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F86885011A83EC170037ED79 /* Build configuration list for PBXNativeTarget "VoIP-DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86885021A83EC170037ED79 /* Debug */,
+				F86885031A83EC170037ED79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F86884D71A83EC170037ED79 /* Project object */;
+}
