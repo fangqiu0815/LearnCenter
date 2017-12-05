@@ -148,12 +148,12 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"验证类型" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     // 语音
     UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"语音" style:UIAlertActionStyleDefault  handler:^(UIAlertAction * _Nonnull action) {
-        [self sendVerificationByMethod:SMSGetCodeMethodVoice phoneNumber:phoneTextField.text];
+//        [self sendVerificationByMethod:SMSGetCodeMethodVoice phoneNumber:phoneTextField.text];
     }];
     
     // 短信
     UIAlertAction *photoAction = [UIAlertAction actionWithTitle:@"短信" style:UIAlertActionStyleDefault  handler:^(UIAlertAction * _Nonnull action) {
-        [self sendVerificationByMethod:SMSGetCodeMethodSMS phoneNumber:phoneTextField.text];
+//        [self sendVerificationByMethod:SMSGetCodeMethodSMS phoneNumber:phoneTextField.text];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
@@ -164,24 +164,24 @@
     [self.navigationController presentViewController:alertVC animated:YES completion:nil];
 }
 
-- (void)sendVerificationByMethod:(SMSGetCodeMethod)method phoneNumber:(NSString *)phoneNumber{
-    // 必须要输入正确的手机号码才能来到下面的代码
-    [SMSSDK getVerificationCodeByMethod:method phoneNumber:phoneNumber zone:@"86" customIdentifier:nil result:^(NSError *error) {
-        receiveBtn.userInteractionEnabled = NO;
-        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
-        
-        if (error != nil) { //有错误
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送失败" message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"getVerificationCode"]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
-            return ;
-        }
-        
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送成功"  message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-    }];
-
-}
+//- (void)sendVerificationByMethod:(SMSGetCodeMethod)method phoneNumber:(NSString *)phoneNumber{
+//    // 必须要输入正确的手机号码才能来到下面的代码
+//    [SMSSDK getVerificationCodeByMethod:method phoneNumber:phoneNumber zone:@"86" customIdentifier:nil result:^(NSError *error) {
+//        receiveBtn.userInteractionEnabled = NO;
+//        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+//
+//        if (error != nil) { //有错误
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送失败" message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"getVerificationCode"]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            return ;
+//        }
+//
+//
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送成功"  message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alertView show];
+//    }];
+//
+//}
 /**
  *  正则表达式 判断是否是手机号码
  *
@@ -252,26 +252,26 @@
     }
     
     sender.userInteractionEnabled = NO;
-    [SMSSDK commitVerificationCode:codetf.text phoneNumber:ptf.text zone:@"86" result:^(NSError *error) {
-        if (error == nil) {
-            MGPS(@"注册成功");
-            [self.navigationController popViewControllerAnimated:YES];
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证成功"
-                                                                message:nil
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil, nil];
-            [alertView show];
-        }else {//有错误
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证失败"
-                                                                message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"commitVerificationCode"]]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil, nil];
-            [alertView show];
-        }
-    }];
+//    [SMSSDK commitVerificationCode:codetf.text phoneNumber:ptf.text zone:@"86" result:^(NSError *error) {
+//        if (error == nil) {
+//            MGPS(@"注册成功");
+//            [self.navigationController popViewControllerAnimated:YES];
+//            
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证成功"
+//                                                                message:nil
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"确定"
+//                                                      otherButtonTitles:nil, nil];
+//            [alertView show];
+//        }else {//有错误
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证失败"
+//                                                                message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"commitVerificationCode"]]
+//                                                               delegate:nil
+//                                                      cancelButtonTitle:@"确定"
+//                                                      otherButtonTitles:nil, nil];
+//            [alertView show];
+//        }
+//    }];
     // 注册成功后要恢复获取验证码按钮的可交互性  还有注册按钮
     sender.userInteractionEnabled = YES;
     receiveBtn.userInteractionEnabled = YES;

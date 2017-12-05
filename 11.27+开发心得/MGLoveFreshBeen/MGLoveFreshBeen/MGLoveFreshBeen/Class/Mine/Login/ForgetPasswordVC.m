@@ -129,27 +129,27 @@
         return;
     }
     
-    // 短信
-    [self sendVerificationByMethod:SMSGetCodeMethodSMS phoneNumber:_phoneTextField.text];
+//    // 短信
+//    [self sendVerificationByMethod:SMSGetCodeMethodSMS phoneNumber:_phoneTextField.text];
 }
-- (void)sendVerificationByMethod:(SMSGetCodeMethod)method phoneNumber:(NSString *)phoneNumber{
-    // 必须要输入正确的手机号码才能来到下面的代码
-    [SMSSDK getVerificationCodeByMethod:method phoneNumber:phoneNumber zone:@"86" customIdentifier:nil result:^(NSError *error) {
-        receiveBtn.userInteractionEnabled = NO;
-        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
-        
-        if (error != nil) { //有错误
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送失败" message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"getVerificationCode"]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
-            return ;
-        }
-        
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送成功"  message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-    }];
-    
-}
+//- (void)sendVerificationByMethod:(SMSGetCodeMethod)method phoneNumber:(NSString *)phoneNumber{
+//    // 必须要输入正确的手机号码才能来到下面的代码
+//    [SMSSDK getVerificationCodeByMethod:method phoneNumber:phoneNumber zone:@"86" customIdentifier:nil result:^(NSError *error) {
+//        receiveBtn.userInteractionEnabled = NO;
+//        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+//        
+//        if (error != nil) { //有错误
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送失败" message:[NSString stringWithFormat:@"%@",[error.userInfo objectForKey:@"getVerificationCode"]] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//            [alertView show];
+//            return ;
+//        }
+//        
+//        
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"验证码发送成功"  message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alertView show];
+//    }];
+//    
+//}
 /**
  *  正则表达式 判断是否是手机号码
  *

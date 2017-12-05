@@ -23,7 +23,7 @@
 #import "IdeaVC.h"
 #import "MineLoginVC.h"
 
-#import "UMSocial.h"
+
 
 
 @interface MineVC ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -307,30 +307,30 @@ CGFloat headViewHeight = 150;
  *  分享Action
  */
 - (void)shareToFriend {
-    // 微信
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://github.com/LYM-mg/MGLoveFreshBeen";
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"mingming";
-    
-    // 朋友圈
-    [UMSocialData defaultData].extConfig.wechatTimelineData.url = @"http://www.jianshu.com/users/57b58a39b70e/latest_articles";
-    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"赶快来关注我吧，支持我";
-    
-    NSString *shareText = @"小明OC全新开源作品,高仿爱鲜蜂,希望可以前来支持“。 https://github.com/LYM-mg/MGLoveFreshBeen";             //分享内嵌文字
-    
-    //分享内嵌图片
-    UIImage *shareImage = [UIImage imageNamed:@"12.png"];
-    
-    // 分享平台
-    NSArray *arr = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite, nil];
-    
-    // 调用快速分享接口
-    //调用快速分享接口
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:MGUmengAppkey
-                                      shareText:shareText
-                                     shareImage:shareImage
-                                shareToSnsNames:arr
-                                       delegate:nil];
+//    // 微信
+//    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://github.com/LYM-mg/MGLoveFreshBeen";
+//    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"mingming";
+//    
+//    // 朋友圈
+//    [UMSocialData defaultData].extConfig.wechatTimelineData.url = @"http://www.jianshu.com/users/57b58a39b70e/latest_articles";
+//    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"赶快来关注我吧，支持我";
+//    
+//    NSString *shareText = @"小明OC全新开源作品,高仿爱鲜蜂,希望可以前来支持“。 https://github.com/LYM-mg/MGLoveFreshBeen";             //分享内嵌文字
+//    
+//    //分享内嵌图片
+//    UIImage *shareImage = [UIImage imageNamed:@"12.png"];
+//    
+//    // 分享平台
+//    NSArray *arr = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite, nil];
+//    
+//    // 调用快速分享接口
+//    //调用快速分享接口
+//    [UMSocialSnsService presentSnsIconSheetView:self
+//                                         appKey:MGUmengAppkey
+//                                      shareText:shareText
+//                                     shareImage:shareImage
+//                                shareToSnsNames:arr
+//                                       delegate:nil];
 }
 
 

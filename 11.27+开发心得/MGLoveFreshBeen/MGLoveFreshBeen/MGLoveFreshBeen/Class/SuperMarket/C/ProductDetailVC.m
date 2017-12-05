@@ -9,8 +9,7 @@
 #import "ProductDetailVC.h"
 #import "SuperMarketModel.h"
 #import "HotFreshModel.h"
-#import "UMSocialSnsService.h"
-#import "UMSocial.h"
+
 
 #import "AppDelegate.h"
 
@@ -22,7 +21,7 @@ typedef  enum {
 }ProductType;
 
 
-@interface ProductDetailVC ()<UMSocialUIDelegate,StandardsViewDelegate>
+@interface ProductDetailVC ()<StandardsViewDelegate>
 {
     UIScrollView *scrollView;
     UIImageView *productImageView;
@@ -403,51 +402,10 @@ typedef  enum {
 
 // MARK: - 分享Action
 - (void)shareItemClick {
-    // 微信
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"https://github.com/LYM-mg/MGLoveFreshBeen";
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"mingming";
     
-    // 朋友圈
-    [UMSocialData defaultData].extConfig.wechatTimelineData.url = @"http://www.jianshu.com/users/57b58a39b70e/latest_articles";
-    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"赶快来关注我吧，支持我";
-    
-    NSString *shareText = @"小明OC全新开源作品,高仿爱鲜蜂,希望可以前来支持“。 https://github.com/LYM-mg/MGLoveFreshBeen";             //分享内嵌文字
-    
-    //分享内嵌图片
-    UIImage *shareImage = productImageView.image;
-    
-    // 分享平台
-    NSArray *arr = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite, nil];
-    
-    //调用快速分享接口
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:MGUmengAppkey
-                                      shareText:shareText
-                                     shareImage:shareImage
-                                shareToSnsNames:arr
-                                       delegate:self];
 }
 
-/**
- 各个页面执行授权完成、分享完成、或者评论完成时的回调函数
- 
- @param response 返回`UMSocialResponseEntity`对象，`UMSocialResponseEntity`里面的viewControllerType属性可以获得页面类型
- */
--(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response{
-    // 其他平台 UMShareToTencent,UMShareToRenren,UMShareToDouban,
-    NSArray *arr = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToWechatFavorite, nil];
-    
-    //这里你可以把分享平台UMShareToSina换成其他平台
-    [[UMSocialDataService defaultDataService] postSNSWithTypes:arr content:@"ming" image:nil location:nil urlResource:nil presentedController:self completion:^(UMSocialResponseEntity *response) {
-        if (response.responseCode == UMSResponseCodeSuccess) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"成功" message:@"分享成功" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
-            [alertView show];
-        } else {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"抱歉" message:@"分享失败" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
-            [alertView show];
-        }
-    }];
-}
+
 
 
 @end

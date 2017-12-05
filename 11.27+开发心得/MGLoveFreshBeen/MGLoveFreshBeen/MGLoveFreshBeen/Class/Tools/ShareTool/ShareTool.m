@@ -7,10 +7,9 @@
 //
 
 #import "ShareTool.h"
-#import "UMSocialSnsService.h"
-#import "UMSocial.h"
 
-@interface ShareTool ()<UMSocialUIDelegate>
+
+@interface ShareTool ()
 
 @end
 

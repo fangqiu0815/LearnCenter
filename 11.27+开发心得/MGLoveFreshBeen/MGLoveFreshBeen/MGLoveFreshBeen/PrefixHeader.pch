@@ -24,7 +24,6 @@
 #import "MGGlobalConstant.h"
 
 
-#import <SMS_SDK/SMSSDK.h>
 #endif
 
 //UI Common properties (color,gap...)
