@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4f20;&#x667a;&#x5fae;&#x535a;/Classes/View(&#x89c6;&#x56fe;&#x548c;&#x63a7;&#x5236;&#x5668;)/Main/WBMainViewController.swift"
+            timestampString = "489546112.9064"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "userLogin(n:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4f20;&#x667a;&#x5fae;&#x535a;/Classes/View(&#x89c6;&#x56fe;&#x548c;&#x63a7;&#x5236;&#x5668;)/Main/WBMainViewController.swift"
+            timestampString = "490096593.579769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "WBMainViewController"
+            landmarkType = "4">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4f20;&#x667a;&#x5fae;&#x535a;/Classes/View(&#x89c6;&#x56fe;&#x548c;&#x63a7;&#x5236;&#x5668;)/Home/WBHomeViewController.swift"
+            timestampString = "490102602.693728"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "tableView(_:heightForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4f20;&#x667a;&#x5fae;&#x535a;/Classes/View(&#x89c6;&#x56fe;&#x548c;&#x63a7;&#x5236;&#x5668;)/Compose/WBComposeViewController.swift"
+            timestampString = "490096267.056652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "keyboardChanged(n:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x4f20;&#x667a;&#x5fae;&#x535a;.WBComposeViewController.(keyboardChanged in _354314961567160B658AFBC02EC1F4C5) (n : Foundation.Notification) -&gt; ()"
+                  moduleName = "&#x4f20;&#x667a;&#x5fae;&#x535a;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/%E8%AF%BE%E5%A0%82%E5%85%B1%E4%BA%AB/04-Swift/04-Swift-%E7%AC%AC11%E5%A4%A9(%E5%8F%91%E5%B8%83%E5%BE%AE%E5%8D%9A)/04-%E6%BA%90%E4%BB%A3%E7%A0%81/09%E5%A4%A9Weibo/%E4%BC%A0%E6%99%BA%E5%BE%AE%E5%8D%9A/%E4%BC%A0%E6%99%BA%E5%BE%AE%E5%8D%9A/Classes/View(%E8%A7%86%E5%9B%BE%E5%92%8C%E6%8E%A7%E5%88%B6%E5%99%A8)/Compose/WBComposeViewController.swift"
+                  timestampString = "489914179.383348"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x4f20;&#x667a;&#x5fae;&#x535a;.WBComposeViewController.(keyboardChanged in _354314961567160B658AFBC02EC1F4C5) (n : Foundation.Notification) -&gt; ()"
+                  moduleName = "&#x4f20;&#x667a;&#x5fae;&#x535a;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/%E8%AF%BE%E5%A0%82%E5%85%B1%E4%BA%AB/04-Swift/04-Swift-%E7%AC%AC11%E5%A4%A9(%E5%8F%91%E5%B8%83%E5%BE%AE%E5%8D%9A)/04-%E6%BA%90%E4%BB%A3%E7%A0%81/09%E5%A4%A9Weibo/%E4%BC%A0%E6%99%BA%E5%BE%AE%E5%8D%9A/%E4%BC%A0%E6%99%BA%E5%BE%AE%E5%8D%9A/Classes/View(%E8%A7%86%E5%9B%BE%E5%92%8C%E6%8E%A7%E5%88%B6%E5%99%A8)/Compose/WBComposeViewController.swift"
+                  timestampString = "489914179.385558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "878">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

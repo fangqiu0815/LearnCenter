@@ -1630,3 +1630,81 @@ CATransition* transition = [CATransition animation];
     return [UIImage imageWithData:imageData];
 
 }
+
+98.GCD－两个网络请求同步问题    异步gcd组和gcd信号 共同处理请求
+在网络请求的时候有时有这种需求
+两个接口请求数据，然后我们才能做最后的数据处理。但是因为网络请求是移步的 。我们并不知道什么时候两个请求完成 。
+通常面对这样的需求会自然的想到 多线程 啊 。表现真正的技术的时刻来啦，可以使用 group 队列啊 。等队列中的请求任务都完成 ，在通知主线程处理汇总数据嘛 。
+
+今天我也是这么写的，但是发现主线程并没有等到队列中的分线程网络请求bock回调就返回了 。我给block回调之前打印，确实是队列中的任务都打印之后，才返回的主线程 。那么问题在哪里 ？
+
+网络请求然后处理响应数据是个耗时的操作，也是我们开发中常见的一种情形，在网络请求以及处理响应数据操作完毕之后我们在执行别的操作这样的过程也是我们开发中常见的情形。我们可以知道，
+
+网络请求的任务是提交给子线程异步处理了，网络请求这样的任务也就快速执行完毕了，但是网络请求是一个任务，处理收到的网络响应又是一个任务，注意不要把这两个过程混为一谈。
+
+而收到网络响应以及处理返回响应的数据并不是在子线程中执行的，我们通过在回调响应处理的block中打印当前线程，会发现回调响应处理的block是在主线程中被执行的。
+
+如果很熟悉block回调这种通信机制的话，就不难理解，这个回调响应的block真正被调用执行的地方应该是AFN框架的底层代码，而这部分代码显然是在主线程中执行的。
+
+这时候，如果我们需要确定这个主线程中收到网络响应的数据被处理操作结束之后，才最后执行我们需要最后的操作。换句话说，自线程就要等待，收到一个信号，才通知主线程，自己真正的完成任务了 。
+
+这个信号就是GCD的信号量 dispatch_semaphore_t
+
+- (void)getNetworkingData{
+NSString *appIdKey = @"8781e4ef1c73ff20a180d3d7a42a8c04";
+NSString* urlString_1 = @"http://api.openweathermap.org/data/2.5/weather";
+NSString* urlString_2 = @"http://api.openweathermap.org/data/2.5/forecast/daily";
+NSDictionary* dictionary =@{@"lat":@"40.04991291",
+@"lon":@"116.25626162",
+@"APPID" : appIdKey};
+// 创建组
+dispatch_group_t group = dispatch_group_create();
+// 将第一个网络请求任务添加到组中
+dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+// 创建信号量
+dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+// 开始网络请求任务
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+[manager GET:urlString_1
+parameters:dictionary
+progress:nil
+success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+NSLog(@"成功请求数据1:%@",[responseObject class]);
+// 如果请求成功，发送信号量
+dispatch_semaphore_signal(semaphore);
+} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+NSLog(@"失败请求数据");
+// 如果请求失败，也发送信号量
+dispatch_semaphore_signal(semaphore);
+}];
+// 在网络请求任务成功之前，信号量等待中
+dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+});
+// 将第二个网络请求任务添加到组中
+dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+// 创建信号量
+dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+// 开始网络请求任务
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+[manager GET:urlString_2
+parameters:dictionary
+progress:nil
+success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+NSLog(@"成功请求数据2:%@",[responseObject class]);
+// 如果请求成功，发送信号量
+dispatch_semaphore_signal(semaphore);
+} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+NSLog(@"失败请求数据");
+// 如果请求失败，也发送信号量
+dispatch_semaphore_signal(semaphore);
+}];
+// 在网络请求任务成功之前，信号量等待中
+dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+});
+dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+NSLog(@"完成了网络请求，不管网络请求失败了还是成功了。");
+});
+}
+这样做的具体步骤是这样的 。在自线程队列中 。设置的信号等待 ，一直到block回调完成（主线程中），发送信号 。子线程收到信号，然后才会通知dispatch_group_notify 子线程的请求数据真正返回了。
+
+
