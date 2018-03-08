@@ -1,0 +1,9 @@
+/**app.wxss**/
+view{
+  margin: 0;
+  padding: 0;
+}
+.clearfix {
+  clear: both;     /*清除左右两边浮动。*/
+}
+

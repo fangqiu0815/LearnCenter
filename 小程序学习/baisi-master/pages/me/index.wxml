@@ -1,0 +1,19 @@
+<loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+</loading>
+<view clas="my">
+    <view class="my_login">
+        <view class="my_login_img">
+            <image src="../../images/other/head_icon.png"></image>
+        </view>
+        <view class="my_login_text">登录/注册</view>
+    </view>
+    <view style="background: #fff;margin-top: 40rpx">
+        <view class="my_swiper" wx:for="{{myList}}">
+            <view  class="my_icon_img">
+                <image src="{{item.icon}}" alt="{{item.name}}"/>
+            </view>
+            <view class="my_icon_name" alt="{{item.name}}">{{item.name}}</view>
+        </view>
+    </view>
+</view>

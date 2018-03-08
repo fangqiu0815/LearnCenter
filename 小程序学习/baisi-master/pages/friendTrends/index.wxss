@@ -1,0 +1,36 @@
+.friendTrends{
+    text-align: center;
+    font-family: "黑体";
+    font-size: 36rpx;
+    color: #808080;
+}
+.friendTrends_title{
+    margin-top: 60rpx;
+}
+.friendTrends_img{
+    margin-top: 120rpx;
+}
+.friendTrends_img image{
+    width: 366rpx;
+    height: 366rpx;
+}
+.friendTrends_login {
+    margin-top: 300rpx;
+}
+.friendTrends_login button{
+    width: 248rpx;
+    height: 75rpx;
+    display: inline-block;
+    line-height: 75rpx;
+}
+.friendTrends_login button:nth-of-type(1){
+    margin-right: 20rpx;
+    background: #FF2D55;
+    color: #fff;
+    border: 2rpx solid #FF2D55;
+}
+.friendTrends_login button:nth-of-type(2){
+    background: #fff;
+    color: #FF2D55;
+    border: 2rpx solid #FF2D55;
+}

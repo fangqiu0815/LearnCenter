@@ -1,0 +1,10 @@
+<view class="friendTrends">
+    <view class="friendTrends_title">快快登录吧，关注百思最in牛人</view>
+    <view class="friendTrends_img">
+        <image src="../../images/other/guanzhu.png"></image>
+    </view>
+    <view class="friendTrends_login">
+       <button >登录</button>
+       <button>注册</button>
+    </view>
+</view>

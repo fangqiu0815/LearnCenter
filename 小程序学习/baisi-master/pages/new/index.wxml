@@ -1,0 +1,189 @@
+
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">视频</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">图片</view>
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">段子</view>
+</view>  
+<swiper current="{{currentTab}}" class="swiper-box" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+    <swiper-item>
+        <loading hidden="{{hidden}}" bindchange="loadingChange">
+            加载中...
+        </loading>
+        <scroll-view scroll-y="true" style="height:{{winHeight - 31}}px"  bindscrolltolower="loadMore" bindscrolltoupper="refesh" scroll-top="{{scrollTop}}">
+            <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+                <icon type="waiting" size="20"/><text>刷新中...</text></view>
+            <view wx:else  style="display:none" ><text></text></view>
+            <view wx:for="{{dataList}}" wx:key="{{id}}" class="all">
+                <view class="user_header clearfix">
+                    <view class="user_pic">
+                        <image src="{{item.profile_image}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="user_all">
+                        <view class="user_name">{{item.name}}</view>
+                        <view class="user_time">{{item.passtime}}</view>
+                    </view>
+                </view>
+                <view class="content clearfix">
+                    <view class="content_title">{{item.text}}</view>
+                    <view class="content_audio" wx:if="{{item.videouri != ''}}">
+                        <video src="{{item.videouri}}" style="width:100%;"></video>
+                    </view>
+                    <view class="content_pic" wx:if="{{item.cdn_img != undefined && item.videouri == ''}}">
+                        <image src="{{item.cdn_img}}" style="height: {{item.height > 480 ? item.height : 480}}rpx"></image>
+                    </view>
+                </view>
+                <view class="user_footer clearfix">
+                    <view class="user_fav user_footer_view">
+                        <view class="user_fav_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.ding}}</view>
+                    </view>
+                    <view class="user_no user_footer_view">
+                        <view class="user_no_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.cai}}</view>
+                    </view>
+                    <view class="user_share user_footer_view">
+                        <view class="user_share_icon user_icon"></view>
+                        <view class="user_footer_text">分享</view>
+                    </view>
+                    <view class="user_say user_footer_view">
+                        <view class="user_say_icon user_icon"></view>
+                        <view class="user_footer_text" bindtap="toCommend" data-id="{{item.id}}">{{item.comment == 0 ? '评论' : item.comment}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <loading hidden="{{hidden}}" bindchange="loadingChange">
+            加载中...
+        </loading>
+        <scroll-view scroll-y="true"  style="height:{{winHeight - 31}}px"  bindscrolltolower="loadMore" bindscrolltoupper="refesh" scroll-top="{{scrollTop}}">
+            <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+                <icon type="waiting" size="20"/><text>刷新中...</text></view>
+            <view wx:else  style="display:none" ><text></text></view>
+            <view wx:for="{{videoList}}" wx:key="{{id}}" class="all">
+                <view class="user_header clearfix">
+                    <view class="user_pic">
+                        <image src="{{item.profile_image}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="user_all">
+                        <view class="user_name">{{item.name}}</view>
+                        <view class="user_time">{{item.passtime}}</view>
+                    </view>
+                </view>
+                <view class="content clearfix">
+                    <view class="content_title">{{item.text}}</view>
+                    <view class="content_audio">
+                        <video src="{{item.videouri}}" style="width:100%;"></video>
+                    </view>
+                </view>
+                <view class="user_footer clearfix">
+                    <view class="user_fav user_footer_view">
+                        <view class="user_fav_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.ding}}</view>
+                    </view>
+                    <view class="user_no user_footer_view">
+                        <view class="user_no_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.cai}}</view>
+                    </view>
+                    <view class="user_share user_footer_view">
+                        <view class="user_share_icon user_icon"></view>
+                        <view class="user_footer_text">分享</view>
+                    </view>
+                    <view class="user_say user_footer_view" bindtap="toCommend">
+                        <view class="user_say_icon user_icon"></view>
+                        <view class="user_footer_text" data-id="{{item.id}}">{{item.comment == 0 ? '评论' : item.comment}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <loading hidden="{{hidden}}" bindchange="loadingChange">
+            加载中...
+        </loading>
+        <scroll-view scroll-y="true"  style="height:{{winHeight - 31}}px"  bindscrolltolower="loadMore" bindscrolltoupper="refesh" scroll-top="{{scrollTop}}">
+            <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+                <icon type="waiting" size="20"/><text>刷新中...</text></view>
+            <view wx:else  style="display:none" ><text></text></view>
+            <view wx:for="{{picList}}" wx:key="{{id}}" class="all">
+                <view class="user_header clearfix">
+                    <view class="user_pic">
+                        <image src="{{item.profile_image}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="user_all">
+                        <view class="user_name">{{item.name}}</view>
+                        <view class="user_time">{{item.passtime}}</view>
+                    </view>
+                </view>
+                <view class="content clearfix">
+                    <view class="content_title">{{item.text}}</view>
+                    <view class="content_pic">
+                        <image src="{{item.cdn_img}}" style="height: {{item.height > 480 ? item.height : 480}}rpx"></image>
+                    </view>
+                </view>
+                <view class="user_footer clearfix">
+                    <view class="user_fav user_footer_view">
+                        <view class="user_fav_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.ding}}</view>
+                    </view>
+                    <view class="user_no user_footer_view">
+                        <view class="user_no_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.cai}}</view>
+                    </view>
+                    <view class="user_share user_footer_view">
+                        <view class="user_share_icon user_icon"></view>
+                        <view class="user_footer_text">分享</view>
+                    </view>
+                    <view class="user_say user_footer_view" bindtap="toCommend">
+                        <view class="user_say_icon user_icon"></view>
+                        <view class="user_footer_text" data-id="{{item.id}}">{{item.comment == 0 ? '评论' : item.comment}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+    <swiper-item>
+        <loading hidden="{{hidden}}" bindchange="loadingChange">
+            加载中...
+        </loading>
+        <scroll-view scroll-y="true"  style="height:{{winHeight - 31}}px"  bindscrolltolower="loadMore" bindscrolltoupper="refesh" scroll-top="{{scrollTop}}">
+            <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+                <icon type="waiting" size="20"/><text>刷新中...</text></view>
+            <view wx:else  style="display:none" ><text></text></view>
+            <view wx:for="{{textList}}" wx:key="{{id}}" class="all">
+                <view class="user_header clearfix">
+                    <view class="user_pic">
+                        <image src="{{item.profile_image}}" mode="aspectFill"></image>
+                    </view>
+                    <view class="user_all">
+                        <view class="user_name">{{item.name}}</view>
+                        <view class="user_time">{{item.passtime}}</view>
+                    </view>
+                </view>
+                <view class="content clearfix">
+                    <view class="content_title">{{item.text}}</view>
+                </view>
+                <view class="user_footer clearfix">
+                    <view class="user_fav user_footer_view">
+                        <view class="user_fav_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.ding}}</view>
+                    </view>
+                    <view class="user_no user_footer_view">
+                        <view class="user_no_icon user_icon"></view>
+                        <view class="user_footer_text">{{item.cai}}</view>
+                    </view>
+                    <view class="user_share user_footer_view">
+                        <view class="user_share_icon user_icon"></view>
+                        <view class="user_footer_text">分享</view>
+                    </view>
+                    <view class="user_say user_footer_view" bindtap="toCommend">
+                        <view class="user_say_icon user_icon"></view>
+                        <view class="user_footer_text" data-id="{{item.id}}">{{item.comment == 0 ? '评论' : item.comment}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>  

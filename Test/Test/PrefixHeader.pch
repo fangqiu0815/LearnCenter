@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  Test
+//
+//  Created by apple-gaofangqiu on 2017/10/17.
+//  Copyright © 2017年 apple-fangqiu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "KDJiaMiObject.h"
+#import "NSObject+_KDJson.h"
+#import "NSString+_KDSecurity.h"
+#import "FCSecurity.h"
+#import "NSString+FCSecurity.h"
+#import "NSData+AES.h"
+
+
+
+
+#define kATMSecurityKey @"0b2db40ce70268dc"
+#define kATMSecurityIV  @"1234567890123456"
+
+
+
+#endif /* PrefixHeader_pch */

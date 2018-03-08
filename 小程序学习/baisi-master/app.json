@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/new/index",
+    "pages/choice/index",
+    "pages/friendTrends/index",
+    "pages/me/index",
+    "pages/commend/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff2c55",
+    "navigationBarTitleText": "百思不得姐",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "red",
+    "backgroundColor": "#d2cbdb",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/choice/index",
+      "text": "精选",
+      "iconPath": "images/tabBar/tabBar_essence_icon.png",
+      "selectedIconPath": "images/tabBar/tabBar_essence_click_icon.png"
+    },{
+      "pagePath": "pages/new/index",
+      "text": "最新",
+      "iconPath": "images/tabBar/tabBar_new_icon.png",
+      "selectedIconPath": "images/tabBar/tabBar_new_click_icon.png"
+    },{
+      "pagePath": "pages/friendTrends/index",
+      "text": "关注",
+      "iconPath": "images/tabBar/tabBar_friendTrends_icon.png",
+      "selectedIconPath": "images/tabBar/tabBar_friendTrends_click_icon.png"
+    },{
+      "pagePath": "pages/me/index",
+      "text": "我",
+      "iconPath": "images/tabBar/tabBar_me_icon.png",
+      "selectedIconPath": "images/tabBar/tabBar_me_click_icon.png"
+    }]
+  }
+}

@@ -1,0 +1,22 @@
+//
+//  PrefixHeader.pch
+//  KDMediDetail
+//
+//  Created by apple-gaofangqiu on 2018/3/5.
+//  Copyright © 2018年 apple-fangqiu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Masonry.h"
+#import "UIView+Frame.h"
+
+
+#define SEGMENT_HEIGHT 44
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
+#define DEFAULT_BACKGROUND_COLOR RGBA(0.96, 0.96, 0.96, 1.0f)
+
+#endif /* PrefixHeader_pch */
