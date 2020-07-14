@@ -3,13 +3,9 @@
 1、设置UILabel行间距
 
     NSMutableAttributedString* attrString = [[NSMutableAttributedString  alloc] initWithString:label.text];
-    
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    
     [style setLineSpacing:20];
-    
     [attrString addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, label.text.length)];
-    
     label.attributedText = attrString;
 
 
@@ -81,29 +77,19 @@
 6、每个cell之间增加间距
 
     // 方法一，每个分区只显示一行cell，分区头当作你想要的间距(注意，从数据源数组中取值的时候需要用indexPath.section而不是indexPath.row)
-
     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-
     {
-
         return yourArry.count;
-    
     }
 
     - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-
     {
-
         return 1;
-    
     }
 
     -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-
     {
-
         return cellSpacingHeight;
-    
     }
 
 // 方法二，在cell的contentView上加个稍微低一点的view，cell上原本的内容放在你的view上，而不是contentView上，这样能伪造出一个间距来。
@@ -111,13 +97,9 @@
 // 方法三，自定义cell，重写setFrame：方法
 
     - (void)setFrame:(CGRect)frame
-
     {
-
         frame.size.height -= 20;
-    
         [super setFrame:frame];
-    
     }
 
 7、播放一张张连续的图片
@@ -143,11 +125,8 @@
 9、防止离屏渲染为image添加圆角
 
     // image分类
-
     - (UIImage *)circleImage
-
     {
-
         // NO代表透明
 
         UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);
@@ -1550,16 +1529,8 @@
                          [view removeFromSuperview];
                      }];
                      
-91、设置UIButton高亮背景颜色
-
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         view.alpha = 0.0f;
-                     } completion:^(BOOL finished){
-                         [view removeFromSuperview];
-                     }];
                      
-92、设置UIButton高亮时的背景颜色
+91、设置UIButton高亮时的背景颜色
 
     // 方法一、子类化UIButton，重写setHighlighted:方法，代码如下
     #import "WZBButton.h"
@@ -1593,11 +1564,11 @@
     }
     
     
-93、关于图片拉伸
+92、关于图片拉伸
 
     推荐看这个博客，讲的很详细：http://blog.csdn.net/q199109106q/article/details/8615661
 
-94、利用runtime获取一个类所有属性
+93、利用runtime获取一个类所有属性
 
     - (NSArray *)allPropertyNames:(Class)aClass
     {
@@ -1619,7 +1590,7 @@
     return rv;
     }
     
-95、设置textView的某段文字变成其他颜色
+94、设置textView的某段文字变成其他颜色
 
     - (void)setupTextView:(UITextView *)textView text:(NSString *)text color:(UIColor *)color {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:textView.text];
@@ -1627,7 +1598,7 @@
     [textView setAttributedText:string];
     }
     
-96、让push跳转动画像modal跳转动画那样效果(从下往上推上来)
+95、让push跳转动画像modal跳转动画那样效果(从下往上推上来)
 
     - (void)push
     {
@@ -1651,7 +1622,7 @@
     [self.navigationController popViewControllerAnimated:NO];
     }
     
-97、上传图片太大，压缩图片
+96、上传图片太大，压缩图片
 
     -(UIImage *)resizeImage:(UIImage *)image
     {
@@ -1697,22 +1668,16 @@
 
     }
 
-98.GCD－两个网络请求同步问题    异步gcd组和gcd信号 共同处理请求
+97.GCD－两个网络请求同步问题    异步gcd组和gcd信号 共同处理请求
 
     在网络请求的时候有时有这种需求
     两个接口请求数据，然后我们才能做最后的数据处理。但是因为网络请求是移步的 。我们并不知道什么时候两个请求完成 。
     通常面对这样的需求会自然的想到 多线程 啊 。表现真正的技术的时刻来啦，可以使用 group 队列啊 。等队列中的请求任务都完成 ，在通知主线程处理汇总数据嘛 。
-
     今天我也是这么写的，但是发现主线程并没有等到队列中的分线程网络请求bock回调就返回了 。我给block回调之前打印，确实是队列中的任务都打印之后，才返回的主线程 。那么问题在哪里 ？
-
     网络请求然后处理响应数据是个耗时的操作，也是我们开发中常见的一种情形，在网络请求以及处理响应数据操作完毕之后我们在执行别的操作这样的过程也是我们开发中常见的情形。我们可以知道，
-
     网络请求的任务是提交给子线程异步处理了，网络请求这样的任务也就快速执行完毕了，但是网络请求是一个任务，处理收到的网络响应又是一个任务，注意不要把这两个过程混为一谈。
-
     而收到网络响应以及处理返回响应的数据并不是在子线程中执行的，我们通过在回调响应处理的block中打印当前线程，会发现回调响应处理的block是在主线程中被执行的。
-
     如果很熟悉block回调这种通信机制的话，就不难理解，这个回调响应的block真正被调用执行的地方应该是AFN框架的底层代码，而这部分代码显然是在主线程中执行的。
-
     这时候，如果我们需要确定这个主线程中收到网络响应的数据被处理操作结束之后，才最后执行我们需要最后的操作。换句话说，自线程就要等待，收到一个信号，才通知主线程，自己真正的完成任务了 。
 
     这个信号就是GCD的信号量 dispatch_semaphore_t
@@ -1775,7 +1740,7 @@
     
     这样做的具体步骤是这样的 。在自线程队列中 。设置的信号等待 ，一直到block回调完成（主线程中），发送信号 。子线程收到信号，然后才会通知dispatch_group_notify 子线程的请求数据真正返回了。
 
-99.ios 隐私政策模板
+98.ios 隐私政策模板
     
     (APP名)APP尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本应用会按照本隐私权政策的规定使用和披露您的个人信息。但本应用将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，本应用不会将这些信息对外披露或向第三方提供。本应用会不时更新本隐私权政策。 您在同意本应用服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于本应用服务使用协议不可分割的一部分。
     1. 适用范围
@@ -1813,7 +1778,7 @@
     电子邮箱：（邮箱名）
     感谢您花时间了解我们的隐私政策！
 
-100.多种请求多个接口的方式 有序 无序 
+99.多种请求多个接口的方式 有序 无序 
     
     #pragma mark - 无序请求：使用GCD_GROUP请求多个接口
     - (void)useGCDGroupLoadDataSuccess:(void (^)(void))success failure:(void (^)(void))failure {
@@ -1973,6 +1938,339 @@
             success();
         });
     }
-101.自定义代码块的转移过程
+100.自定义代码块的转移过程
 
     当我们再更换电脑的时候，我们也是可以把上述我们自定义的代码块转移到别的电脑上的。在我们设置代码块的时候，xcode会自动为我们生成相应的文件。而这文件是可以拷贝到我们新的电脑上的。这样我们换电脑也不用担心了。代码块的具体路径如下：~/Library/Developer/Xcode/UserData/CodeSnippets
+    
+101.App需要常驻线程 不轻易被iOS系统杀进程（内存回收）
+    
+    #import <AVFoundation/AVFoundation.h>
+    @interface AppDelegate ()
+    @property (strong, nonatomic) NSString *startTime;
+    @end
+    @implementation AppDelegate
+
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+        [self threadResidentBackgroundMode];
+        return YES;
+    }
+
+    #pragma mark - 后台无声音乐播放 保证app常驻线程
+    - (void)threadResidentBackgroundMode
+    {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        //让 app 支持接受远程控制事件
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        //播放背景音乐
+        NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"wusheng" ofType:@"mp3"];
+        NSURL *url = [[NSURL alloc]initFileURLWithPath:musicPath];
+        //创建播放器
+        AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+        [audioPlayer prepareToPlay];
+        [audioPlayer setVolume:1];
+        audioPlayer.numberOfLoops = -1;
+        [audioPlayer play];
+        [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(printCurrentTime:) userInfo:nil repeats:YES];
+    }
+
+    - (void)printCurrentTime:(id)sender
+    {
+        NSLog(@"线程常驻后台===当前的时间是---%@---",[self getCurrentTime]);
+    }
+
+    - (NSString *)getCurrentTime
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"yyyy-MM-DD HH:mm:ss"];
+        NSString *dateTime = [dateFormatter stringFromDate:[NSDate date]];
+        self.startTime = dateTime;
+        return self.startTime;
+    }
+    
+102.创建渐变色的图片
+
+    typedef NS_ENUM(NSInteger,GradientDirection)
+    {
+        /** 从上至下*/
+        topTobottom = 0,
+        /** 从左至右*/
+        leftToright,
+        rightToleft,
+        /** 从左上角至右下角*/
+        upleftTolowRight,
+        /** 从右上角至左下角*/
+        uprightTolowLeft
+    };
+
+    /**
+    *  获取矩形的渐变色的UIImage(此函数还不够完善)
+    *
+    *  @param bounds       UIImage的bounds
+    *  @param colors       渐变色数组，可以设置两种颜色
+    *  @param gradientDir  gradientDir
+    *
+    *  @return 渐变色的UIImage
+    */
+    + (UIImage *)gradientImageWithBounds:(CGRect)bounds
+                           andColors:(NSArray*)colors
+                         gradientDir:(GradientDirection)gradientDir;
+
+    /**
+    *  获取矩形的渐变色的UIImage(此函数还不够完善)
+    *
+    *  @param bounds       UIImage的bounds
+    *  @param colors       渐变色数组，可以设置两种颜色
+    *  @return 渐变色的UIImage
+    */
+    + (UIImage *)gradientImageWithBounds:(CGRect)bounds
+                           andColors:(NSArray*)colors
+                         gradientDir:(GradientDirection)gradientDir
+    {
+        NSMutableArray *ar = [NSMutableArray array];
+        for(UIColor *c in colors) {
+            [ar addObject:(id)c.CGColor];
+        }
+        UIGraphicsBeginImageContextWithOptions(bounds.size, YES, 1);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(context);
+        CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors lastObject] CGColor]);
+        CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)ar, NULL);
+        CGPoint start;
+        CGPoint end;
+    
+        switch (gradientDir)
+        {
+            case topTobottom:
+            {
+                start = CGPointMake(0.0, 0.0);
+                end = CGPointMake(0.0, bounds.size.height);
+            }
+                break;
+            case leftToright:
+            {
+                start = CGPointMake(0.0, 0.0);
+                end = CGPointMake(bounds.size.width, 0.0);
+            }
+                break;
+            case rightToleft:
+            {   
+                start = CGPointMake(bounds.size.width, 0.0);
+                end = CGPointMake(0.0, 0.0);;
+            }
+                break;
+            case upleftTolowRight:
+            {
+                start = CGPointMake(0.0, 0.0);
+                end = CGPointMake(bounds.size.width, bounds.size.height);
+            }
+                break;
+            case uprightTolowLeft:
+            {
+                start = CGPointMake(bounds.size.width, 0.0);
+                end = CGPointMake(0.0, bounds.size.height);
+            }
+                break;
+            
+            default:
+                break;
+        }
+        CGContextDrawLinearGradient(context, gradient, start, end, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        CGGradientRelease(gradient);
+        CGContextRestoreGState(context);
+        CGColorSpaceRelease(colorSpace);
+        UIGraphicsEndImageContext();
+        return image;
+     }
+    
+103.过滤输入的符号
+       
+    + (BOOL)panel_filterNewSymbolCodeWithInputString:(NSString *)inputString
+    {
+        NSArray *array = @[@"=",@"(",@")",@"{",@"}",@"!",@"^",@"/",@"#",@"?",@"~",@"*",@";",@":",@"”",@"|",
+        @"%",@"$",@"=",@"<",@">",@",",@"+", @"'", @"&", @"£",@"•", @"¥", @"€"];
+        for (NSString *singleCode in array) {
+            if ([inputString containsString:singleCode]) {
+                return NO;
+            }
+        }
+        if([inputString containsString:@"\\"]||[inputString isEqualToString:@"\\"]){
+            return NO;
+        }
+        return YES;
+    }
+     
+104.限制emoji表情输入（包含键盘和联想） 此方法是通过emoji表情编码所占3或4个字节的过滤
+        
+    // 只能输入字母和数字
+    - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string 
+    {
+        if(textField == self.targetAddressTextField.customTextField)
+        {
+            if ((textField.text.length >= 3) && ![string isEqualToString:@""])
+            {
+                return NO;
+            }
+            return [self validateNumber:string];
+        }
+        if(textField == self.renameTextField.customTextField)
+        {
+            if ((textField.text.length >= 30) && ![string isEqualToString:@""])
+            {
+                return NO;
+            }
+            if([self nowIsEmojiKeyBorad]&&![string isEqualToString:@""]){
+                return NO;
+            }
+            NSUInteger stringUTF8Length = [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+            if (stringUTF8Length >= 4&&(stringUTF8Length/string.length != 3)) {
+                return NO;
+            }
+            if (![PanelCommonFunction panel_filterNewSymbolCodeWithInputString:string]) {
+                return NO;
+            }
+            return YES;
+        }
+        if(textField == self.externalRenameTextField.customTextField)
+        {
+            if ((textField.text.length >= 30) && ![string isEqualToString:@""])
+            {
+                return NO;
+            }
+            if([self nowIsEmojiKeyBorad]&&![string isEqualToString:@""]){
+                return NO;
+            }
+            NSUInteger stringUTF8Length = [string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+            if (stringUTF8Length >= 4&&(stringUTF8Length/string.length != 3)) {
+                return NO;
+            }
+            if (![PanelCommonFunction panel_filterNewSymbolCodeWithInputString:string]) {
+                return NO;
+            }
+            return YES;
+        }
+        return YES;
+    
+    }
+    /// emoji表情键盘过滤
+    - (BOOL)nowIsEmojiKeyBorad
+    {
+        for (UITextInputMode *keyboardInputMode in [UITextInputMode activeInputModes]) {
+            if ([keyboardInputMode.primaryLanguage isEqualToString:@"emoji"]) {
+                NSNumber *isDisplayed = [keyboardInputMode valueForKey:@"isDisplayed"];
+    //            Ivar ivarIs =  class_getInstanceVariable([UITextInputMode class], "isDisplayed");
+    //            NSNumber *isDisplayed = object_getIvar(keyboardInputMode, ivarIs);
+                if ([isDisplayed boolValue] == YES) {
+                    return YES;
+                }
+            }
+        }
+        return false;
+
+    }
+
+    - (BOOL)friendlyNameValidateNumber:(NSString *)number 
+    {
+        BOOL res = YES;
+        NSCharacterSet *tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-"];
+        int i = 0;
+        while (i < number.length) {
+            NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+            NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+            if (range.length == 0) {
+                res = NO;
+                break;
+            }
+            i++;
+        }
+        return res;
+    }
+
+    - (BOOL)validateNumber:(NSString *)number 
+    {
+        BOOL res = YES;
+        NSCharacterSet *tmpSet = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        int i = 0;
+        while (i < number.length) {
+            NSString * string = [number substringWithRange:NSMakeRange(i, 1)];
+            NSRange range = [string rangeOfCharacterFromSet:tmpSet];
+            if (range.length == 0) {
+                res = NO;
+                break;
+            }
+            i++;
+        }
+        return res;
+    }
+
+105.方法二 过滤emoji表情 可过滤绝大多数emoji表情
+
+    /**
+    *  判断字符串中是否存在emoji
+    * @param string 字符串
+    * @return YES(含有表情)
+    */
+    + (BOOL)stringContainsEmoji:(NSString *)string
+    {
+        __block BOOL returnValue = NO;
+        [string enumerateSubstringsInRange:NSMakeRange(0, [string length])
+                              options:NSStringEnumerationByComposedCharacterSequences
+                           usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                               const unichar hs = [substring characterAtIndex:0];
+                               if (0xd800 <= hs && hs <= 0xdbff) {
+                                   if (substring.length > 1) {
+                                       const unichar ls = [substring characterAtIndex:1];
+                                       const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                                       if (0x1d000 <= uc && uc <= 0x1f9ff) {
+                                           returnValue = YES;
+                                       }
+                                   }
+                               } else if (substring.length > 1) {
+                                   const unichar ls = [substring characterAtIndex:1];
+                                   if (ls == 0x20e3) {
+                                       returnValue = YES;
+                                   }
+                               } else {
+                                   if (0x2100 <= hs && hs <= 0x27ff) {
+                                       if (0x278b <= hs && hs <= 0x2792) {
+                                           //自带九宫格拼音键盘
+                                           returnValue = NO;;
+                                       }else if (0x263b == hs) {
+                                           returnValue = NO;;
+                                       }else {
+                                           returnValue = YES;
+                                       }
+                                   } else if (0x2702 <= hs && hs <= 0x27B0){
+                                       returnValue = YES;
+                                   } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                                       returnValue = YES;
+                                   } else if (0x2B1B <= hs && hs <= 0x2B1C) {
+                                       returnValue = YES;
+                                   } else if (0x2934 <= hs && hs <= 0x2935) {
+                                       returnValue = YES;
+                                   } else if (0x3297 <= hs && hs <= 0x3299) {
+                                       returnValue = YES;
+                                   } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50|| hs == 0x24c2|| hs == 0x203c || hs == 0x2049) {
+                                       returnValue = YES;
+                                   }
+                               }
+                           }];
+
+            return returnValue;
+    }
+
+106.方法三 过滤emoji  此方法也可以过滤绝大多数的emoji 与 emoji表情键盘限制配合使用
+
+    - (NSString *)filterEmoji:(NSString *)text{
+        if (!text.length) return text;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?:[\\uD83C\\uDF00-\\uD83D\\uDDFF]|[\\uD83E\\uDD00-\\uD83E\\uDDFF]|    [\\uD83D\\uDE00-\\uD83D\\uDE4F]|[\\uD83D\\uDE80-\\uD83D\\uDEFF]|[\\u2600-\\u26FF]\\uFE0F?|[\\u2700-\\u27BF]\\uFE0F?|\\u24C2\\uFE0F?|[\\uD83C\\uDDE6-\\uD83C\\uDDFF]{1,2}|[\\uD83C\\uDD70\\uD83C\\uDD71\\uD83C\\uDD7E\\uD83C\\uDD7F\\uD83C\\uDD8E\\uD83C\\uDD91-\\uD83C\\uDD9A]\\uFE0F?|[\\u0023\\u002A\\u0030-\\u0039]\\uFE0F?\\u20E3|[\\u2194-\\u2199\\u21A9-\\u21AA]\\uFE0F?|[\\u2B05-\\u2B07\\u2B1B\\u2B1C\\u2B50\\u2B55]\\uFE0F?|[\\u2934\\u2935]\\uFE0F?|[\\u3030\\u303D]\\uFE0F?|[\\u3297\\u3299]\\uFE0F?|[\\uD83C\\uDE01\\uD83C\\uDE02\\uD83C\\uDE1A\\uD83C\\uDE2F\\uD83C\\uDE32-\\uD83C\\uDE3A\\uD83C\\uDE50\\uD83C\\uDE51]\\uFE0F?|[\\u203C\\u2049]\\uFE0F?|[\\u25AA\\u25AB\\u25B6\\u25C0\\u25FB-\\u25FE]\\uFE0F?|[\\u00A9\\u00AE]\\uFE0F?|[\\u2122\\u2139]\\uFE0F?|\\uD83C\\uDC04\\uFE0F?|\\uD83C\\uDCCF\\uFE0F?|[\\u231A\\u231B\\u2328\\u23CF\\u23E9-\\u23F3\\u23F8-\\u23FA]\\uFE0F?)" options:NSRegularExpressionCaseInsensitive error:nil];
+        NSString *modifiedString = [regex stringByReplacingMatchesInString:text options:0 range:NSMakeRange(0, [text length])withTemplate:@""];
+        return modifiedString;
+    }
+
+
+
+
