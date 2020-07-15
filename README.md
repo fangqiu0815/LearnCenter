@@ -1946,6 +1946,13 @@
     
     #import <AVFoundation/AVFoundation.h>
     @interface AppDelegate ()
+    {
+    ///
+    UIBackgroundTaskIdentifier _bgTaskId;
+    BOOL _played;
+    }
+    /** audioPlayer */
+    @property (nonatomic, strong) AVAudioPlayer *audioPlayer ;
     @property (strong, nonatomic) NSString *startTime;
     @end
     @implementation AppDelegate
@@ -1959,6 +1966,7 @@
     #pragma mark - 后台无声音乐播放 保证app常驻线程
     - (void)threadResidentBackgroundMode
     {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleInterreption:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
         [session setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -1973,9 +1981,21 @@
         [audioPlayer setVolume:1];
         audioPlayer.numberOfLoops = -1;
         [audioPlayer play];
+        self.audioPlayer = audioPlayer;
+         _played = YES;
         [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(printCurrentTime:) userInfo:nil repeats:YES];
     }
-
+    #pragma mark - 处理中断事件
+    - (void)handleInterreption:(NSNotification *)sender
+    {
+        if(_played){
+            [self.audioPlayer pause];
+            _played = NO;
+        }else{
+            [self.audioPlayer play];
+            _played = YES;
+        }
+    }
     - (void)printCurrentTime:(id)sender
     {
         NSLog(@"线程常驻后台===当前的时间是---%@---",[self getCurrentTime]);
@@ -1989,7 +2009,37 @@
         self.startTime = dateTime;
         return self.startTime;
     }
-    
+    -(void)applicationWillResignActive:(UIApplication *)application
+    {
+        //开启后台处理多媒体事件
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        AVAudioSession *session=[AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        //后台播放
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        //这样做，可以在按home键进入后台后 ，播放一段时间，几分钟吧。但是不能持续播放网络歌曲，若需要持续播放网络歌曲，还需要申请后台任务id，具体做法是：
+        _bgTaskId = [AppDelegate backgroundPlayerID:_bgTaskId];
+        //其中的_bgTaskId是后台任务UIBackgroundTaskIdentifier _bgTaskId;
+    }
+    /// 实现一下backgroundPlayerID:这个方法:
+    + (UIBackgroundTaskIdentifier)backgroundPlayerID:(UIBackgroundTaskIdentifier)backTaskId
+    {
+        //设置并激活音频会话类别
+        AVAudioSession *session=[AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [session setActive:YES error:nil];
+        //允许应用程序接收远程控制
+        [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+        //设置后台任务ID
+        UIBackgroundTaskIdentifier newTaskId=UIBackgroundTaskInvalid;
+        newTaskId=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+        if(newTaskId!=UIBackgroundTaskInvalid&&backTaskId!=UIBackgroundTaskInvalid)
+        {
+            [[UIApplication sharedApplication] endBackgroundTask:backTaskId];
+        }
+        return newTaskId;
+    }
+
 102.创建渐变色的图片
 
     typedef NS_ENUM(NSInteger,GradientDirection)
